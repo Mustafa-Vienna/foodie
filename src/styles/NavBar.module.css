@@ -1,0 +1,19 @@
+.navbarCustom {
+  background-color: hsla(0, 0%, 40%, 0.9);
+  box-shadow: 0 4px 8 px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  width: 80px;
+  height: 50px;
+}
+
+.navLink {
+  font-weight: bold;
+  color: hsla(0, 0%, 80%, 0.8);
+  transition: color 0.3 ease-in-out;
+}
+
+.navLink:hover {
+  color: hsla(0, 18%, 51%, 0.7);
+}
