@@ -1,0 +1,13 @@
+.App {
+  font-family: "Lora", sans-serif;
+  background-color: hsl(0, 0%, 70%);
+  min-height: 100vh;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.Main {
+  padding-top: 7rem;
+}
