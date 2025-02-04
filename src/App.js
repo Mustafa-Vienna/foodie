@@ -12,6 +12,7 @@ function App() {
           <Route path="/" element={<h1>Home Page</h1>} />
           <Route path="/signin" element={<h1>Sign in</h1>} />
           <Route path="/signup" element={<h1>Sign up</h1>} />
+          <Route path="*" element={<h1>Page not found!</h1>} />
         </Routes>
       </Container>
       </div>

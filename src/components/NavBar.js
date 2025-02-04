@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Navbar, Nav } from 'react-bootstrap'
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import styles from '../styles/NavBar.module.css'
 import logo from '../assets/images/logo.webp'
 
@@ -9,18 +9,39 @@ const NavBar = () => {
   return (
       <Navbar expand="md" fixed="top" className={`navbar navbar-expand-lg navbar-dark ${styles.navbarCustom}`}>
       <Container>
+        
         {/* Logo with link to Home */}
-        <Navbar.Brand as={Link} to="/">
+        <NavLink to="/" className={styles.navBrand}>
+        <Navbar.Brand>
           <img src={logo} alt="Foodie Logo" className={styles.logo} />
-        </Navbar.Brand>
+        </Navbar.Brand></NavLink>
           
         {/* Navbar Toggle for Mobile View */}
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
-          <Nav className="ms-auto">
-            <Nav.Link as={Link} to="/" className={styles.NavLink}> <i className="fa-solid fa-house"></i>Home</Nav.Link>
-            <Nav.Link as={Link} to="/signin" className={styles.NavLink}> <i className="fa-solid fa-right-to-bracket"></i>Sign in</Nav.Link>
-            <Nav.Link as={Link} to="/signup" className={styles.NavLink}> <i className="fa-solid fa-user-plus"></i>Sign up</Nav.Link>
+          <Nav className="ms-auto text-left">
+
+            <NavLink
+              to="/"
+              activeClassName = {styles.Active}
+              className={({ isActive }) => isActive ? `${styles.navLink} ${styles.Active}` : styles.navLink}>
+              <i className="fa-solid fa-house"></i>Home
+            </NavLink>
+            
+            <NavLink
+              to="/signin"
+              activeClassName = {styles.Active}
+              className={({ isActive }) => isActive ? `${styles.navLink} ${styles.Active}` : styles.navLink}>
+              <i className="fa-solid fa-right-to-bracket"></i>Sign in
+            </NavLink>
+
+            <NavLink
+              to="/signup"
+              activeClassName = {styles.Active}
+              className={({ isActive }) => isActive ? `${styles.navLink} ${styles.Active}` : styles.navLink}>
+              <i className="fa-solid fa-user-plus"></i>Sign up
+            </NavLink>
+
           </Nav>
         </Navbar.Collapse>
         </Container>
