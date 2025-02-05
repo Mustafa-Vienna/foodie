@@ -1,0 +1,35 @@
+.Button {
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 25px;
+  border: none;
+  padding: 12px 20px;
+  margin: 5px;
+  min-width: 120px;
+  transition: all 0.3 ease-in-out;
+}
+
+.Button:hover {
+  opacity: 0.85;
+  transform: scale(1.02);
+  cursor: pointer;
+}
+
+.Button.active {
+  transform: scale(0.98);
+}
+
+.Wide {
+  padding: 12px 60px;
+  width: 100%;
+}
+
+.Bright {
+  background-color: #2ed9ff;
+  color: #2142b2;
+}
+
+.Bright:hover {
+  background-color: #2142b2;
+  color: white;
+}

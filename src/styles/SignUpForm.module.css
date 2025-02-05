@@ -1,0 +1,70 @@
+.Row {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Input {
+  background-color: #fff;
+  border: 1px solid #f0f1f9;
+  border-radius: 6px;
+  color: #7177a1;
+  text-align: center;
+  padding: 16px;
+  font-size: 1rem;
+  gap: 10px;
+  transition: 0.3 ease-in-out;
+}
+
+.Input:focus {
+  border-color: #2142b2;
+  box-shadow: 0 0 5px rgba(33, 66, 178, 0.6);
+  outline: none;
+}
+
+.Header {
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #2142b2;
+  margin-bottom: 20px;
+}
+
+.Link {
+  text-decoration: none;
+  text-align: center;
+  display: block;
+  font-size: 1rem;
+  transition: color 0.3 ease;
+}
+
+.Link:hover {
+  color: #2142b2;
+}
+
+.Link span {
+  color: #ff9254;
+  font-weight: bold;
+}
+
+.Container {
+  padding: 40px 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.SignUpCol {
+  height: 400px;
+  background: url("https://images.unsplash.com/photo-1569246294372-ed319c674f14?q=80&w=1587&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+    no-repeat center center/cover;
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  min-height: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
