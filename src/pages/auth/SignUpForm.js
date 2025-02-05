@@ -30,8 +30,33 @@ const SignUpForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    let customErrors = {};
+
+    if (!username.trim()) {
+      customErrors.username = ["Username is required!"];
+    } else if (username.length > 20) {
+      customErrors.username = ["Username must not be exceed 20 characters!"]
+    }
+    if (!password1.trim()) {
+      customErrors.password1 = ["Password is required!"];
+    } else if (password1.length < 6) {
+      customErrors.password1 = ["Password must be at least 6 characters long!"];
+    }
+    if (!password2.trim()) {
+      customErrors.password2 = ["Confirm Password is required!"];
+    } else if (password1 !== password2) {
+      customErrors.password2 = ["Passwords do not match!"];
+    }
+    
+
+    if (Object.keys(customErrors).length > 0) {
+      setErrors(customErrors);
+      return;
+    }
+
     try {
-      await axios.post(`${BASE_API_URL}/dj-rest-auth/registration/}`, signUpData);
+      await axios.post(`${BASE_API_URL}/dj-rest-auth/registration/`, signUpData);
       navigate("/signin");
     } catch (err) {
       setErrors(err.response?.data || {});
@@ -51,15 +76,15 @@ const SignUpForm = () => {
               <Form.Control
                 className={styles.Input}
                 type="text"
-                placeholder="Username"
+                placeholder="Enter your username"
                 name="username"
                 value={username}
                 onChange={handleChange}
-                required
               />
             </Form.Group>
             {errors.username?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
+              <Alert key={idx} variant="warning" className={styles.ErrorMsg}>
+                <i class="fa-solid fa-triangle-exclamation"></i>
                 {message}
               </Alert>
             ))}
@@ -70,15 +95,15 @@ const SignUpForm = () => {
               <Form.Control
                 className={styles.Input}
                 type="password"
-                placeholder="Password"
+                placeholder="Enter your password"
                 name="password1"
                 value={password1}
                 onChange={handleChange}
-                required
               />
             </Form.Group>
             {errors.password1?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
+              <Alert key={idx} variant="warning" className={styles.ErrorMsg}>
+                <i class="fa-solid fa-triangle-exclamation"></i>
                 {message}
               </Alert>
             ))}
@@ -89,15 +114,15 @@ const SignUpForm = () => {
               <Form.Control
                 className={styles.Input}
                 type="password"
-                placeholder="Confirm Password"
+                placeholder="Re-enter your password"
                 name="password2"
                 value={password2}
                 onChange={handleChange}
-                required
               />
             </Form.Group>
             {errors.password2?.map((message, idx) => (
-              <Alert key={idx} variant="warning">
+              <Alert key={idx} variant="warning" className={styles.ErrorMsg}>
+                <i class="fa-solid fa-triangle-exclamation"></i>
                 {message}
               </Alert>
             ))}
@@ -108,7 +133,8 @@ const SignUpForm = () => {
             </Button>
 
             {errors.non_field_errors?.map((message, idx) => (
-              <Alert key={idx} variant="warning" className="mt-3">
+              <Alert key={idx} variant="warning" className={`mt-3 ${styles.ErrorMsg}`}>
+                <i class="fa-solid fa-triangle-exclamation"></i>
                 {message}
               </Alert>
             ))}

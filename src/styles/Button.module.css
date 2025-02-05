@@ -4,8 +4,10 @@
   border-radius: 25px;
   border: none;
   padding: 12px 20px;
-  margin: 5px;
+  margin: 10px auto;
   min-width: 120px;
+  display: block;
+  text-align: center;
   transition: all 0.3 ease-in-out;
 }
 
@@ -22,6 +24,7 @@
 .Wide {
   padding: 12px 60px;
   width: 100%;
+  max-width: 300px;
 }
 
 .Bright {

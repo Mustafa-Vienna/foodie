@@ -15,6 +15,7 @@
   font-size: 1rem;
   gap: 10px;
   transition: 0.3 ease-in-out;
+  margin-top: 8px;
 }
 
 .Input:focus {
@@ -55,6 +56,30 @@
   background-color: rgba(255, 255, 255, 0.9);
   border-radius: 12px;
   box-shadow: 2px 2px 15px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  display: flex;
+}
+
+.ErrorMsg {
+  display: flex;
+  align-items: center;
+  background-color: hsl(0, 7%, 80%);
+  color: hsla(3, 98%, 64%, 0.9);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid rgba(225, 233, 212, 0.9);
+  margin-top: 8px;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.ErrorMsg i {
+  margin-right: 8px;
+  font-size: 1.3rem;
+  color: rgba(244, 244, 11, 0.95);
 }
 
 .SignUpCol {
