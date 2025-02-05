@@ -12,11 +12,12 @@ const BASE_API_URL = process.env.REACT_APP_API_BASE_URL
 const SignUpForm = () => {
   const [signUpData, setSignUpData] = useState({
     username: "",
+    email: "",
     password1: "",
     password2: "",
   });
 
-  const { username, password1, password2 } = signUpData;
+  const { username, email, password1, password2 } = signUpData;
   const [errors, setErrors] = useState({});
 
   const navigate = useNavigate();
@@ -38,11 +39,17 @@ const SignUpForm = () => {
     } else if (username.length > 20) {
       customErrors.username = ["Username must not be exceed 20 characters!"]
     }
+
+    if (!email.trim()) {
+      customErrors.email = ["Email is required!"];
+    }
+
     if (!password1.trim()) {
       customErrors.password1 = ["Password is required!"];
     } else if (password1.length < 6) {
       customErrors.password1 = ["Password must be at least 6 characters long!"];
     }
+
     if (!password2.trim()) {
       customErrors.password2 = ["Confirm Password is required!"];
     } else if (password1 !== password2) {
@@ -88,6 +95,26 @@ const SignUpForm = () => {
                 {message}
               </Alert>
             ))}
+
+            {/* Email Field */}
+            <Form.Group controlId="email">
+              <Form.Label className="d-none">Email</Form.Label>
+              <Form.Control
+                className={styles.Input}
+                type="email"
+                placeholder="Enter your Email address"
+                name="email"
+                value={email}
+                onChange={handleChange}
+              />
+            </Form.Group>
+            {errors.email?.map((message, idx) => (
+              <Alert key={idx} variant="warning" className={styles.ErrorMsg}>
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                {message}
+              </Alert>
+            ))}
+
 
             {/* Password Field */}
             <Form.Group controlId="password1">
