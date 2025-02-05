@@ -23,21 +23,21 @@ const NavBar = () => {
 
             <NavLink
               to="/"
-              activeClassName = {styles.Active}
+              activeclassname = {styles.Active}
               className={({ isActive }) => isActive ? `${styles.navLink} ${styles.Active}` : styles.navLink}>
               <i className="fa-solid fa-house"></i>Home
             </NavLink>
             
             <NavLink
               to="/signin"
-              activeClassName = {styles.Active}
+              activeclassname = {styles.Active}
               className={({ isActive }) => isActive ? `${styles.navLink} ${styles.Active}` : styles.navLink}>
               <i className="fa-solid fa-right-to-bracket"></i>Sign in
             </NavLink>
 
             <NavLink
               to="/signup"
-              activeClassName = {styles.Active}
+              activeclassname = {styles.Active}
               className={({ isActive }) => isActive ? `${styles.navLink} ${styles.Active}` : styles.navLink}>
               <i className="fa-solid fa-user-plus"></i>Sign up
             </NavLink>
