@@ -7,6 +7,7 @@ import styles from "../../styles/SignUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 
+
 const BASE_API_URL = process.env.REACT_APP_API_BASE_URL
 
 const SignUpForm = () => {
@@ -31,7 +32,7 @@ const SignUpForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
+  
     let customErrors = {};
 
     if (!username.trim()) {
@@ -63,9 +64,18 @@ const SignUpForm = () => {
     }
 
     try {
-      await axios.post(`${BASE_API_URL}/dj-rest-auth/registration/`, signUpData);
+      const response = await axios.post(`${BASE_API_URL}/dj-rest-auth/registration/`, signUpData, {
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      localStorage.setItem("accessToken", response.data.access);
+      localStorage.setItem("refreshToken", response.data.refresh);
+
       navigate("/signin");
     } catch (err) {
+      console.error("Registration error:", err.response);
       setErrors(err.response?.data || {});
     }
   };
