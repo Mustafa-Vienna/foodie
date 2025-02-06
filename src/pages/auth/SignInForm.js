@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Form, Button, Image, Col, Row, Container, Alert } from "react-bootstrap";
@@ -6,11 +6,15 @@ import { Form, Button, Image, Col, Row, Container, Alert } from "react-bootstrap
 import styles from "../../styles/SignUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import { SetCurrentUserContext } from "../../App";
 
 
 const BASE_API_URL = process.env.REACT_APP_API_BASE_URL
 
 const SignInForm = () => {
+
+  const setCurrentUser = useContext(SetCurrentUserContext);
+
   const [signInData, setSignInData] = useState({
     username: "",
     password: "",
@@ -52,14 +56,26 @@ const SignInForm = () => {
     }
 
     try {
-      const response = await axios.post(`${BASE_API_URL}/dj-rest-auth/login/`, signInData, {
+      const { data } = await axios.post(`${BASE_API_URL}/dj-rest-auth/login/`, signInData, {
         headers: {
           'Content-Type': 'application/json',
+          // 'X-CSRFToken': csrfToken
         },
+        withCredentials: true,
       });
 
-      localStorage.setItem("accessToken", response.data.access);
-      localStorage.setItem("refreshToken", response.data.refresh);
+      if (data?.user) {
+        setCurrentUser(data.user);
+      } else {
+        setCurrentUser(data);
+      }
+
+      if (data.access) {
+        localStorage.setItem("accessToken", data.access);
+      }
+      if (data.refresh) {
+        localStorage.setItem("refreshToken", data.refresh);
+      }
 
       navigate("/");
     } catch (err) {
@@ -69,15 +85,9 @@ const SignInForm = () => {
         const errorMessage = err.response.data.non_field_errors[0];
 
         if (errorMessage === "Unable to log in with provided credentials.") {
-          if (!customErrors.username) {
-            setErrors({
-              username: ["Username does not exist. Please enter valid Username!"],
-            });
-          } else {
-            setErrors({
-              password: ["Incorrect password! Please try again!"],
-            });
-          }
+          setErrors({
+            password: ["Invalid username or password! Please try again!"],
+          });
         }
       } else {
         setErrors(err.response?.data || {});
