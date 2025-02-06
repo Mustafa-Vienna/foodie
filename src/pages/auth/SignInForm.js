@@ -64,7 +64,24 @@ const SignInForm = () => {
       navigate("/");
     } catch (err) {
       console.error("Login error:", err.response);
-      setErrors(err.response?.data || {});
+
+      if (err.response?.data?.non_field_errors) {
+        const errorMessage = err.response.data.non_field_errors[0];
+
+        if (errorMessage === "Unable to log in with provided credentials.") {
+          if (!customErrors.username) {
+            setErrors({
+              username: ["Username does not exist. Please enter valid Username!"],
+            });
+          } else {
+            setErrors({
+              password: ["Incorrect password! Please try again!"],
+            });
+          }
+        }
+      } else {
+        setErrors(err.response?.data || {});
+      }
     }
   };
 
@@ -135,7 +152,7 @@ const SignInForm = () => {
       </Col>
 
       {/* Right Side Image */}
-      <Col md={6} className={`my-auto d-none d-md-block p-2 ${styles.SignUpCol}`}>
+      <Col md={6} className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}>
         <Image className={appStyles.FillerImage} />
       </Col>
     </Row>
