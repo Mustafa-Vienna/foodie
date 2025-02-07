@@ -8,21 +8,18 @@ import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
-
 const BASE_API_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
 
 const SignInForm = () => {
-
   const setCurrentUser = useSetCurrentUser();
+  const navigate = useNavigate();
 
   const [signInData, setSignInData] = useState({
     username: "",
     password: "",
   });
 
-  const { username, password } = signInData;
   const [errors, setErrors] = useState({});
-  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setSignInData({
@@ -33,22 +30,21 @@ const SignInForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
+    // Validation
     let customErrors = {};
 
-    if (!username.trim()) {
+    if (!signInData.username.trim()) {
       customErrors.username = ["Username is required!"];
-    } else if (username.length > 20) {
-      customErrors.username = ["Username must not be exceed 20 characters!"]
+    } else if (signInData.username.length > 20) {
+      customErrors.username = ["Username must not exceed 20 characters!"];
     }
 
-
-    if (!password.trim()) {
+    if (!signInData.password.trim()) {
       customErrors.password = ["Password is required!"];
-    } else if (password.length < 6) {
+    } else if (signInData.password.length < 6) {
       customErrors.password = ["Password must be at least 6 characters long!"];
     }
-
 
     if (Object.keys(customErrors).length > 0) {
       setErrors(customErrors);
@@ -58,39 +54,33 @@ const SignInForm = () => {
     try {
       const { data } = await axios.post(`${BASE_API_URL}/dj-rest-auth/login/`, signInData, {
         headers: {
-          'Content-Type': 'application/json',
-          'X-CSRFToken': document.cookie.match(/csrftoken=([^;]+)/)?.[1],
+          "Content-Type": "application/json",
         },
         withCredentials: true,
       });
 
-      if (data?.user) {
-        setCurrentUser(data.user);
-        localStorage.setItem("currentUser", JSON.stringify(data.user));
-      } else {
-        setCurrentUser(data);
-        localStorage.setItem("currentUser", JSON.stringify(data))
-      }
-
+      // ✅ Store user session details in localStorage
       if (data.access) {
         localStorage.setItem("accessToken", data.access);
       }
       if (data.refresh) {
         localStorage.setItem("refreshToken", data.refresh);
       }
+      if (data.user) {
+        setCurrentUser(data.user);
+        localStorage.setItem("currentUser", JSON.stringify(data.user));
+      } else {
+        setCurrentUser(data);
+        localStorage.setItem("currentUser", JSON.stringify(data));
+      }
 
-      navigate("/");
+      navigate("/"); // Redirect to home page
     } catch (err) {
       console.error("Login error:", err.response);
 
+      // Handle authentication failure
       if (err.response?.data?.non_field_errors) {
-        const errorMessage = err.response.data.non_field_errors[0];
-
-        if (errorMessage === "Unable to log in with provided credentials.") {
-          setErrors({
-            password: ["Invalid username or password! Please try again!"],
-          });
-        }
+        setErrors({ password: ["Invalid username or password! Please try again!"] });
       } else {
         setErrors(err.response?.data || {});
       }
@@ -104,7 +94,7 @@ const SignInForm = () => {
           <h1 className={styles.Header}>Sign In</h1>
 
           <Form onSubmit={handleSubmit}>
-            {/* Username Field - Login Screen*/}
+            {/* Username Field */}
             <Form.Group controlId="username">
               <Form.Label className="d-none">Username</Form.Label>
               <Form.Control
@@ -112,18 +102,18 @@ const SignInForm = () => {
                 type="text"
                 placeholder="Enter your username"
                 name="username"
-                value={username}
+                value={signInData.username}
                 onChange={handleChange}
               />
             </Form.Group>
             {errors.username?.map((message, idx) => (
               <Alert key={idx} variant="warning" className={styles.ErrorMsg}>
-                <i class="fa-solid fa-triangle-exclamation"></i>
+                <i className="fa-solid fa-triangle-exclamation"></i>&nbsp;
                 {message}
               </Alert>
             ))}
 
-            {/* Confirm Password Field - Login Screen */}
+            {/* Password Field */}
             <Form.Group controlId="password">
               <Form.Label className="d-none">Password</Form.Label>
               <Form.Control
@@ -131,13 +121,13 @@ const SignInForm = () => {
                 type="password"
                 placeholder="Enter your password"
                 name="password"
-                value={password}
+                value={signInData.password}
                 onChange={handleChange}
               />
             </Form.Group>
             {errors.password?.map((message, idx) => (
               <Alert key={idx} variant="warning" className={styles.ErrorMsg}>
-                <i class="fa-solid fa-triangle-exclamation"></i>
+                <i className="fa-solid fa-triangle-exclamation"></i>&nbsp;
                 {message}
               </Alert>
             ))}
@@ -149,7 +139,7 @@ const SignInForm = () => {
 
             {errors.non_field_errors?.map((message, idx) => (
               <Alert key={idx} variant="warning" className={`mt-3 ${styles.ErrorMsg}`}>
-                <i class="fa-solid fa-triangle-exclamation"></i>
+                <i className="fa-solid fa-triangle-exclamation"></i>&nbsp;
                 {message}
               </Alert>
             ))}
