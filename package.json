@@ -3,7 +3,6 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@mui/material": "^6.4.2",
     "@testing-library/react": "^13.4.0",
     "axios": "^1.7.9",
     "bootstrap": "^5.3.3",
