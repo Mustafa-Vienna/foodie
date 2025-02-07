@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Form, Button, Image, Col, Row, Container, Alert } from "react-bootstrap";
@@ -6,14 +6,14 @@ import { Form, Button, Image, Col, Row, Container, Alert } from "react-bootstrap
 import styles from "../../styles/SignUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
-import { SetCurrentUserContext } from "../../App";
+import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 
 
-const BASE_API_URL = process.env.REACT_APP_API_BASE_URL
+const BASE_API_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
 
 const SignInForm = () => {
 
-  const setCurrentUser = useContext(SetCurrentUserContext);
+  const setCurrentUser = useSetCurrentUser();
 
   const [signInData, setSignInData] = useState({
     username: "",
@@ -59,15 +59,17 @@ const SignInForm = () => {
       const { data } = await axios.post(`${BASE_API_URL}/dj-rest-auth/login/`, signInData, {
         headers: {
           'Content-Type': 'application/json',
-          // 'X-CSRFToken': csrfToken
+          'X-CSRFToken': document.cookie.match(/csrftoken=([^;]+)/)?.[1],
         },
         withCredentials: true,
       });
 
       if (data?.user) {
         setCurrentUser(data.user);
+        localStorage.setItem("currentUser", JSON.stringify(data.user));
       } else {
         setCurrentUser(data);
+        localStorage.setItem("currentUser", JSON.stringify(data))
       }
 
       if (data.access) {
