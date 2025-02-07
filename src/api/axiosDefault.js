@@ -1,6 +1,17 @@
 import axios from "axios";
 
-axios.defaults.baseURL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
-axios.defaults.headers.post['Content-Type'] = 'application/json';
+const BASE_API_URL = process.env.REACT_APP_API_BASE_URL || 'http://localhost:8000';
 
+export const axiosReq = axios.create({
+  baseURL: BASE_API_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+  withCredentials: true,
+});
+
+export const axiosRes = axios.create({
+  baseURL: BASE_API_URL,
+  withCredentials: true,
+});
 export default axios;
