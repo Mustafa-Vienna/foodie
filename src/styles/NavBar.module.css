@@ -27,8 +27,8 @@
   font-size: 1rem;
   color: hsl(0, 0%, 85%);
   text-transform: uppercase;
-  padding: 8px 12px;
-  gap: 8px;
+  padding: 5px 8px;
+  gap: 3px;
   transition: color 0.3 ease-in-out;
   text-decoration: none;
 }
@@ -47,7 +47,7 @@
 i {
   color: hsl(0, 0%, 96%);
   font-size: 1.4rem;
-  padding: 6px;
+  padding: 3px;
   vertical-align: middle;
   transition: color 0.3 ease-in-out;
 }
