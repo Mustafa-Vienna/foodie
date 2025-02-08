@@ -58,7 +58,10 @@ const NavBar = () => {
                 <>
                   {navItem("/feed", "fa-bars-staggered", "Feed", null, setExpanded)}
                   {navItem("/liked", "fa-heart", "Liked", null, setExpanded)}
-                  {navItem("/", "fa-right-from-bracket", "Sign Out", handleSignOut, setExpanded)}
+                
+                  <span className={`${styles.navLink} ${styles.signOut}`} onClick={handleSignOut}>
+                    <i className="fa-solid fa-right-from-bracket"></i>&nbsp;Sign Out
+                  </span>                  
                   <NavLink
                   to={`/profiles/${currentUser?.profile_id}`}
                   className={getNavLinkClass} onClick={() => setExpanded(false)}>
