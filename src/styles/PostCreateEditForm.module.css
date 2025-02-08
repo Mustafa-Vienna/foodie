@@ -1,0 +1,42 @@
+.Container {
+  max-width: 600px;
+  margin: 50px auto;
+  background-color: hsl(0, 4%, 90%);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.FormGroup {
+  margin-bottom: 20px;
+}
+
+.FormLabel {
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.FormControl {
+  padding: 10px;
+  border-radius: 5px;
+  border: 2px solid rgb(97, 97, 97);
+}
+
+.FormFile {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.UploadedImage {
+  max-width: 90%;
+  height: auto;
+  max-height: 300px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.Asset {
+  width: 10rem;
+  height: 10rem;
+}
