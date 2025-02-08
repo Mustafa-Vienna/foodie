@@ -36,3 +36,13 @@
   background-color: #2142b2;
   color: white;
 }
+
+.Gray {
+  background-color: hsl(0, 0%, 43%);
+  color: whitesmoke;
+  border: none;
+}
+
+.Gray:hover {
+  background-color: hsl(0, 0%, 53%);
+}

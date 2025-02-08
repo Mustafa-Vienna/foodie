@@ -23,7 +23,7 @@
 }
 
 .FormControl::placeholder {
-  color: hsl(0, 0%, 53%);
+  color: hsl(0, 0%, 45%);
   font-style: italic;
 }
 

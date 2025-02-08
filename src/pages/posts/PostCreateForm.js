@@ -74,8 +74,8 @@ const PostCreateForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const formData = new FormData();
-    formData.append("title", title);
-    formData.append("content", content);
+    formData.append("title", title.trim());
+    formData.append("content", content.trim());
     formData.append("category", category);
     formData.append("image_filter", image_filter);
     tags.forEach((tag) => formData.append("tags", tag));
@@ -172,9 +172,15 @@ const PostCreateForm = () => {
               </Form.Control>
             </Form.Group>
 
-            <Button className={`${btnStyles.Button} ${btnStyles.Blue} mt-3`} type="submit">
-              Create Post
-            </Button>
+            <div className="d-flex justify-content-center align-item-center text-center mt-4">
+              <Button className={`${btnStyles.Button} ${btnStyles.Gray}`}
+                onClick={() => navigate(-1)}>
+                Cancel
+                </Button>
+              <Button className={`${btnStyles.Button} ${btnStyles.Bright}`} type="submit">
+                Create Post
+              </Button>
+            </div>
           </Col>
         </Row>
       </Form>
