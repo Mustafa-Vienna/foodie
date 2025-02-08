@@ -120,13 +120,15 @@ const PostCreateForm = () => {
           <Col md={6}>
             <Form.Group className={styles.FormGroup}>
               <Form.Label className={styles.FormLabel}>Title</Form.Label>
-              <Form.Control type="text" name="title" value={title} onChange={handleChange} className={styles.FormControl} />
+              <Form.Control type="text" name="title" value={title} onChange={handleChange}
+                className={styles.FormControl} placeholder="Enter a descriptive title for your post" />
               {errors.title && <Alert variant="danger">{errors.title[0]}</Alert>}
             </Form.Group>
 
             <Form.Group className={styles.FormGroup}>
               <Form.Label className={styles.FormLabel}>Content</Form.Label>
-              <Form.Control as="textarea" rows={4} name="content" value={content} onChange={handleChange} className={styles.FormControl} />
+              <Form.Control as="textarea" rows={4} name="content" value={content} onChange={handleChange} className={styles.FormControl}
+              placeholder="Describe how to prepare this dish step by step"/>
               {errors.content && <Alert variant="danger">{errors.content[0]}</Alert>}
             </Form.Group>
 

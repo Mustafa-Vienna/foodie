@@ -22,6 +22,11 @@
   border: 2px solid rgb(97, 97, 97);
 }
 
+.FormControl::placeholder {
+  color: hsl(0, 0%, 53%);
+  font-style: italic;
+}
+
 .FormFile {
   display: flex;
   flex-direction: column;
