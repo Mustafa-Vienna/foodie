@@ -6,8 +6,8 @@ import { axiosReq, axiosRes } from "../api/axiosDefault";
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
 
-export const useCurrentUser = () => useContext(CurrentUserContext);
-export const useSetCurrentUser = () => useContext(SetCurrentUserContext);
+export const useCurrentUser = () => useContext(CurrentUserContext)
+export const useSetCurrentUser = () => useContext(SetCurrentUserContext)
 
 export const CurrentUserProvider = ({ children }) => {
   const [currentUser, setCurrentUser] = useState(null);
@@ -18,20 +18,11 @@ export const CurrentUserProvider = ({ children }) => {
       const storedUser = localStorage.getItem("currentUser");
       if (storedUser) {
         setCurrentUser(JSON.parse(storedUser));
-      } else {
-        const { data } = await axiosRes.get("dj-rest-auth/user/", {
-          headers: {
-            Authorization: `Bearer ${localStorage.getItem("accessToken")}`,
-          },
-        });
-        setCurrentUser(data);
-        localStorage.setItem("currentUser", JSON.stringify(data));
       }
     } catch (err) {
-      console.log("Error fetching user: ", err);
       setCurrentUser(null);
     }
-  };
+  }
 
   useEffect(() => {
     handleMount();
@@ -40,9 +31,17 @@ export const CurrentUserProvider = ({ children }) => {
   useMemo(() => {
     axiosReq.interceptors.request.use(
       async (config) => {
-        const token = localStorage.getItem("accessToken");
-        if (token) {
-          config.headers.Authorization = `Bearer ${token}`;
+        try {
+          await axios.post("/dj-rest-auth/token/refresh/");
+        } catch (err) {
+          setCurrentUser((prevUser) => {
+            if (prevUser) {
+              navigate("/signin");
+            }
+            return null;
+          });
+          localStorage.removeItem("currentUser");
+          return Promise.reject(err);
         }
         return config;
       },
@@ -54,23 +53,13 @@ export const CurrentUserProvider = ({ children }) => {
       async (err) => {
         if (err.response?.status === 401) {
           try {
-            const refreshToken = localStorage.getItem("refreshToken");
-            if (refreshToken) {
-              const { data } = await axios.post("/dj-rest-auth/token/refresh/", {
-                refresh: refreshToken,
-              });
-
-              localStorage.setItem("accessToken", data.access);
-              err.config.headers.Authorization = `Bearer ${data.access}`;
-              return axios(err.config);
-            }
+            await axios.post("/dj-rest-auth/refresh/");
           } catch (refreshErr) {
             setCurrentUser(null);
             localStorage.removeItem("currentUser");
-            localStorage.removeItem("accessToken");
-            localStorage.removeItem("refreshToken");
             navigate("/signin");
           }
+          return Promise.reject(err);
         }
         return Promise.reject(err);
       }
@@ -81,7 +70,7 @@ export const CurrentUserProvider = ({ children }) => {
     <CurrentUserContext.Provider value={currentUser}>
       <SetCurrentUserContext.Provider value={setCurrentUser}>
         {children}
-      </SetCurrentUserContext.Provider>
+        </SetCurrentUserContext.Provider>
     </CurrentUserContext.Provider>
-  );
+  )
 };
