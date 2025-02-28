@@ -1,18 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, Button, Row, Col, Container, Image, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefault";
 
+// Import necessary components and assets
+import Asset from "../../components/Asset";
 import Upload from "../../assets/images/upload.png";
 import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
-import Asset from "../../components/Asset";
 
 const PostCreateForm = () => {
   const [errors, setErrors] = useState({});
-  const navigate = useNavigate();
-
   const [postData, setPostData] = useState({
     title: "",
     content: "",
@@ -21,25 +20,23 @@ const PostCreateForm = () => {
     image_filter: "normal",
     image: null,
   });
-
-  axiosReq.get("/posts/tags/");
-
-  const { title, content, category, tags, image_filter, image } = postData;
   const [availableTags, setAvailableTags] = useState([]);
   const [imagePreview, setImagePreview] = useState(null);
+
+  const navigate = useNavigate();
+  const { title, content, category, tags, image_filter, image } = postData;
 
   // Fetch tags from backend
   useEffect(() => {
     const fetchTags = async () => {
       try {
         const { data } = await axiosReq.get("/posts/tags/");
-        console.log("Fetched tags:", data); 
         setAvailableTags(data.results || []);
       } catch (err) {
         console.error("Error fetching tags:", err);
         setAvailableTags([]);
       }
-    };    
+    };
     fetchTags();
   }, []);
 
@@ -120,15 +117,28 @@ const PostCreateForm = () => {
           <Col md={6}>
             <Form.Group className={styles.FormGroup}>
               <Form.Label className={styles.FormLabel}>Title</Form.Label>
-              <Form.Control type="text" name="title" value={title} onChange={handleChange}
-                className={styles.FormControl} placeholder="Enter a descriptive title for your post" />
+              <Form.Control
+                type="text"
+                name="title"
+                value={title}
+                onChange={handleChange}
+                className={styles.FormControl}
+                placeholder="Enter a descriptive title for your post"
+              />
               {errors.title && <Alert variant="danger">{errors.title[0]}</Alert>}
             </Form.Group>
 
             <Form.Group className={styles.FormGroup}>
               <Form.Label className={styles.FormLabel}>Content</Form.Label>
-              <Form.Control as="textarea" rows={4} name="content" value={content} onChange={handleChange} className={styles.FormControl}
-              placeholder="Describe how to prepare this dish step by step"/>
+              <Form.Control
+                as="textarea"
+                rows={4}
+                name="content"
+                value={content}
+                onChange={handleChange}
+                className={styles.FormControl}
+                placeholder="Describe how to prepare this dish step by step"
+              />
               {errors.content && <Alert variant="danger">{errors.content[0]}</Alert>}
             </Form.Group>
 
@@ -159,7 +169,6 @@ const PostCreateForm = () => {
               </Form.Control>
             </Form.Group>
 
-
             <Form.Group className={styles.FormGroup}>
               <Form.Label className={styles.FormLabel}>Image Filter</Form.Label>
               <Form.Control as="select" name="image_filter" value={image_filter} onChange={handleChange} className={styles.FormControl}>
@@ -173,10 +182,9 @@ const PostCreateForm = () => {
             </Form.Group>
 
             <div className="d-flex justify-content-center align-item-center text-center mt-4">
-              <Button className={`${btnStyles.Button} ${btnStyles.Gray}`}
-                onClick={() => navigate(-1)}>
+              <Button className={`${btnStyles.Button} ${btnStyles.Gray}`} onClick={() => navigate(-1)}>
                 Cancel
-                </Button>
+              </Button>
               <Button className={`${btnStyles.Button} ${btnStyles.Bright}`} type="submit">
                 Create Post
               </Button>
