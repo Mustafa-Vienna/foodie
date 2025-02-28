@@ -1,6 +1,6 @@
 import React from "react";
 import { Container, Navbar, Nav } from 'react-bootstrap'
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import styles from '../styles/NavBar.module.css'
 import logo from '../assets/images/logo.webp'
 import { useCurrentUser, useSetCurrentUser } from "../contexts/CurrentUserContext";
@@ -24,12 +24,17 @@ const NavBar = () => {
   const currentUser = useCurrentUser();
   const setCurrentUser = useSetCurrentUser();
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
+  const navigate = useNavigate();
 
 
   const handleSignOut = async () => {
     try {
       await axiosReq.post("/dj-rest-auth/logout/");
+      localStorage.removeItem("currentUser");
+      localStorage.removeItem("accessToken");
+      localStorage.removeItem("refreshToken");
       setCurrentUser(null);
+      navigate("/signin");
     } catch (err) {
       console.log("Logout failed: ", err.response?.data || err.message);
     }
