@@ -10,14 +10,17 @@ export const axiosReq = axios.create({
   withCredentials: true,
 });
 
-axiosReq.interceptors.request.use((config) => {
-  const storedToken = JSON.parse(localStorage.getItem("currentUser"));
-  const token = storedToken?.key;
-  if (token) {
-    config.headers.Authorization = `Bearer ${token}`;
-  }
-  return config;
-});
+// Interceptor for token management
+axiosReq.interceptors.request.use(
+  async (config) => {
+    const accessToken = localStorage.getItem("accessToken");
+    if (accessToken) {
+      config.headers["Authorization"] = `Bearer ${accessToken}`;
+    }
+    return config;
+  },
+  (err) => Promise.reject(err)
+);
 
 export const axiosRes = axios.create({
   baseURL: BASE_API_URL,
