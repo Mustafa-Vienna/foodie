@@ -52,26 +52,26 @@ const SignInForm = () => {
     }
 
     try {
-      const { data } = await axios.post(`${BASE_API_URL}/dj-rest-auth/login/`, signInData, {
+      const { data } = await axios.post(`${BASE_API_URL}/token/`, signInData, {
         headers: {
           "Content-Type": "application/json",
         },
         withCredentials: true,
       });
 
-      // ✅ Store user session details in localStorage
+      // Store user session details in localStorage
       if (data.access) {
         localStorage.setItem("accessToken", data.access);
       }
       if (data.refresh) {
         localStorage.setItem("refreshToken", data.refresh);
       }
-      if (data.user) {
-        setCurrentUser(data.user);
-        localStorage.setItem("currentUser", JSON.stringify(data.user));
+      if (data.access && data.refresh) {
+        localStorage.setItem("accessToken", data.access);
+        localStorage.setItem("refreshToken", data.refresh);
+        setCurrentUser(data.user || {});
       } else {
-        setCurrentUser(data);
-        localStorage.setItem("currentUser", JSON.stringify(data));
+        console.error("Login failed: No access token received.");
       }
 
       navigate("/"); // Redirect to home page
