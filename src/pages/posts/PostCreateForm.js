@@ -80,10 +80,19 @@ const PostCreateForm = () => {
     if (image) {
       formData.append("image", image);
     }
+    const accessToken = localStorage.getItem("accessToken");
+    console.log(localStorage.getItem("accessToken"));
+
+    if (!accessToken) {
+      console.error("Error: No access token available, user might be logged out.");
+      setErrors({ auth: ["User is not authenticated. Please log in again."] });
+      return;
+    }
 
     try {
       await axiosReq.post("/posts/", formData, {
         headers: { "Content-Type": "multipart/form-data" },
+        Authorization: `Bearer ${accessToken}`,
       });
       navigate("/");
     } catch (err) {
