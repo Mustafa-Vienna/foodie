@@ -58,27 +58,26 @@ const SignInForm = () => {
         },
         withCredentials: true,
       });
-
-      // Store user session details in localStorage
+  
       if (data.access) {
         localStorage.setItem("accessToken", data.access);
-      }
-      if (data.refresh) {
         localStorage.setItem("refreshToken", data.refresh);
-      }
-      if (data.access && data.refresh) {
-        localStorage.setItem("accessToken", data.access);
-        localStorage.setItem("refreshToken", data.refresh);
-        setCurrentUser(data.user || {});
+  
+        // Store user data
+        if (data.user) {
+          localStorage.setItem("currentUser", JSON.stringify(data.user));
+          setCurrentUser(data.user);
+        } else {
+          console.error("Login failed: No user details received.");
+        }
       } else {
         console.error("Login failed: No access token received.");
       }
-
-      navigate("/"); // Redirect to home page
+  
+      navigate("/");
     } catch (err) {
       console.error("Login error:", err.response);
-
-      // Handle authentication failure
+  
       if (err.response?.data?.non_field_errors) {
         setErrors({ password: ["Invalid username or password! Please try again!"] });
       } else {
