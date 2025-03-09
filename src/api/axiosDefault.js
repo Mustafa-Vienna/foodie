@@ -11,8 +11,7 @@ export const axiosReq = axios.create({
 });
 
 // Interceptor for token management
-axiosReq.interceptors.request.use(
-  async (config) => {
+axiosReq.interceptors.request.use((config) => {
     const accessToken = localStorage.getItem("accessToken");
     if (accessToken) {
       config.headers["Authorization"] = `Bearer ${accessToken}`;
@@ -22,9 +21,4 @@ axiosReq.interceptors.request.use(
   (err) => Promise.reject(err)
 );
 
-export const axiosRes = axios.create({
-  baseURL: BASE_API_URL,
-  withCredentials: true,
-});
-
-export default axios;
+export default axiosReq;
