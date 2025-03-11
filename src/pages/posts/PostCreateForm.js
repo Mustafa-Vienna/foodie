@@ -76,28 +76,17 @@ const PostCreateForm = () => {
     formData.append("category", category);
     formData.append("image_filter", image_filter);
     tags.forEach((tag) => formData.append("tags", tag));
-
-    if (image) {
-      formData.append("image", image);
-    }
-    const accessToken = localStorage.getItem("accessToken");
-
-    if (!accessToken) {
-      console.error("Error: No access token available, user might be logged out.");
-      setErrors({ auth: ["User is not authenticated. Please log in again."] });
-      return;
-    }
+    if (image) formData.append("image", image);
 
     try {
+      console.log("Attempting to create post with token:", localStorage.getItem("accessToken")?.substring(0, 10) + "...");
       const { data } = await axiosReq.post("/posts/", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          "Authorization": `Bearer ${accessToken}`,
-        },
+        headers: { "Content-Type": "multipart/form-data" },
       });
+      console.log("Post created successfully:", data);
       navigate(`/posts/${data.id}`);
     } catch (err) {
-      console.error("Error creating post:", err.response?.data);
+      console.error("Error creating post:", err.response?.data || err.message);
       setErrors(err.response?.data || {});
     }
   };
@@ -201,6 +190,7 @@ const PostCreateForm = () => {
             </div>
           </Col>
         </Row>
+        {errors.auth && <Alert variant="danger">{errors.auth[0]}</Alert>}
       </Form>
     </Container>
   );
