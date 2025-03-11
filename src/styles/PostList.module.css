@@ -1,0 +1,106 @@
+/* Container for the entire post list */
+.container {
+  padding: 50px 0;
+  min-height: 100vh;
+}
+
+/* Styling for each column in the grid */
+.cardColumn {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+/* Styling for individual post cards */
+.postCard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 350px;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, 
+              box-shadow 0.3s ease-in-out, 
+              background-color 0.3s ease-in-out;
+  background-color: #fff;
+}
+
+/* Hover effect for interactivity */
+.postCard:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  background-color: rgba(245, 245, 245, 0.6);
+}
+
+/* Styling for the post image */
+.postImage {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  margin: 2px 0;
+}
+
+/* Styling for the card body */
+.cardBody {
+  padding: 20px;
+  margin-top: 10px;
+}
+
+/* Styling for the post title */
+.postTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: hsl(0, 1%, 17%);
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Styling for the subtitle (author) */
+.postSubtitle {
+  font-size: 16px;
+  color: hsl(205, 10%, 55%);
+  margin-bottom: 8px;
+  font-style: italic;
+}
+
+/* Styling for the post text (content preview) */
+.postText {
+  font-size: 0.9rem;
+  color: hsl(0, 5%, 16%);
+  line-height: 1.4;
+  margin-bottom: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .cardColumn {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+
+  .postCard {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+
+  .postTitle {
+    font-size: 1.2rem;
+  }
+
+  .postText {
+    font-size: 0.85rem;
+  }
+}
+
+@media (min-width: 992px) {
+  .cardColumn {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+}
