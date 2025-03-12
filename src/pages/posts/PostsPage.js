@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefault";
 import { Container, Card, Spinner, Alert, Row, Col } from "react-bootstrap";
 import appStyles from "../../App.module.css";
+import styles from "../../styles/PostsPage.module.css";
 
 const PostsPage = () => {
   const { id } = useParams();
@@ -39,14 +40,14 @@ const PostsPage = () => {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <Card>
-          <Card.Img variant="top" src={post.image} alt={post.title} />
-          <Card.Body>
-            <Card.Title>{post.title}</Card.Title>
-            <Card.Subtitle>By {post.author}</Card.Subtitle>
-            <Card.Text>{post.content}</Card.Text>
-            <Card.Text><strong>Category:</strong> {post.category}</Card.Text>
-            <Card.Text><strong>Likes:</strong> {post.likes_count}</Card.Text>
+        <Card className={styles.postCard}>
+          <Card.Img variant="top" src={post.image} alt={post.title} className={styles.postImage} />
+          <Card.Body className={styles.cardBody}>
+            <Card.Title className={styles.postTitle}>{post.title}</Card.Title>
+            <Card.Subtitle className={styles.postSubtitle}>By {post.author}</Card.Subtitle>
+            <Card.Text className={styles.postContent}>{post.content}</Card.Text>
+            <Card.Text className={styles.postMeta}><strong>Category:</strong> {post.category}</Card.Text>
+            <Card.Text className={styles.postMeta}><strong>Likes:</strong> {post.likes_count}</Card.Text>
           </Card.Body>
         </Card>
         <Container className={appStyles.Content}>Comments will be displayed here...</Container>
