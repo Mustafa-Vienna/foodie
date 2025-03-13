@@ -16,7 +16,8 @@ function App() {
       <NavBar />
       <Container className={styles.Main}>
         <Routes>
-          <Route path="/" element={<h1>Home Page</h1>} />
+          {/* <Route path="/" element={<h1>Home Page</h1>} /> */}
+          <Route path="/" element={<PostsList />} />
           <Route path="/feed" element={<PostsList />} />
           <Route path="/signup" element={<SignUpForm />} />
           <Route path="/signin" element={<SignInForm />} />
