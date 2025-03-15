@@ -6,7 +6,7 @@ import { axiosReq } from "../../api/axiosDefault";
 // Import necessary components and assets
 import Asset from "../../components/Asset";
 import Upload from "../../assets/images/upload.png";
-import styles from "../../styles/PostCreateEditForm.module.css";
+import styles from "../../styles/PostCreateForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 
