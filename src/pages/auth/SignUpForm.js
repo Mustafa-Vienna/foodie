@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { Form, Button, Image, Col, Row, Container, Alert } from "react-bootstrap";
+import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
 
 import styles from "../../styles/SignUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
@@ -187,7 +187,6 @@ const SignUpForm = () => {
 
       {/* Right Side Image */}
       <Col md={6} className={`my-auto d-none d-md-block p-2 ${styles.SignUpCol}`}>
-        <Image className={appStyles.FillerImage} />
       </Col>
     </Row>
   );
