@@ -1,0 +1,35 @@
+.container {
+  padding: 50px 0;
+  min-height: 100vh;
+}
+
+.heroTitle {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: hsl(0, 1%, 20%);
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.heroText {
+  font-size: 1.6rem;
+  color: rgb(77, 78, 80);
+  line-height: 1.6;
+}
+
+.heroTitle i {
+  color: hsla(162, 31%, 47%, 0.9);
+  font-size: 40px;
+  margin-left: 10px;
+  text-shadow: 2px 2px 6px rgba(128, 127, 127, 0.5);
+  transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+}
+
+.heroTitle i:hover {
+  color: hsla(79, 42%, 41%, 0.9);
+  transform: scale(1.2);
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.4);
+}
