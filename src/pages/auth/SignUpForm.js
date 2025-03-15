@@ -101,7 +101,7 @@ const SignUpForm = () => {
             </Form.Group>
             {errors.username?.map((message, idx) => (
               <Alert key={idx} variant="warning" className={styles.ErrorMsg}>
-                <i class="fa-solid fa-triangle-exclamation"></i>
+                <i className="fa-solid fa-triangle-exclamation"></i>
                 {message}
               </Alert>
             ))}
@@ -120,7 +120,7 @@ const SignUpForm = () => {
             </Form.Group>
             {errors.email?.map((message, idx) => (
               <Alert key={idx} variant="warning" className={styles.ErrorMsg}>
-                <i class="fa-solid fa-triangle-exclamation"></i>
+                <i className="fa-solid fa-triangle-exclamation"></i>
                 {message}
               </Alert>
             ))}
@@ -140,7 +140,7 @@ const SignUpForm = () => {
             </Form.Group>
             {errors.password1?.map((message, idx) => (
               <Alert key={idx} variant="warning" className={styles.ErrorMsg}>
-                <i class="fa-solid fa-triangle-exclamation"></i>
+                <i className="fa-solid fa-triangle-exclamation"></i>
                 {message}
               </Alert>
             ))}
@@ -159,7 +159,7 @@ const SignUpForm = () => {
             </Form.Group>
             {errors.password2?.map((message, idx) => (
               <Alert key={idx} variant="warning" className={styles.ErrorMsg}>
-                <i class="fa-solid fa-triangle-exclamation"></i>
+                <i className="fa-solid fa-triangle-exclamation"></i>
                 {message}
               </Alert>
             ))}
@@ -171,7 +171,7 @@ const SignUpForm = () => {
 
             {errors.non_field_errors?.map((message, idx) => (
               <Alert key={idx} variant="warning" className={`mt-3 ${styles.ErrorMsg}`}>
-                <i class="fa-solid fa-triangle-exclamation"></i>
+                <i className="fa-solid fa-triangle-exclamation"></i>
                 {message}
               </Alert>
             ))}
