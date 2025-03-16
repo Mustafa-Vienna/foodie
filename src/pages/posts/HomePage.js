@@ -1,4 +1,3 @@
-// src/pages/posts/HomePage.js
 import React from "react";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -14,14 +13,13 @@ const HomePage = () => {
           <div className={styles.heroSection}>
             <img src={logo} alt="Foodie Logo" className={`mb-4 ${styles.logo}`} />
             <h1 className={`lead fw-bold ${styles.heroTitle}`}>
-              Welcome to Foodie
-              <i className="fa-solid fa-bowl-food"></i>
+              Welcome to Foodie <i className="fa-solid fa-bowl-food"></i>
             </h1>
             <p className={styles.heroText}>
-            Discover a world of flavor with Foodie where culinary passion meets community. 
-            Browse thousands of chef-crafted and home-inspired recipes, share your signature 
-            dishes, and connect with food lovers who speak your language. From kitchen 
-            novices to seasoned pros, Foodie transforms every meal into an adventure worth sharing.
+              Discover a world of flavor with Foodie where culinary passion meets community. 
+              Browse thousands of chef-crafted and home-inspired recipes, share your signature 
+              dishes, and connect with food lovers who speak your language. From kitchen 
+              novices to seasoned pros, Foodie transforms every meal into an adventure worth sharing.
             </p>
             <div className={styles.buttonContainer}>
               <Link to="/feed">
