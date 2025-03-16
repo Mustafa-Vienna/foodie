@@ -1,0 +1,97 @@
+.postCard {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 370px;
+  border: none;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out, 
+              box-shadow 0.3s ease-in-out, 
+              background-color 0.3s ease-in-out;
+  background-color:white;
+}
+
+.postCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  background-color: rgba(230, 230, 230, 0.9);
+}
+
+.postImage {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  margin: 0;
+}
+
+.cardBody {
+  padding: 20px;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.postTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: hsl(0, 1%, 17%);
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.postSubtitle {
+  font-size: 16px;
+  color: hsl(205, 10%, 55%);
+  margin-bottom: 8px;
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+.postText {
+  font-size: 0.9rem;
+  color: hsl(0, 5%, 16%);
+  line-height: 1.4;
+  margin-bottom: 0;
+  text-align: center;
+  margin-bottom: 12px;
+}
+
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #34495e;
+  margin-bottom: 15px;
+}
+
+.statItem:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  background-color: rgba(245, 245, 245, 0.6);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .postCard {
+    max-width: 100%;
+    border-radius: 10px;
+  }
+
+  .postTitle {
+    font-size: 1.2rem;
+  }
+
+  .postText {
+    font-size: 0.85rem;
+  }
+}
