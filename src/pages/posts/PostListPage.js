@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { axiosReq } from "../../api/axiosDefault";
-import { Container, Row, Col, Card, Spinner, Alert } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Container, Row, Col, Spinner, Alert } from "react-bootstrap";
 import styles from "../../styles/PostListPage.module.css";
+import PostCard from "../../components/PostCard";
 
 const PostListPage = () => {
   const [posts, setPosts] = useState([]);
@@ -74,22 +74,7 @@ const PostListPage = () => {
               className={styles.cardColumn}
               ref={index === posts.length - 1 ? lastPostRef : null} // Apply ref to last post
             >
-              <Card className={styles.postCard}>
-                <Link to={`/posts/${post.id}`}>
-                  <Card.Img
-                    variant="top"
-                    src={post.image}
-                    alt={post.title}
-                    className={styles.postImage}
-                    loading="lazy"
-                  />
-                </Link>
-                <Card.Body className={styles.cardBody}>
-                  <Card.Title className={styles.postTitle}>{post.title}</Card.Title>
-                  <Card.Subtitle className={styles.postSubtitle}>By {post.author}</Card.Subtitle>
-                  <Card.Text className={styles.postText}>{post.content.substring(0, 100)}...</Card.Text>
-                </Card.Body>
-              </Card>
+              <PostCard {...post} /> {/* Use PostCard component */}
             </Col>
           ))
         ) : (
