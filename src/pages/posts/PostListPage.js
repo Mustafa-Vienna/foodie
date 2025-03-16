@@ -2,9 +2,9 @@ import React, { useState, useEffect, useRef, useCallback } from "react";
 import { axiosReq } from "../../api/axiosDefault";
 import { Container, Row, Col, Card, Spinner, Alert } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import styles from "../../styles/PostList.module.css";
+import styles from "../../styles/PostListPage.module.css";
 
-const PostsList = () => {
+const PostListPage = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -105,4 +105,4 @@ const PostsList = () => {
   );
 };
 
-export default PostsList;
+export default PostListPage;
