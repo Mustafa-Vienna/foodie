@@ -10,6 +10,7 @@ const PostListPage = () => {
   const [error, setError] = useState(null);
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
+  const [activeWarning, setActiveWarning] = useState(null);
 
   useEffect(() => {
     let isMounted = true;
@@ -44,7 +45,15 @@ const PostListPage = () => {
     };
   }, [page]);
 
-  // Infinite scroll setup
+  useEffect(() => {
+    if (activeWarning) {
+      const timer = setTimeout(() => {
+        setActiveWarning(null);
+      }, 5000);
+      return () => clearTimeout(timer);
+    }
+  }, [activeWarning]);
+
   const observer = useRef();
   const lastPostRef = useCallback(
     (node) => {
@@ -60,8 +69,20 @@ const PostListPage = () => {
     [loading, hasMore]
   );
 
-  if (loading && page === 1) return <h2 className="text-center my-4"><Spinner animation="border" /> Loading posts...</h2>;
-  if (error) return <Container className="text-center"><Alert variant="danger" dismissible onClose={() => setError(null)}>{error}</Alert></Container>;
+  if (loading && page === 1)
+    return (
+      <h2 className="text-center my-4">
+        <Spinner animation="border" /> Loading posts...
+      </h2>
+    );
+  if (error)
+    return (
+      <Container className="text-center">
+        <Alert variant="danger" dismissible onClose={() => setError(null)}>
+          {error}
+        </Alert>
+      </Container>
+    );
 
   return (
     <Container className={styles.container}>
@@ -72,9 +93,18 @@ const PostListPage = () => {
               md={4}
               key={post.id}
               className={styles.cardColumn}
-              ref={index === posts.length - 1 ? lastPostRef : null} // Apply ref to last post
+              ref={index === posts.length - 1 ? lastPostRef : null}
             >
-              <PostCard {...post} /> {/* Use PostCard component */}
+              <PostCard
+                id={post.id}
+                title={post.title}
+                content={post.content}
+                image={post.image}
+                likes_count={post.likes_count}
+                comments_count={post.comments_count}
+                activeWarning={activeWarning}
+                setActiveWarning={setActiveWarning}
+              />
             </Col>
           ))
         ) : (
