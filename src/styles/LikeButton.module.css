@@ -1,15 +1,9 @@
 .likeButton {
   background: none;
   border: none;
-  color: rgb(231, 126, 80);
   cursor: pointer;
   display: flex;
   align-items: center;
   gap: 5px;
   font-size: 16px;
-}
-
-.likeButton:hover {
-  color: rgb(231, 126, 100);
-  transform: scale(1.1);
 }
