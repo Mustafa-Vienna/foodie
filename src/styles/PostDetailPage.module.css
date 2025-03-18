@@ -1,6 +1,6 @@
 .postImage {
   width: 100%;
-  aspect-ratio: 1 / 1;
+  height: 400px;
   max-height: 400px;
   object-fit: cover;
   border-radius: 8px;
@@ -50,6 +50,8 @@
   font-size: 0.9rem;
   color: #6c757d;
   margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 /* Style metadata (category, likes) */
