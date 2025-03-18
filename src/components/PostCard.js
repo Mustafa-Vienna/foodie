@@ -1,9 +1,28 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { useCurrentUser } from "../contexts/CurrentUserContext";
+import LikeButton from "../pages/likes/LikeButton";
 import styles from "../styles/PostCard.module.css";
 
-const PostCard = ({ id, title, content, image, likes_count, comments_count }) => {
+const PostCard = ({
+  id,
+  title,
+  content,
+  image,
+  likes_count,
+  comments_count,
+  activeWarning,
+  setActiveWarning,
+}) => {
+  const currentUser = useCurrentUser();
+  const isLoggedIn = !!currentUser;
+  const [likesCount, setLikesCount] = useState(likes_count);
+
+  const handleWarning = (type) => {
+    setActiveWarning({ postId: id, type });
+  };
+
   return (
     <Card className={styles.postCard}>
       <Link to={`/posts/${id}`}>
@@ -14,16 +33,28 @@ const PostCard = ({ id, title, content, image, likes_count, comments_count }) =>
         <Card.Text className={styles.postText}>
           {content.substring(0, 100) + (content.length > 100 ? "..." : "")}
         </Card.Text>
-
-        {/* Like and Comment Counts */}
         <div className={styles.socialStats}>
-          <div className={styles.statItem}>
-            <i className="fa-solid fa-heart"></i> {likes_count}
-          </div>
-          <div className={styles.statItem}>
-            <i className="fa-solid fa-comment"></i> {comments_count}
-          </div>
+          {isLoggedIn ? (
+            <div className={styles.statItem}>
+              <LikeButton postId={id} likesCount={likesCount} setLikesCount={setLikesCount} />
+            </div>
+          ) : (
+            <span onClick={() => handleWarning("like")} className={`${styles.statItem} ${styles.notLoggedIn}`}>
+              <i className="fa-regular fa-heart"></i> {likesCount}
+            </span>
+          )}
+          <span
+            onClick={!isLoggedIn ? () => handleWarning("comment") : undefined}
+            className={`${styles.statItem} ${!isLoggedIn ? styles.notLoggedIn : ""}`}
+          >
+            <i className="fa-regular fa-comment"></i> {comments_count}
+          </span>
         </div>
+        {!isLoggedIn && activeWarning?.postId === id && (
+          <p className={styles.signupWarningText}>
+            {activeWarning.type === "like" ? "Log in to like this post!" : "Log in to comment on this post!"}
+          </p>
+        )}
       </Card.Body>
     </Card>
   );
