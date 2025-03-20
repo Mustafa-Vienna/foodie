@@ -31,7 +31,7 @@
   white-space: pre-wrap;
   max-height: 500px;
   overflow-y: auto;
-  font-size: 1rem;
+  font-size: 16px;
   padding: 15px;
   background-color: #f8f9fa;
   border-radius: 8px;
@@ -40,25 +40,75 @@
 
 /* Style the title for better hierarchy */
 .postTitle {
-  font-size: 1.5rem;
+  font-size: 24px;
   font-weight: 600;
   margin-bottom: 10px;
 }
 
 /* Style the subtitle (author) */
 .postSubtitle {
-  font-size: 0.9rem;
+  font-size: 14px;
   color: #6c757d;
   margin-bottom: 15px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
-/* Style metadata (category, likes) */
+/* Style metadata (category, likes, tags) */
 .postMeta {
-  font-size: 0.9rem;
+  font-size: 14px;
   color: #495057;
   margin-top: 10px;
+}
+
+/* Style for tags */
+.postTag {
+  margin-right: 5px;
+  color: #e67e22;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+.postTag:hover {
+  text-decoration: underline;
+  color: #d35400;
+}
+
+/* Style for social stats (like button container) */
+.socialStats {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Style for like button item */
+.statItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #34495e;
+  cursor: pointer;
+}
+
+/* Style for solid heart icon */
+.statItem i.fa-solid,
+.signupPrompt i.fa-solid {
+  color: rgb(230, 126, 34) !important;
+}
+
+/* Hover effects for the icon */
+.statItem:hover i,
+.signupPrompt:hover i {
+  transform: scale(1.05);
+  color: rgb(230, 126, 34) !important;
+  background-color: rgb(250, 229, 211);
+}
+
+/* Style for Load Comments button */
+.loadCommentsBtn {
+  display: inline-block;
+  width: 200px;
 }
 
 /* Responsive adjustments */
@@ -75,11 +125,16 @@
   }
 
   .postContent {
-    font-size: 0.95rem;
+    font-size: 15px;
     max-height: 400px;
   }
 
   .postTitle {
-    font-size: 1.3rem;
+    font-size: 21px;
+  }
+
+  .socialStats {
+    flex-direction: column;
+    gap: 5px;
   }
 }
