@@ -9,10 +9,11 @@ const CommentList = ({ postId, currentUser }) => {
     comments: [],
     commentText: "",
     commentError: null,
+    commentSuccess: null,
     loadingComments: false,
   });
 
-  const { comments, commentText, commentError, loadingComments } = commentState;
+  const { comments, commentText, commentError, commentSuccess, loadingComments } = commentState;
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -36,13 +37,48 @@ const CommentList = ({ postId, currentUser }) => {
     fetchComments();
   }, [postId]);
 
+  const handleSubmitComment = async (e) => {
+    e.preventDefault();
+    if (!commentText.trim()) return;
+    setCommentState((prev) => ({ ...prev, loadingComments: true }));
+    try {
+      const { data } = await axiosReq.post(`/comments/`, { post: postId, content: commentText });
+      setCommentState((prev) => ({
+        ...prev,
+        comments: [data, ...prev.comments],
+        commentText: "",
+        commentError: null,
+        commentSuccess: "Comment posted successfully!",
+        loadingComments: false,
+      }));
+    } catch (err) {
+      setCommentState((prev) => ({
+        ...prev,
+        commentError: "Failed to post comment. Please try again.",
+        commentSuccess: null,
+        loadingComments: false,
+      }));
+      console.error("Error posting comment:", err);
+    }
+  };
+
+  useEffect(() => {
+    if (commentSuccess || commentError) {
+      const timer = setTimeout(() => {
+        setCommentState((prev) => ({ ...prev, commentSuccess: null, commentError: null }));
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [commentSuccess, commentError]);
+
   return (
     <div className={styles.commentsCard}>
       <h4 className={styles.commentsTitle}>Comments</h4>
+      {commentSuccess && <Alert variant="success">{commentSuccess}</Alert>}
       {commentError && <Alert variant="danger">{commentError}</Alert>}
       
       {currentUser ? (
-        <Form className={styles.commentForm}>
+        <Form onSubmit={handleSubmitComment} className={styles.commentForm}>
           <Form.Control
             as="textarea"
             rows={3}
@@ -50,13 +86,15 @@ const CommentList = ({ postId, currentUser }) => {
             value={commentText}
             onChange={(e) => setCommentState((prev) => ({ ...prev, commentText: e.target.value }))}
             className={styles.commentInput}
+            disabled={loadingComments}
           />
           <Button
             variant="primary"
             type="submit"
             className={styles.submitCommentBtn}
+            disabled={!commentText.trim() || loadingComments}
           >
-            Post Comment
+            {loadingComments ? <Spinner as="span" animation="border" size="sm" /> : "Post Comment"}
           </Button>
         </Form>
       ) : (
