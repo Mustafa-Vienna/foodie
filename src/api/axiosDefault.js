@@ -2,15 +2,34 @@ import axios from "axios";
 
 const BASE_API_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:8000";
 
+// Create axios instance for requests
 export const axiosReq = axios.create({
   baseURL: BASE_API_URL,
   headers: {
     "Content-Type": "application/json",
   },
-  withCredentials: true,
+  withCredentials: true, // Ensures cookies are sent in requests
 });
 
-// Request interceptor
+// Create axios instance for refreshing tokens
+const axiosRefresh = axios.create({
+  baseURL: BASE_API_URL,
+  headers: {
+    "Content-Type": "application/json",
+  },
+  withCredentials: true, // Important for sending refresh tokens
+});
+
+// Function to logout user and clear storage
+const logoutUser = () => {
+  console.warn("Logging out user...");
+  localStorage.removeItem("accessToken");
+  localStorage.removeItem("refreshToken");
+  sessionStorage.clear(); // Clear session storage
+  window.location.href = "/signin"; // Redirect to login page
+};
+
+// Request Interceptor: Attach Access Token
 axiosReq.interceptors.request.use(
   (config) => {
     const accessToken = localStorage.getItem("accessToken");
@@ -19,40 +38,46 @@ axiosReq.interceptors.request.use(
     }
     return config;
   },
-  (err) => Promise.reject(err)
+  (error) => Promise.reject(error)
 );
 
-// Response interceptor for token refresh
+// Response Interceptor: Handle Token Expiry & Errors
 axiosReq.interceptors.response.use(
-  (response) => response,
+  (response) => response, // If successful, return response
   async (error) => {
     const originalRequest = error.config;
+
+    // Check if it's an Unauthorized (401) response & not already retried
     if (error.response?.status === 401 && !originalRequest._retry) {
       originalRequest._retry = true;
+
+      // Get refresh token
       const refreshToken = localStorage.getItem("refreshToken");
-      if (refreshToken) {
-        try {
-          console.log("Attempting to refresh token with:", refreshToken.substring(0, 10) + "...");
-          const { data } = await axios.post(`${BASE_API_URL}/dj-rest-auth/token/refresh/`, {
-            refresh: refreshToken,
-          });
-          console.log("Token refreshed successfully:", data.access.substring(0, 10) + "...");
-          localStorage.setItem("accessToken", data.access);
-          originalRequest.headers.Authorization = `Bearer ${data.access}`;
-          return axiosReq(originalRequest);
-        } catch (refreshErr) {
-          console.error("Token refresh failed:", refreshErr.response?.data || refreshErr.message);
-          localStorage.removeItem("accessToken");
-          localStorage.removeItem("refreshToken");
-          window.location.href = "/signin";
-          return Promise.reject(refreshErr);
-        }
-      } else {
-        console.warn("No refresh token available, redirecting to signin");
-        window.location.href = "/signin";
+      if (!refreshToken) {
+        console.warn("No refresh token available, redirecting to login.");
+        logoutUser();
         return Promise.reject(error);
       }
+
+      try {
+        console.log("Attempting token refresh...");
+        const { data } = await axiosRefresh.post("/dj-rest-auth/token/refresh/", {
+          refresh: refreshToken,
+        });
+
+        console.log("Token refreshed successfully!");
+        localStorage.setItem("accessToken", data.access);
+        originalRequest.headers["Authorization"] = `Bearer ${data.access}`;
+
+        // Retry the original request with the new token
+        return axiosReq(originalRequest);
+      } catch (refreshError) {
+        console.error("Token refresh failed:", refreshError);
+        logoutUser();
+        return Promise.reject(refreshError);
+      }
     }
+
     return Promise.reject(error);
   }
 );
