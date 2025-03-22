@@ -5,11 +5,9 @@ const BASE_API_URL = process.env.REACT_APP_API_BASE_URL || "http://localhost:800
 // Create axios instance for requests
 export const axiosReq = axios.create({
   baseURL: BASE_API_URL,
-  headers: {
-    "Content-Type": "application/json",
-  },
-  withCredentials: true, // Ensures cookies are sent in requests
+  withCredentials: true,
 });
+
 
 // Create axios instance for refreshing tokens
 const axiosRefresh = axios.create({
