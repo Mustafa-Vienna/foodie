@@ -29,6 +29,7 @@ export const FormLayout = ({
         <Form.Group className={styles.FormGroup}>
           <Form.Label>Title</Form.Label>
           <Form.Control
+            className={styles.FormControl} // Added
             name="title"
             placeholder="Add title"
             value={postData.title}
@@ -39,6 +40,7 @@ export const FormLayout = ({
         <Form.Group className={styles.FormGroup}>
           <Form.Label>Introduction</Form.Label>
           <Form.Control
+            className={styles.FormControl} // Added
             as="textarea"
             rows={3}
             name="introduction"
@@ -52,6 +54,7 @@ export const FormLayout = ({
           <Form.Label>Ingredients</Form.Label>
           <div className={styles.InputButtonGroup}>
             <Form.Control
+              className={styles.FormControl} // Added
               value={newIngredient}
               placeholder="Add ingredient"
               onChange={(e) => setNewIngredient(e.target.value)}
@@ -82,6 +85,7 @@ export const FormLayout = ({
           <Form.Label>Steps</Form.Label>
           <div className={styles.InputButtonGroup}>
             <Form.Control
+              className={styles.FormControl} // Added
               value={newStep}
               placeholder="Add step"
               onChange={(e) => setNewStep(e.target.value)}
@@ -111,6 +115,7 @@ export const FormLayout = ({
         <Form.Group className={styles.FormGroup}>
           <Form.Label>Conclusion</Form.Label>
           <Form.Control
+            className={styles.FormControl} // Added
             as="textarea"
             rows={2}
             name="conclusion"
