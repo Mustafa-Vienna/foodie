@@ -1,5 +1,5 @@
 .Button {
-  font-size: 1rem;
+  font-size: 16px;
   font-weight: bold;
   border-radius: 25px;
   border: none;
@@ -8,41 +8,110 @@
   min-width: 120px;
   display: block;
   text-align: center;
-  transition: all 0.3 ease-in-out;
+  transition: all 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .Button:hover {
   opacity: 0.85;
   transform: scale(1.02);
-  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
 }
 
-.Button.active {
+.Button:active {
   transform: scale(0.98);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
+.Button:focus {
+  outline: 2px solid rgba(0, 123, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Wide button styling */
 .Wide {
   padding: 12px 60px;
   width: 100%;
   max-width: 300px;
 }
 
+/* Bright button styling (used in SignInForm and SignUpForm) */
 .Bright {
-  background-color: #2ed9ff;
-  color: #2142b2;
+  background-color: rgb(0, 183, 235);
+  color: rgb(255, 255, 255);
 }
 
 .Bright:hover {
-  background-color: #2142b2;
-  color: white;
+  background-color: rgb(0, 153, 204);
 }
 
+/* Gray button styling */
 .Gray {
-  background-color: hsl(0, 0%, 43%);
-  color: whitesmoke;
-  border: none;
+  background-color: rgb(109, 109, 109);
+  color: rgb(245, 245, 245);
 }
 
 .Gray:hover {
-  background-color: hsl(0, 0%, 53%);
+  background-color: rgb(135, 135, 135);
+}
+
+/* Red button styling (for remove/delete actions) */
+.Red {
+  background-color: rgb(220, 53, 69);
+  color: rgb(255, 255, 255);
+}
+
+.Red:hover {
+  background-color: rgb(200, 35, 51);
+}
+
+/* Green button styling (for success/confirm actions) */
+.Green {
+  background-color: rgb(40, 167, 69);
+  color: rgb(255, 255, 255);
+}
+
+.Green:hover {
+  background-color: rgb(33, 136, 56);
+}
+
+/* Blue button styling (for primary actions) */
+.Blue {
+  background-color: rgb(0, 123, 255);
+  color: rgb(255, 255, 255);
+}
+
+.Blue:hover {
+  background-color: rgb(0, 86, 179);
+}
+
+/* Orange button styling */
+.Orange {
+  background-color: rgb(230, 126, 34);
+  color: rgb(255, 255, 255);
+}
+
+.Orange:hover {
+  background-color: rgb(211, 84, 0);
+}
+
+/* Small button styling */
+.Small {
+  padding: 4px 8px;
+  font-size: 12px;
+  min-width: auto;
+}
+
+/* Disabled button styling */
+.Button:disabled {
+  background-color: rgb(204, 204, 204);
+  color: rgb(102, 102, 102);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.Button:disabled:hover {
+  transform: none;
+  opacity: 0.7;
 }
