@@ -12,14 +12,19 @@
   padding-top: 120px;
 }
 
-/* Container styling for the form */
+/* Reusable container for content sections, aligned with app-wide styling */
 .Content {
   max-width: 1000px;
   margin: 50px auto;
   background-color: rgb(255, 255, 255);
   padding: 30px;
-  border-radius: 10px;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  transition: box-shadow 0.3s ease;
+}
+
+.Content:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
 }
 
 /* Responsive adjustments */
@@ -27,5 +32,6 @@
   .Content {
     max-width: 90%;
     padding: 20px;
+    margin: 30px auto;
   }
 }
