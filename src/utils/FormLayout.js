@@ -131,7 +131,7 @@ export const FormLayout = ({
             <Image src={imagePreview} className={styles.UploadedImage} />
           ) : (
             <Form.Label htmlFor="image-upload">
-              <Asset src={Upload} message="Click to upload a re" />
+              <Asset src={Upload} message="Click to upload a recipe image" />
             </Form.Label>
           )}
           <Form.Control
