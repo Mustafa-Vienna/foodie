@@ -160,7 +160,7 @@ export const FormLayout = ({
         </Form.Group>
 
         <Form.Group className={styles.FormGroup}>
-          <Form.Label>Tags</Form.Label>
+          <Form.Label>Tags <span className="text-muted">(hold Ctrl/Cmd to select multiple)</span></Form.Label>
           <Form.Control
             as="select"
             multiple
