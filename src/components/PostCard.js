@@ -23,6 +23,8 @@ const PostCard = ({
     setActiveWarning({ postId: id, type });
   };
 
+  const introduction = content?.introduction || "";
+
   return (
     <Card className={styles.postCard}>
       <Link to={`/posts/${id}`}>
@@ -31,7 +33,7 @@ const PostCard = ({
       <Card.Body className={styles.cardBody}>
         <Card.Title className={styles.postTitle}>{title}</Card.Title>
         <Card.Text className={styles.postText}>
-          {content.substring(0, 100) + (content.length > 100 ? "..." : "")}
+          {introduction.substring(0, 100) + (introduction.length > 100 ? "..." : "")}
         </Card.Text>
         <div className={styles.socialStats}>
           {isLoggedIn ? (
