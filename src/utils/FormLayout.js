@@ -29,7 +29,7 @@ export const FormLayout = ({
         <Form.Group className={styles.FormGroup}>
           <Form.Label>Title</Form.Label>
           <Form.Control
-            className={styles.FormControl} // Added
+            className={styles.FormControl}
             name="title"
             placeholder="Add title"
             value={postData.title}
@@ -40,7 +40,7 @@ export const FormLayout = ({
         <Form.Group className={styles.FormGroup}>
           <Form.Label>Introduction</Form.Label>
           <Form.Control
-            className={styles.FormControl} // Added
+            className={styles.FormControl}
             as="textarea"
             rows={3}
             name="introduction"
@@ -54,7 +54,7 @@ export const FormLayout = ({
           <Form.Label>Ingredients</Form.Label>
           <div className={styles.InputButtonGroup}>
             <Form.Control
-              className={styles.FormControl} // Added
+              className={styles.FormControl}
               value={newIngredient}
               placeholder="Add ingredient"
               onChange={(e) => setNewIngredient(e.target.value)}
@@ -71,7 +71,7 @@ export const FormLayout = ({
               <li key={i} className={styles.ListItem}>
                 <span className={styles.ListItemContent}>{ing}</span>
                 <Button
-                  className={`${btnStyles.Button} ${btnStyles.Gray} ${btnStyles.Small}`}
+                  className={`${btnStyles.Button} ${btnStyles.Gray} ${btnStyles.Small} ${styles.btn}`}
                   onClick={() => handleRemoveItem("ingredients", i, setPostData)}
                 >
                   X
@@ -85,7 +85,7 @@ export const FormLayout = ({
           <Form.Label>Steps</Form.Label>
           <div className={styles.InputButtonGroup}>
             <Form.Control
-              className={styles.FormControl} // Added
+              className={styles.FormControl}
               value={newStep}
               placeholder="Add step"
               onChange={(e) => setNewStep(e.target.value)}
@@ -102,7 +102,7 @@ export const FormLayout = ({
               <li key={i} className={styles.ListItem}>
                 <span className={styles.ListItemContent}>{step}</span>
                 <Button
-                  className={`${btnStyles.Button} ${btnStyles.Gray} ${btnStyles.Small}`}
+                  className={`${btnStyles.Button} ${btnStyles.Gray} ${btnStyles.Small} ${styles.btn}`}
                   onClick={() => handleRemoveItem("steps", i, setPostData)}
                 >
                   X
@@ -115,7 +115,7 @@ export const FormLayout = ({
         <Form.Group className={styles.FormGroup}>
           <Form.Label>Conclusion</Form.Label>
           <Form.Control
-            className={styles.FormControl} // Added
+            className={styles.FormControl}
             as="textarea"
             rows={2}
             name="conclusion"
