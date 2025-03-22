@@ -1,47 +1,175 @@
-.Container {
-  max-width: 600px;
-  margin: 50px auto;
-  background-color: hsl(0, 4%, 90%);
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
-}
-
 .FormGroup {
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
+/* Form label styling */
 .FormLabel {
-  font-weight: 600;
-  margin-bottom: 5px;
+  font-weight: bold;
+  color: rgb(60, 60, 60);
+  margin-bottom: 8px;
+  font-size: 18px;
 }
 
+/* Form input styling */
 .FormControl {
-  padding: 10px;
-  border-radius: 5px;
-  border: 2px solid rgb(97, 97, 97);
+  padding: 10px 12px;
+  border-radius: 6px;
+  border: 1px solid rgb(204, 204, 204);
+  width: 100%;
+  font-size: 14px;
+  background-color: rgb(252, 252, 252);
+  transition: all 0.3s ease;
 }
 
+/* Placeholder text styling */
 .FormControl::placeholder {
-  color: hsl(0, 0%, 45%);
+  color: rgb(153, 153, 153);
   font-style: italic;
 }
 
+/* Focus effect */
+.FormControl:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 183, 235, 0.3);
+  border-color: rgb(0, 183, 235);
+  background-color: rgb(255, 255, 255);
+}
+
+/* File upload section */
 .FormFile {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 16px;
 }
 
+/* Uploaded image styling */
 .UploadedImage {
   max-width: 90%;
-  height: auto;
   max-height: 300px;
-  object-fit: cover;
   border-radius: 12px;
+  margin: 16px auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
+.UploadedImage:hover {
+  transform: scale(1.02);
+}
+
+/* Asset styling (overriding Asset.module.css where needed) */
 .Asset {
-  width: 10rem;
-  height: 10rem;
+  width: 160px;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.Asset:hover {
+  transform: scale(1.05);
+}
+
+/* Input and button group styling */
+.InputButtonGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+/* List item styling */
+.ListItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  background: rgb(248, 249, 250);
+  border-radius: 6px;
+  margin-bottom: 8px;
+  transition: background 0.3s ease;
+}
+
+/* Content area within list item */
+.ListItemContent {
+  flex: 1;
+  padding-right: 12px;
+}
+
+/* Remove button styling (aligned with Button.module.css Red) */
+.btn {
+  background-color: rgb(220, 53, 69);
+  color: rgb(255, 255, 255);
+  border: none;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  transition: background-color 0.3s ease;
+}
+
+/* Hover effect for remove button */
+.ListItem .btn:hover {
+  background-color: rgb(200, 35, 51);
+}
+
+/* Hover effect for list items */
+.ListItem:hover {
+  background: rgb(240, 242, 245);
+}
+
+/* Preview card styling */
+.PreviewCard {
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  background-color: rgb(255, 255, 255);
+  transition: box-shadow 0.3s ease;
+}
+
+.PreviewCard:hover {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.PreviewCardTitle {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+
+.PreviewCardBody {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgb(60, 60, 60);
+}
+
+.PreviewCardBody strong {
+  font-weight: bold;
+}
+
+.PreviewCardBody ul,
+.PreviewCardBody ol {
+  margin-left: 20px;
+}
+
+.PreviewCardBody li {
+  margin-bottom: 8px;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 768px) {
+  .FormRow {
+    flex-direction: column;
+    gap: 22px;
+  }
+
+  .FormCol {
+    width: 100%;
+  }
+
+  .PreviewCard {
+    padding: 16px;
+  }
 }
