@@ -105,6 +105,7 @@ const PostListPage = () => {
                 comments_count={post.comments_count}
                 activeWarning={activeWarning}
                 setActiveWarning={setActiveWarning}
+                like_id={post.like_id}
               />
             </Col>
           ))
