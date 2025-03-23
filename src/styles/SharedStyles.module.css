@@ -24,7 +24,6 @@
   }
 }
 
-
 .socialStats {
   display: flex;
   align-items: center;
@@ -41,7 +40,6 @@
   color: rgb(52, 73, 94);
   cursor: pointer;
 }
-
 
 .statItem i,
 .signupPrompt i {
@@ -78,4 +76,22 @@
   transform: scale(1.05);
   color: rgb(128, 128, 128);
   background-color: rgba(200, 200, 200, 0.3);
+}
+
+.warningMessage {
+  color: rgb(220, 53, 69);
+  font-size: 15px;
+  text-align: left;
+  margin-top: 10px;
+}
+
+.loginLink {
+  color: rgb(0, 123, 255);
+  text-decoration: underline;
+  font-weight: 500;
+}
+
+.loginLink:hover {
+  color: rgb(0, 86, 179);
+  text-decoration: none;
 }
