@@ -84,8 +84,12 @@ const PostDetailPage = () => {
             ) : (
               <Card.Text className={styles.postContent}>{post.content}</Card.Text>
             )}
-
-            <PostMeta post={post} likesCount={likesCount} postId={id} />
+            <PostMeta 
+              post={post} 
+              likesCount={likesCount} 
+              setLikesCount={setLikesCount}
+              postId={id} 
+            />
           </Card.Body>
         </Card>
 
