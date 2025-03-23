@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefault";
 import { Container, Card, Spinner, Alert, Row, Col } from "react-bootstrap";
 import styles from "../../styles/PostDetailPage.module.css";
-import LikeButton from "../../pages/likes/LikeButton";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import CommentList from "../comments/CommentList";
+import PostContent from "./postDetailUtils/PostContent";
+import PostMeta from "./postDetailUtils/PostMeta";
+import PostSidebar from "./postDetailUtils/PostSidebar";
+import PostComments from "./postDetailUtils/PostComments";
 
 const PostDetailPage = () => {
   const { id } = useParams();
@@ -23,7 +25,7 @@ const PostDetailPage = () => {
         const { data } = await axiosReq.get(`/posts/${id}/`);
         if (isMounted) {
           setPost(data);
-          setLikesCount(data.likes_count || 0); // Sync initial likes count
+          setLikesCount(data.likes_count || 0);
         }
       } catch (err) {
         setError("Post not found or an error occurred.");
@@ -59,6 +61,8 @@ const PostDetailPage = () => {
   if (!post)
     return <Container className="text-center">Post not found.</Container>;
 
+  const hasStructuredContent = post.content && typeof post.content === 'object';
+
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
@@ -74,47 +78,22 @@ const PostDetailPage = () => {
             <Card.Subtitle className={styles.postSubtitle}>
               By {post.author}
             </Card.Subtitle>
-            <Card.Text className={styles.postContent}>{post.content}</Card.Text>
-            <Card.Text className={styles.postMeta}>
-              <strong>Category:</strong> {post.category}
-            </Card.Text>
-            {post.tags && post.tags.length > 0 && (
-              <Card.Text className={styles.postMeta}>
-                <strong>Tags:</strong>{" "}
-                {post.tags
-                  .map((tag) => (
-                    <Link
-                      key={tag.id}
-                      to={`/posts/?tags=${tag.id}`}
-                      className={styles.postTag}
-                    >
-                      {tag.name}
-                    </Link>
-                  ))
-                  .reduce((prev, curr) => [prev, ", ", curr])}
-              </Card.Text>
+            
+            {hasStructuredContent ? (
+              <PostContent content={post.content} />
+            ) : (
+              <Card.Text className={styles.postContent}>{post.content}</Card.Text>
             )}
-            <Card.Text className={styles.postMeta}>
-              <div className={styles.socialStats}>
-                <div className={styles.statItem}>
-                  <LikeButton postId={id} />
-                  <span> Likes: {likesCount}</span>
-                </div>
-              </div>
-            </Card.Text>
+
+            <PostMeta post={post} likesCount={likesCount} postId={id} />
           </Card.Body>
         </Card>
 
-        <Card className={`${styles.postCard} mt-4`}>
-          <Card.Body>
-            <CommentList postId={id} currentUser={currentUser} />
-          </Card.Body>
-        </Card>
+        <PostComments postId={id} currentUser={currentUser} />
       </Col>
 
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        <h5>Popular Profiles</h5>
-        <p>(Content to be added)</p>
+        <PostSidebar />
       </Col>
     </Row>
   );
