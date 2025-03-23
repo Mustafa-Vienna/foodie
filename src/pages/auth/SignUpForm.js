@@ -2,13 +2,12 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
-
 import styles from "../../styles/SignUpForm.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import appStyles from "../../App.module.css";
+import FormInput from "../auth/FormInput";
 
-
-const BASE_API_URL = process.env.REACT_APP_API_BASE_URL
+const BASE_API_URL = process.env.REACT_APP_API_BASE_URL;
 
 const SignUpForm = () => {
   const [signUpData, setSignUpData] = useState({
@@ -32,13 +31,13 @@ const SignUpForm = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-  
+
     let customErrors = {};
 
     if (!username.trim()) {
       customErrors.username = ["Username is required!"];
     } else if (username.length > 20) {
-      customErrors.username = ["Username must not be exceed 20 characters!"]
+      customErrors.username = ["Username must not be exceed 20 characters!"];
     }
 
     if (!email.trim()) {
@@ -56,7 +55,6 @@ const SignUpForm = () => {
     } else if (password1 !== password2) {
       customErrors.password2 = ["Passwords do not match!"];
     }
-    
 
     if (Object.keys(customErrors).length > 0) {
       setErrors(customErrors);
@@ -87,92 +85,57 @@ const SignUpForm = () => {
           <h1 className={styles.Header}>Sign Up</h1>
 
           <Form onSubmit={handleSubmit}>
-            {/* Username Field */}
-            <Form.Group controlId="username">
-              <Form.Label className="d-none">Username</Form.Label>
-              <Form.Control
-                className={styles.Input}
-                type="text"
-                placeholder="Enter your username"
-                name="username"
-                value={username}
-                onChange={handleChange}
-              />
-            </Form.Group>
-            {errors.username?.map((message, idx) => (
-              <Alert key={idx} variant="warning" className={styles.ErrorMsg}>
-                <i className="fa-solid fa-triangle-exclamation"></i>
-                {message}
-              </Alert>
-            ))}
+            <FormInput
+              id="username"
+              label="Username"
+              type="text"
+              placeholder="Enter your username"
+              name="username"
+              value={username}
+              onChange={handleChange}
+              errors={errors.username}
+            />
 
-            {/* Email Field */}
-            <Form.Group controlId="email">
-              <Form.Label className="d-none">Email</Form.Label>
-              <Form.Control
-                className={styles.Input}
-                type="email"
-                placeholder="Enter your Email address"
-                name="email"
-                value={email}
-                onChange={handleChange}
-              />
-            </Form.Group>
-            {errors.email?.map((message, idx) => (
-              <Alert key={idx} variant="warning" className={styles.ErrorMsg}>
-                <i className="fa-solid fa-triangle-exclamation"></i>
-                {message}
-              </Alert>
-            ))}
+            <FormInput
+              id="email"
+              label="Email"
+              type="email"
+              placeholder="Enter your Email address"
+              name="email"
+              value={email}
+              onChange={handleChange}
+              errors={errors.email}
+            />
 
+            <FormInput
+              id="password1"
+              label="Password"
+              type="password"
+              placeholder="Enter your password"
+              name="password1"
+              value={password1}
+              onChange={handleChange}
+              errors={errors.password1}
+            />
 
-            {/* Password Field */}
-            <Form.Group controlId="password1">
-              <Form.Label className="d-none">Password</Form.Label>
-              <Form.Control
-                className={styles.Input}
-                type="password"
-                placeholder="Enter your password"
-                name="password1"
-                value={password1}
-                onChange={handleChange}
-              />
-            </Form.Group>
-            {errors.password1?.map((message, idx) => (
-              <Alert key={idx} variant="warning" className={styles.ErrorMsg}>
-                <i className="fa-solid fa-triangle-exclamation"></i>
-                {message}
-              </Alert>
-            ))}
+            <FormInput
+              id="password2"
+              label="Confirm Password"
+              type="password"
+              placeholder="Re-enter your password"
+              name="password2"
+              value={password2}
+              onChange={handleChange}
+              errors={errors.password2}
+            />
 
-            {/* Confirm Password Field */}
-            <Form.Group controlId="password2">
-              <Form.Label className="d-none">Confirm Password</Form.Label>
-              <Form.Control
-                className={styles.Input}
-                type="password"
-                placeholder="Re-enter your password"
-                name="password2"
-                value={password2}
-                onChange={handleChange}
-              />
-            </Form.Group>
-            {errors.password2?.map((message, idx) => (
-              <Alert key={idx} variant="warning" className={styles.ErrorMsg}>
-                <i className="fa-solid fa-triangle-exclamation"></i>
-                {message}
-              </Alert>
-            ))}
-
-            {/* Submit Button */}
             <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`} type="submit">
               Sign Up
             </Button>
 
             {errors.non_field_errors?.map((message, idx) => (
               <Alert key={idx} variant="warning" className={`mt-3 ${styles.ErrorMsg}`}>
-                <i className="fa-solid fa-triangle-exclamation"></i>
-                {message}
+                <i className="fa-solid fa-triangle-exclamation"></i> {message}
               </Alert>
             ))}
           </Form>
@@ -185,7 +148,6 @@ const SignUpForm = () => {
         </Container>
       </Col>
 
-      {/* Right Side Image */}
       <Col md={6} className={`my-auto d-none d-md-block p-2 ${styles.SignUpCol}`}>
       </Col>
     </Row>
