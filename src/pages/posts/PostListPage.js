@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { axiosReq } from "../../api/axiosDefault";
 import { Container, Row, Col, Spinner, Alert } from "react-bootstrap";
-import styles from "../../styles/PostListPage.module.css";
 import PostCard from "../../components/PostCard";
+import sharedStyles from "../../styles/SharedStyles.module.css";
 
 const PostListPage = () => {
   const [posts, setPosts] = useState([]);
@@ -75,6 +75,7 @@ const PostListPage = () => {
         <Spinner animation="border" /> Loading posts...
       </h2>
     );
+
   if (error)
     return (
       <Container className="text-center">
@@ -85,14 +86,14 @@ const PostListPage = () => {
     );
 
   return (
-    <Container className={styles.container}>
+    <Container className={sharedStyles.pageContainer}>
       <Row>
         {posts.length > 0 ? (
           posts.map((post, index) => (
             <Col
               md={4}
               key={post.id}
-              className={styles.cardColumn}
+              className={sharedStyles.cardGridColumn}
               ref={index === posts.length - 1 ? lastPostRef : null}
             >
               <PostCard
