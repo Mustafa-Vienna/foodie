@@ -34,8 +34,10 @@
   margin-top: 10px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   text-align: center;
+  flex-grow: 1;
 }
 
 .postTitle {
