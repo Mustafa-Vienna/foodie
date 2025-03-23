@@ -1,0 +1,81 @@
+.pageContainer {
+  padding: 50px 0;
+  min-height: 100vh;
+  background-color: rgb(248, 249, 250);
+}
+
+.cardGridColumn {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+@media (max-width: 768px) {
+  .cardGridColumn {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+}
+
+@media (min-width: 992px) {
+  .cardGridColumn {
+    flex: 0 0 33.333333%;
+    max-width: 33.333333%;
+  }
+}
+
+
+.socialStats {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.statItem,
+.signupPrompt {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  color: rgb(52, 73, 94);
+  cursor: pointer;
+}
+
+
+.statItem i,
+.signupPrompt i {
+  font-size: 18px;
+  border: 1px solid rgb(230, 126, 34);
+  border-radius: 50%;
+  padding: 4px;
+  color: rgb(230, 126, 34);
+  background-color: rgb(255, 255, 255);
+  transition: transform 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.statItem i.fa-solid,
+.signupPrompt i.fa-solid {
+  color: rgb(230, 126, 34);
+}
+
+.statItem:hover i,
+.signupPrompt:hover i {
+  transform: scale(1.05);
+  color: rgb(230, 126, 34);
+  background-color: rgb(250, 229, 211);
+}
+
+.statItem.notLoggedIn i,
+.signupPrompt.notLoggedIn i {
+  color: rgb(128, 128, 128);
+  border-color: rgb(128, 128, 128);
+  background-color: rgb(255, 255, 255);
+}
+
+.statItem.notLoggedIn:hover i,
+.signupPrompt.notLoggedIn:hover i {
+  transform: scale(1.05);
+  color: rgb(128, 128, 128);
+  background-color: rgba(200, 200, 200, 0.3);
+}
