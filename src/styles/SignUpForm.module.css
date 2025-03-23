@@ -6,10 +6,10 @@
 }
 
 .Input {
-  background-color: #fff;
-  border: 1px solid #f0f1f9;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(240, 241, 249);
   border-radius: 6px;
-  color: #7177a1;
+  color: rgb(113, 119, 161);
   text-align: center;
   padding: 16px;
   font-size: 1rem;
@@ -19,7 +19,7 @@
 }
 
 .Input:focus {
-  border-color: #2142b2;
+  border-color: rgb(33, 66, 178);
   box-shadow: 0 0 5px rgba(33, 66, 178, 0.6);
   outline: none;
 }
@@ -30,7 +30,7 @@
   text-align: center;
   letter-spacing: 3px;
   text-transform: uppercase;
-  color: #2142b2;
+  color: rgb(33, 66, 178);
   margin-bottom: 20px;
 }
 
@@ -39,15 +39,15 @@
   text-align: center;
   display: block;
   font-size: 1rem;
-  transition: color 0.3 ease;
+  transition: color 0.3 ease-in-out;
 }
 
 .Link:hover {
-  color: #2142b2;
+  color: rgb(33, 66, 178);
 }
 
 .Link span {
-  color: #ff9254;
+  color: rgb(255, 146, 84);
   font-weight: bold;
 }
 
@@ -65,8 +65,8 @@
 .ErrorMsg {
   display: flex;
   align-items: center;
-  background-color: hsl(0, 7%, 80%);
-  color: hsla(3, 98%, 64%, 0.9);
+  background-color: rgb(204, 204, 204);
+  color: rgba(252, 61, 57, 0.9);
   font-size: 1rem;
   font-weight: 600;
   padding: 8px 12px;
