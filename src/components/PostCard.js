@@ -15,6 +15,7 @@ const PostCard = ({
   comments_count,
   activeWarning,
   setActiveWarning,
+  like_id,
 }) => {
   const currentUser = useCurrentUser();
   const isLoggedIn = !!currentUser;
@@ -39,7 +40,12 @@ const PostCard = ({
         <div className={sharedStyles.socialStats}>
           {isLoggedIn ? (
             <div className={sharedStyles.statItem}>
-              <LikeButton postId={id} likesCount={likesCount} setLikesCount={setLikesCount} />
+              <LikeButton
+                postId={id}
+                likesCount={likesCount}
+                setLikesCount={setLikesCount}
+                likeId={like_id}
+              />
             </div>
           ) : (
             <span
