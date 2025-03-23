@@ -4,7 +4,7 @@ import LikeButton from "../../likes/LikeButton";
 import styles from "../../../styles/PostDetailPage.module.css";
 import sharedStyles from "../../../styles/SharedStyles.module.css";
 
-const PostMeta = ({ post, likesCount, postId }) => {
+const PostMeta = ({ post, likesCount, setLikesCount, postId }) => {
   return (
     <div className={styles.postMetaContainer}>
       <div className={styles.postMeta}>
@@ -27,8 +27,12 @@ const PostMeta = ({ post, likesCount, postId }) => {
 
       <div className={sharedStyles.socialStats}>
         <div className={sharedStyles.statItem}>
-          <LikeButton postId={postId} />
-          <span> Likes: {likesCount}</span>
+          <LikeButton
+            postId={postId}
+            likesCount={likesCount}
+            setLikesCount={setLikesCount}
+            likeId={post.like_id}
+          />
         </div>
       </div>
     </div>
