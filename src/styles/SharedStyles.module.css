@@ -1,19 +1,341 @@
-.pageContainer {
-  padding: 50px 0;
-  min-height: 100vh;
-  background-color: rgb(248, 249, 250);
+/* Global Resets */
+* {
+  box-sizing: border-box;
 }
 
+/* Common Variables */
+:root {
+  /* Colors */
+  --color-orange: rgb(230, 126, 34);
+  --color-orange-dark: rgb(211, 84, 0);
+  --color-orange-hover: rgb(250, 80, 0);
+  --color-background: rgb(248, 249, 250);
+  --color-white: rgb(255, 255, 255);
+  --color-border: rgb(233, 236, 239);
+  --color-text-primary: rgb(43, 43, 43);
+  --color-text-secondary: rgb(108, 117, 125);
+  --color-text-muted: rgb(73, 80, 87);
+  --color-text-dark: rgb(52, 73, 94);
+  --color-error: rgb(220, 53, 69);
+  --color-feedback: rgb(255, 165, 0);
+  --color-link: rgb(0, 123, 255);
+  --color-link-hover: rgb(0, 86, 179);
+  --color-disabled: rgb(128, 128, 128);
+  --color-disabled-bg: rgba(200, 200, 200, 0.3);
+
+  /* Border Radius */
+  --border-radius-sm: 8px;
+  --border-radius-md: 12px;
+  --border-radius-lg: 15px;
+  --border-radius-xl: 25px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 6px 16px rgba(0, 0, 0, 0.15);
+
+  /* Spacing */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 12px;
+  --spacing-lg: 16px;
+  --spacing-xl: 20px;
+  --spacing-2xl: 30px;
+  --spacing-3xl: 50px;
+
+  /* Font Sizes */
+  --font-size-xs: 12px;
+  --font-size-sm: 14px;
+  --font-size-md: 16px;
+  --font-size-lg: 18px;
+  --font-size-xl: 20px;
+
+  /* Typography */
+  --font-family: "Lora", sans-serif;
+}
+
+/* Base Styles */
+html,
+body {
+  font-family: var(--font-family);
+  background-color: var(--color-background);
+  min-height: 100vh;
+  margin: 0;
+}
+
+/* Page Container */
+.pageContainer {
+  padding: var(--spacing-3xl) 0;
+  min-height: 100vh;
+}
+
+/* Card Patterns */
+.baseCard {
+  border: none;
+  box-shadow: var(--shadow-md);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  background-color: var(--color-white);
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.baseCard:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Standard Content Container */
+.contentContainer {
+  padding: var(--spacing-xl);
+  background-color: var(--color-white);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-border);
+}
+
+/* Comments Container */
+.commentsContainer {
+  margin-top: var(--spacing-xl);
+  padding: var(--spacing-md);
+  background-color: var(--color-background);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-border);
+}
+
+/* Standard Form Input */
+.formInput {
+  width: 100%;
+  padding: var(--spacing-sm);
+  border-radius: var(--border-radius-sm);
+  border: 2px solid var(--color-border);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--spacing-sm);
+  resize: vertical;
+  background-color: var(--color-background);
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.formInput:focus {
+  border-color: var(--color-border);
+  outline: none;
+  box-shadow: 0 0 5px rgba(233, 236, 239, 0.5);
+  background-color: var(--color-white);
+}
+
+/* Button Styles */
+.button {
+  font-size: var(--font-size-md);
+  font-weight: bold;
+  border-radius: var(--border-radius-xl);
+  border: none;
+  padding: var(--spacing-md) var(--spacing-lg);
+  margin: var(--spacing-sm) auto;
+  min-width: 120px;
+  display: block;
+  text-align: center;
+  transition: all 0.3s ease-in-out, background-color 0.3s ease-in-out;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+}
+
+.button:hover {
+  opacity: 0.85;
+  transform: scale(1.02);
+  box-shadow: var(--shadow-md);
+}
+
+.button:active {
+  transform: scale(0.98);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.button:focus {
+  outline: 2px solid rgba(0, 123, 255, 0.5);
+  outline-offset: 2px;
+}
+
+/* Button Variants */
+.button--wide {
+  padding: var(--spacing-md) 60px;
+  width: 100%;
+  max-width: 300px;
+}
+
+.button--bright {
+  background-color: rgb(0, 183, 235);
+  color: var(--color-white);
+}
+
+.button--bright:hover {
+  background-color: rgb(0, 153, 204);
+}
+
+.button--gray {
+  background-color: rgb(109, 109, 109);
+  color: rgb(245, 245, 245);
+}
+
+.button--gray:hover {
+  background-color: rgb(135, 135, 135);
+}
+
+.button--red {
+  background-color: var(--color-error);
+  color: var(--color-white);
+}
+
+.button--red:hover {
+  background-color: rgb(200, 35, 51);
+}
+
+.button--green {
+  background-color: rgb(40, 167, 69);
+  color: var(--color-white);
+}
+
+.button--green:hover {
+  background-color: rgb(33, 136, 56);
+}
+
+.button--blue {
+  background-color: var(--color-link);
+  color: var(--color-white);
+}
+
+.button--blue:hover {
+  background-color: var(--color-link-hover);
+}
+
+.button--orange {
+  background-color: var(--color-orange);
+  color: var(--color-white);
+}
+
+.button--orange:hover {
+  background-color: var(--color-orange-hover);
+}
+
+.button--small {
+  padding: var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-xs);
+  min-width: auto;
+}
+
+.button:disabled {
+  background-color: rgb(204, 204, 204);
+  color: rgb(102, 102, 102);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.button:disabled:hover {
+  transform: none;
+  opacity: 0.7;
+}
+
+/* Grid Column */
 .cardGridColumn {
   display: flex;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: var(--spacing-2xl);
 }
 
+/* Social Stats Component */
+.socialStats {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.statItem,
+.signupPrompt {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: var(--font-size-md);
+  color: var(--color-text-dark);
+  cursor: pointer;
+}
+
+.statItem i,
+.signupPrompt i {
+  font-size: var(--font-size-lg);
+  border: 1px solid var(--color-orange);
+  border-radius: 50%;
+  padding: var(--spacing-xs);
+  color: var(--color-orange);
+  background-color: var(--color-white);
+  transition: transform 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.statItem i.fa-solid,
+.signupPrompt i.fa-solid {
+  color: var(--color-orange);
+}
+
+.statItem:hover i,
+.signupPrompt:hover i {
+  transform: scale(1.05);
+  color: var(--color-orange);
+  background-color: var(--color-orange-hover);
+}
+
+.statItem.notLoggedIn i,
+.signupPrompt.notLoggedIn i {
+  color: var(--color-disabled);
+  border-color: var(--color-disabled);
+  background-color: var(--color-white);
+}
+
+.statItem.notLoggedIn:hover i,
+.signupPrompt.notLoggedIn:hover i {
+  transform: scale(1.05);
+  color: var(--color-disabled);
+  background-color: var(--color-disabled-bg);
+}
+
+/* Common Text Styles */
+.message {
+  font-size: var(--font-size-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.message--warning {
+  color: var(--color-error);
+  text-align: left;
+}
+
+.message--info {
+  color: var(--color-text-secondary);
+  text-align: center;
+}
+
+.message--feedback {
+  color: var(--color-feedback);
+  text-align: center;
+}
+
+.link {
+  color: var(--color-link);
+  text-decoration: underline;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.link:hover {
+  color: var(--color-link-hover);
+  text-decoration: none;
+}
+
+/* Media Queries */
 @media (max-width: 768px) {
   .cardGridColumn {
     flex: 0 0 100%;
     max-width: 100%;
+  }
+
+  .contentContainer {
+    padding: var(--spacing-md);
   }
 }
 
@@ -22,76 +344,4 @@
     flex: 0 0 33.333333%;
     max-width: 33.333333%;
   }
-}
-
-.socialStats {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.statItem,
-.signupPrompt {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 16px;
-  color: rgb(52, 73, 94);
-  cursor: pointer;
-}
-
-.statItem i,
-.signupPrompt i {
-  font-size: 18px;
-  border: 1px solid rgb(230, 126, 34);
-  border-radius: 50%;
-  padding: 4px;
-  color: rgb(230, 126, 34);
-  background-color: rgb(255, 255, 255);
-  transition: transform 0.2s ease, color 0.2s ease, background-color 0.2s ease;
-}
-
-.statItem i.fa-solid,
-.signupPrompt i.fa-solid {
-  color: rgb(230, 126, 34);
-}
-
-.statItem:hover i,
-.signupPrompt:hover i {
-  transform: scale(1.05);
-  color: rgb(230, 126, 34);
-  background-color: rgb(250, 229, 211);
-}
-
-.statItem.notLoggedIn i,
-.signupPrompt.notLoggedIn i {
-  color: rgb(128, 128, 128);
-  border-color: rgb(128, 128, 128);
-  background-color: rgb(255, 255, 255);
-}
-
-.statItem.notLoggedIn:hover i,
-.signupPrompt.notLoggedIn:hover i {
-  transform: scale(1.05);
-  color: rgb(128, 128, 128);
-  background-color: rgba(200, 200, 200, 0.3);
-}
-
-.warningMessage {
-  color: rgb(220, 53, 69);
-  font-size: 15px;
-  text-align: left;
-  margin-top: 10px;
-}
-
-.loginLink {
-  color: rgb(0, 123, 255);
-  text-decoration: underline;
-  font-weight: 500;
-}
-
-.loginLink:hover {
-  color: rgb(0, 86, 179);
-  text-decoration: none;
 }
