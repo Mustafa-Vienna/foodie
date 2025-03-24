@@ -2,13 +2,16 @@ import React from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import styles from "../styles/NavBar.module.css";
+import sharedStyles from "../styles/SharedStyles.module.css";
 import logo from "../assets/images/logo.webp";
-import { useCurrentUser, useLogout } from "../contexts/CurrentUserContext"; // Import useLogout
+import { useCurrentUser, useLogout } from "../contexts/CurrentUserContext";
 import Avatar from "./Avatar";
 import useClickOutsideToggle from "../hooks/useClickOutsideToggle";
 
 const getNavLinkClass = ({ isActive }) =>
-  `${styles.navLink} ${isActive ? styles.Active : ""}`.trim();
+  `${styles.navLink} ${sharedStyles.flexCenter} ${sharedStyles.colorTransition} ${
+    isActive ? styles.active : ""
+  }`.trim();
 
 const navItem = (to, icon, text, onClick, setExpanded) => (
   <NavLink
@@ -19,21 +22,21 @@ const navItem = (to, icon, text, onClick, setExpanded) => (
       if (setExpanded) setExpanded(false);
     }}
   >
-    <i className={`fa-solid ${icon}`}></i> {text}
+    <i className={`fa-solid ${icon} ${styles.navIcon} ${sharedStyles.colorTransition}`}></i> {text}
   </NavLink>
 );
 
 const NavBar = () => {
   const currentUser = useCurrentUser();
-  const logout = useLogout(); // Use the context-provided logout
+  const logout = useLogout();
   const { expanded, setExpanded, ref } = useClickOutsideToggle();
 
   return (
     <Navbar ref={ref} expand="md" fixed="top" className={`navbar navbar-expand-lg navbar-dark ${styles.navbarCustom}`}>
       <Container>
-        <NavLink to="/" className={styles.navBrand}>
+        <NavLink to="/" className={`${styles.navBrand} ${sharedStyles.flexCenter}`}>
           <Navbar.Brand>
-            <img src={logo} alt="Foodie Logo" className={styles.logo} />
+            <img src={logo} alt="Foodie Logo" className={`${styles.logo} ${sharedStyles.transformTransition}`} />
           </Navbar.Brand>
         </NavLink>
 
@@ -49,12 +52,12 @@ const NavBar = () => {
                 {navItem("/liked", "fa-heart", "Liked", null, setExpanded)}
 
                 <span
-                  className={`${styles.navLink} ${styles.signOut}`}
+                  className={`${styles.navLink} ${sharedStyles.flexCenter} ${sharedStyles.colorTransition} ${styles.signOut}`}
                   onClick={() => {
                     logout();
                   }}
                 >
-                  <i className="fa-solid fa-right-from-bracket"></i> Sign Out
+                  <i className={`fa-solid fa-right-from-bracket ${styles.navIcon} ${sharedStyles.colorTransition}`}></i> Sign Out
                 </span>
                 <NavLink
                   to={`/profiles/${currentUser?.profile_id}`}
