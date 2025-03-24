@@ -1,175 +1,78 @@
-.FormGroup {
-  margin-bottom: 24px;
+.formGroup {
+  margin-bottom: var(--spacing-xl);
 }
 
-/* Form label styling */
-.FormLabel {
+.formLabel {
   font-weight: bold;
-  color: rgb(60, 60, 60);
-  margin-bottom: 8px;
-  font-size: 18px;
+  color: var(--color-label);
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-lg);
 }
 
-/* Form input styling */
-.FormControl {
-  padding: 10px 12px;
+.formControl {
+  padding: var(--spacing-sm) var(--spacing-md);
   border-radius: 6px;
   border: 1px solid rgb(204, 204, 204);
-  width: 100%;
-  font-size: 14px;
-  background-color: rgb(252, 252, 252);
-  transition: all 0.3s ease;
 }
 
-/* Placeholder text styling */
-.FormControl::placeholder {
-  color: rgb(153, 153, 153);
+.formControl::placeholder {
+  color: var(--color-placeholder);
   font-style: italic;
 }
 
-/* Focus effect */
-.FormControl:focus {
-  outline: none;
-  box-shadow: 0 0 5px rgba(0, 183, 235, 0.3);
-  border-color: rgb(0, 183, 235);
-  background-color: rgb(255, 255, 255);
-}
-
-/* File upload section */
-.FormFile {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-/* Uploaded image styling */
-.UploadedImage {
+.uploadedImage {
   max-width: 90%;
   max-height: 300px;
-  border-radius: 12px;
-  margin: 16px auto;
+  margin: var(--spacing-lg) auto;
   display: block;
-  object-fit: cover;
-  transition: transform 0.3s ease;
 }
 
-.UploadedImage:hover {
-  transform: scale(1.02);
-}
-
-/* Asset styling (overriding Asset.module.css where needed) */
-.Asset {
-  width: 160px;
-  height: 160px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.Asset:hover {
-  transform: scale(1.05);
-}
-
-/* Input and button group styling */
-.InputButtonGroup {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin-bottom: 16px;
-}
-
-/* List item styling */
-.ListItem {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 12px;
-  background: rgb(248, 249, 250);
-  border-radius: 6px;
-  margin-bottom: 8px;
-  transition: background 0.3s ease;
-}
-
-/* Content area within list item */
-.ListItemContent {
+.listItemContent {
   flex: 1;
-  padding-right: 12px;
+  padding-right: var(--spacing-md);
 }
 
-/* Remove button styling (aligned with Button.module.css Red) */
-.btn {
-  background-color: rgb(220, 53, 69);
-  color: rgb(255, 255, 255);
-  border: none;
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-size: 12px;
-  transition: background-color 0.3s ease;
+.listItem:hover {
+  background: var(--color-background-hover);
 }
 
-/* Hover effect for remove button */
-.ListItem .btn:hover {
-  background-color: rgb(200, 35, 51);
-}
-
-/* Hover effect for list items */
-.ListItem:hover {
-  background: rgb(240, 242, 245);
-}
-
-/* Preview card styling */
-.PreviewCard {
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-  background-color: rgb(255, 255, 255);
-  transition: box-shadow 0.3s ease;
-}
-
-.PreviewCard:hover {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
-
-.PreviewCardTitle {
-  font-size: 24px;
+.previewCardTitle {
+  font-size: var(--font-size-2xl);
   font-weight: bold;
-  margin-bottom: 16px;
+  margin-bottom: var(--spacing-lg);
 }
 
-.PreviewCardBody {
-  font-size: 16px;
+.previewCardBody {
+  font-size: var(--font-size-md);
   line-height: 1.6;
-  color: rgb(60, 60, 60);
+  color: var(--color-label);
 }
 
-.PreviewCardBody strong {
+.previewCardBody strong {
   font-weight: bold;
 }
 
-.PreviewCardBody ul,
-.PreviewCardBody ol {
-  margin-left: 20px;
+.previewCardBody ul,
+.previewCardBody ol {
+  margin-left: var(--spacing-xl);
 }
 
-.PreviewCardBody li {
-  margin-bottom: 8px;
+.previewCardBody li {
+  margin-bottom: var(--spacing-sm);
 }
 
 /* Mobile-specific styles */
 @media (max-width: 768px) {
-  .FormRow {
+  .formRow {
     flex-direction: column;
     gap: 22px;
   }
 
-  .FormCol {
+  .formCol {
     width: 100%;
   }
 
-  .PreviewCard {
-    padding: 16px;
+  .previewCard {
+    padding: var(--spacing-lg);
   }
 }
