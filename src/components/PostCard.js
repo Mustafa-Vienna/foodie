@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Card } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useCurrentUser } from "../contexts/CurrentUserContext";
 import LikeButton from "../pages/likes/LikeButton";
 import styles from "../styles/PostCard.module.css";
@@ -20,15 +20,24 @@ const PostCard = ({
   const currentUser = useCurrentUser();
   const isLoggedIn = !!currentUser;
   const [likesCount, setLikesCount] = useState(likes_count);
+  const navigate = useNavigate();
 
   const handleWarning = (type) => {
     setActiveWarning({ postId: id, type });
   };
 
+  const handleCommentClick = () => {
+    if (isLoggedIn) {
+      navigate(`/posts/${id}#comments`, { state: { scrollToComments: true } });
+    } else {
+      handleWarning("comment");
+    }
+  };
+
   const introduction = content?.introduction || "";
 
   return (
-    <Card className={styles.postCard}>
+    <Card className={`${styles.postCard} ${sharedStyles.baseCard} ${sharedStyles["backgroundTint--orange"]}`}>
       <Link to={`/posts/${id}`}>
         <Card.Img variant="top" src={image} alt={title} className={styles.postImage} />
       </Link>
@@ -48,22 +57,26 @@ const PostCard = ({
               />
             </div>
           ) : (
-            <span
-              onClick={() => handleWarning("like")}
-              className={`${sharedStyles.statItem} ${sharedStyles.notLoggedIn}`}
-            >
-              <i className="fa-regular fa-heart"></i> {likesCount}
-            </span>
+            <div className={sharedStyles.statItem}>
+              <span
+                onClick={() => handleWarning("like")}
+                className={sharedStyles.notLoggedIn}
+              >
+                <i className="fa-regular fa-heart"></i> {likesCount}
+              </span>
+            </div>
           )}
-          <span
-            onClick={!isLoggedIn ? () => handleWarning("comment") : undefined}
-            className={`${sharedStyles.statItem} ${!isLoggedIn ? sharedStyles.notLoggedIn : ""}`}
-          >
-            <i className="fa-regular fa-comment"></i> {comments_count}
-          </span>
+          <div className={sharedStyles.statItem}>
+            <span
+              onClick={handleCommentClick}
+              className={isLoggedIn ? styles.commentLink : sharedStyles.notLoggedIn}
+            >
+              <i className="fa-regular fa-comment"></i> {comments_count}
+            </span>
+          </div>
         </div>
         {!isLoggedIn && activeWarning?.postId === id && (
-          <p className={styles.signupWarningText}>
+          <p className={`${sharedStyles.message} ${sharedStyles["message--warning"]}`}>
             {activeWarning.type === "like" ? "Log in to like this post!" : "Log in to comment on this post!"}
           </p>
         )}
