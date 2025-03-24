@@ -10,6 +10,7 @@
   --color-orange-dark: rgb(211, 84, 0);
   --color-orange-hover: rgb(250, 80, 0);
   --color-background: rgb(248, 249, 250);
+  --color-background-hover: rgb(240, 242, 245);
   --color-white: rgb(255, 255, 255);
   --color-border: rgb(233, 236, 239);
   --color-text-primary: rgb(43, 43, 43);
@@ -31,6 +32,8 @@
   --color-nav-link-hover: rgba(75, 75, 219, 0.9);
   --color-nav-link-active: rgba(216, 105, 105, 0.9);
   --color-nav-icon: rgb(245, 245, 245);
+  --color-label: rgb(60, 60, 60);
+  --color-placeholder: rgb(153, 153, 153);
 
   /* Border Radius */
   --border-radius-sm: 8px;
@@ -58,6 +61,7 @@
   --font-size-md: 16px;
   --font-size-lg: 18px;
   --font-size-xl: 20px;
+  --font-size-2xl: 24px;
 
   /* Typography */
   --font-family: "Lora", sans-serif;
@@ -85,10 +89,17 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  gap: var(--spacing-lg);
 }
 
 .flexCenter {
   display: flex;
+  align-items: center;
+}
+
+.flexSpaceBetween {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -97,11 +108,15 @@ body {
 }
 
 .transformTransition {
-  transition: transform 0.3s ease-in-out;
+  transition: transform 0.3s ease;
 }
 
 .colorTransition {
   transition: color 0.3s ease-in-out;
+}
+
+.backgroundTransition {
+  transition: background 0.3s ease;
 }
 
 /* Page Container */
@@ -152,13 +167,13 @@ body {
   margin-bottom: var(--spacing-sm);
   resize: vertical;
   background-color: var(--color-background);
-  transition: border-color 0.3s ease, background-color 0.3s ease;
+  transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .formInput:focus {
-  border-color: var(--color-border);
+  border-color: var(--color-link);
   outline: none;
-  box-shadow: 0 0 5px rgba(233, 236, 239, 0.5);
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
   background-color: var(--color-white);
 }
 
