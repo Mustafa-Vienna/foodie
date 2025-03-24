@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Form, Button, Container, Alert } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import appStyles from "../../App.module.css";
-import btnStyles from "../../styles/Button.module.css";
+import sharedStyles from "../../styles/SharedStyles.module.css";
 
 // Import helper functions
 import { fetchTags } from "../../utils/FetchTags";
@@ -38,11 +37,11 @@ const PostCreateForm = () => {
   const togglePreview = () => setShowPreview((prev) => !prev);
 
   return (
-    <Container className={`${appStyles.Content} p-4 mt-5`}>
-      <div className="d-flex justify-content-between align-items-center mb-4">
+    <Container className={`${sharedStyles.contentContainer} p-4 mt-5`}>
+      <div className={`${sharedStyles.flexSpaceBetween} mb-4`}>
         <h2>Create a Post</h2>
         <Button
-          className={`${btnStyles.Button} ${btnStyles.Gray}`}
+          className={`${sharedStyles.button} ${sharedStyles["button--gray"]}`}
           onClick={togglePreview}
         >
           {showPreview ? "Edit Recipe" : "Preview Recipe"}
@@ -97,7 +96,7 @@ const PostCreateForm = () => {
             setImagePreview={setImagePreview}
           />
           <Button
-            className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`}
+            className={`${sharedStyles.button} ${sharedStyles["button--wide"]} ${sharedStyles["button--bright"]}`}
             type="submit"
           >
             Create Post
