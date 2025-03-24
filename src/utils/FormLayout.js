@@ -3,7 +3,7 @@ import { Row, Col, Form, Button, Image } from "react-bootstrap";
 import Asset from "../components/Asset";
 import Upload from "../assets/images/upload.png";
 import styles from "../styles/PostCreateForm.module.css";
-import btnStyles from "../styles/Button.module.css";
+import sharedStyles from "../styles/SharedStyles.module.css";
 
 export const FormLayout = ({
   postData,
@@ -26,10 +26,10 @@ export const FormLayout = ({
     <Row className="gx-5">
       {/* Left Column: Title, Introduction, Ingredients, Steps, Conclusion */}
       <Col md={6}>
-        <Form.Group className={styles.FormGroup}>
-          <Form.Label>Title</Form.Label>
+        <Form.Group className={styles.formGroup}>
+          <Form.Label className={styles.formLabel}>Title</Form.Label>
           <Form.Control
-            className={styles.FormControl}
+            className={`${styles.formControl} ${sharedStyles.formInput}`}
             name="title"
             placeholder="Add title"
             value={postData.title}
@@ -37,10 +37,10 @@ export const FormLayout = ({
           />
         </Form.Group>
 
-        <Form.Group className={styles.FormGroup}>
-          <Form.Label>Introduction</Form.Label>
+        <Form.Group className={styles.formGroup}>
+          <Form.Label className={styles.formLabel}>Introduction</Form.Label>
           <Form.Control
-            className={styles.FormControl}
+            className={`${styles.formControl} ${sharedStyles.formInput}`}
             as="textarea"
             rows={3}
             name="introduction"
@@ -50,17 +50,17 @@ export const FormLayout = ({
           />
         </Form.Group>
 
-        <Form.Group className={styles.FormGroup}>
-          <Form.Label>Ingredients</Form.Label>
-          <div className={styles.InputButtonGroup}>
+        <Form.Group className={styles.formGroup}>
+          <Form.Label className={styles.formLabel}>Ingredients</Form.Label>
+          <div className={`${sharedStyles.flexCenter} mb-4`} style={{ gap: 'var(--spacing-sm)' }}>
             <Form.Control
-              className={styles.FormControl}
+              className={`${styles.formControl} ${sharedStyles.formInput}`}
               value={newIngredient}
               placeholder="Add ingredient"
               onChange={(e) => setNewIngredient(e.target.value)}
             />
             <Button
-              className={`${btnStyles.Button} ${btnStyles.Bright}`}
+              className={`${sharedStyles.button} ${sharedStyles["button--bright"]}`}
               onClick={() => handleAddItem("ingredients", newIngredient, setNewIngredient, setPostData)}
             >
               Add
@@ -68,10 +68,10 @@ export const FormLayout = ({
           </div>
           <ul>
             {postData.content.ingredients.map((ing, i) => (
-              <li key={i} className={styles.ListItem}>
-                <span className={styles.ListItemContent}>{ing}</span>
+              <li key={i} className={`${styles.listItem} ${sharedStyles.flexSpaceBetween} ${sharedStyles.backgroundTransition}`}>
+                <span className={styles.listItemContent}>{ing}</span>
                 <Button
-                  className={`${btnStyles.Button} ${btnStyles.Gray} ${btnStyles.Small} ${styles.btn}`}
+                  className={`${sharedStyles.button} ${sharedStyles["button--gray"]} ${sharedStyles["button--small"]}`}
                   onClick={() => handleRemoveItem("ingredients", i, setPostData)}
                 >
                   X
@@ -81,17 +81,17 @@ export const FormLayout = ({
           </ul>
         </Form.Group>
 
-        <Form.Group className={styles.FormGroup}>
-          <Form.Label>Steps</Form.Label>
-          <div className={styles.InputButtonGroup}>
+        <Form.Group className={styles.formGroup}>
+          <Form.Label className={styles.formLabel}>Steps</Form.Label>
+          <div className={`${sharedStyles.flexCenter} mb-4`} style={{ gap: 'var(--spacing-sm)' }}>
             <Form.Control
-              className={styles.FormControl}
+              className={`${styles.formControl} ${sharedStyles.formInput}`}
               value={newStep}
               placeholder="Add step"
               onChange={(e) => setNewStep(e.target.value)}
             />
             <Button
-              className={`${btnStyles.Button} ${btnStyles.Bright}`}
+              className={`${sharedStyles.button} ${sharedStyles["button--bright"]}`}
               onClick={() => handleAddItem("steps", newStep, setNewStep, setPostData)}
             >
               Add
@@ -99,10 +99,10 @@ export const FormLayout = ({
           </div>
           <ol>
             {postData.content.steps.map((step, i) => (
-              <li key={i} className={styles.ListItem}>
-                <span className={styles.ListItemContent}>{step}</span>
+              <li key={i} className={`${styles.listItem} ${sharedStyles.flexSpaceBetween} ${sharedStyles.backgroundTransition}`}>
+                <span className={styles.listItemContent}>{step}</span>
                 <Button
-                  className={`${btnStyles.Button} ${btnStyles.Gray} ${btnStyles.Small} ${styles.btn}`}
+                  className={`${sharedStyles.button} ${sharedStyles["button--gray"]} ${sharedStyles["button--small"]}`}
                   onClick={() => handleRemoveItem("steps", i, setPostData)}
                 >
                   X
@@ -112,10 +112,10 @@ export const FormLayout = ({
           </ol>
         </Form.Group>
 
-        <Form.Group className={styles.FormGroup}>
-          <Form.Label>Conclusion</Form.Label>
+        <Form.Group className={styles.formGroup}>
+          <Form.Label className={styles.formLabel}>Conclusion</Form.Label>
           <Form.Control
-            className={styles.FormControl}
+            className={`${styles.formControl} ${sharedStyles.formInput}`}
             as="textarea"
             rows={2}
             name="conclusion"
@@ -128,15 +128,20 @@ export const FormLayout = ({
 
       {/* Right Column: Image, Category, Tags, Image Filter */}
       <Col md={6}>
-        <Form.Group className={styles.FormGroup}>
-          <Form.Label>
+        <Form.Group className={styles.formGroup}>
+          <Form.Label className={styles.formLabel}>
             Image <span style={{ color: "red" }}>*</span>
           </Form.Label>
           {imagePreview ? (
-            <Image src={imagePreview} className={styles.UploadedImage} />
+            <Image src={imagePreview} className={`${styles.uploadedImage} ${sharedStyles.transformTransition}`} />
           ) : (
             <Form.Label htmlFor="image-upload">
-              <Asset src={Upload} message="Click to upload a recipe image" />
+              <Asset
+                src={Upload}
+                message="Click to upload a recipe image"
+                className={`${sharedStyles.transformTransition}`}
+                style={{ width: '160px', height: '160px', cursor: 'pointer' }}
+              />
             </Form.Label>
           )}
           <Form.Control
@@ -147,8 +152,8 @@ export const FormLayout = ({
           />
         </Form.Group>
 
-        <Form.Group className={styles.FormGroup}>
-          <Form.Label>Category</Form.Label>
+        <Form.Group className={styles.formGroup}>
+          <Form.Label className={styles.formLabel}>Category</Form.Label>
           <Form.Control
             as="select"
             name="category"
@@ -164,8 +169,10 @@ export const FormLayout = ({
           </Form.Control>
         </Form.Group>
 
-        <Form.Group className={styles.FormGroup}>
-          <Form.Label>Tags <span className="text-muted">(hold Ctrl/Cmd to select multiple)</span></Form.Label>
+        <Form.Group className={styles.formGroup}>
+          <Form.Label className={styles.formLabel}>
+            Tags <span className="text-muted">(hold Ctrl/Cmd to select multiple)</span>
+          </Form.Label>
           <Form.Control
             as="select"
             multiple
@@ -180,8 +187,8 @@ export const FormLayout = ({
           </Form.Control>
         </Form.Group>
 
-        <Form.Group className={styles.FormGroup}>
-          <Form.Label>Image Filter</Form.Label>
+        <Form.Group className={styles.formGroup}>
+          <Form.Label className={styles.formLabel}>Image Filter</Form.Label>
           <Form.Control
             as="select"
             name="image_filter"
