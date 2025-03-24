@@ -83,6 +83,10 @@ body {
   align-items: center;
 }
 
+.circle {
+  border-radius: 50%;
+}
+
 /* Page Container */
 .pageContainer {
   padding: var(--spacing-3xl) 0;
