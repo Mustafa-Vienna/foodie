@@ -22,6 +22,11 @@
   --color-link-hover: rgb(0, 86, 179);
   --color-disabled: rgb(128, 128, 128);
   --color-disabled-bg: rgba(200, 200, 200, 0.3);
+  --color-input-text: rgb(113, 119, 161);
+  --color-focus: rgb(33, 66, 178);
+  --color-highlight: rgb(255, 146, 84);
+  --color-warning-bg: rgb(204, 204, 204);
+  --color-warning-icon: rgba(244, 244, 11, 0.95);
 
   /* Border Radius */
   --border-radius-sm: 8px;
@@ -61,6 +66,14 @@ body {
   background-color: var(--color-background);
   min-height: 100vh;
   margin: 0;
+}
+
+/* Utility Classes */
+.flexCenterFullHeight {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Page Container */
