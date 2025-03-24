@@ -4,20 +4,13 @@
   width: 100%;
   max-width: 370px;
   max-height: 500px;
-  border: none;
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  border-radius: 15px;
-  overflow: hidden;
-  transition: transform 0.3s ease-in-out,
-              box-shadow 0.3s ease-in-out,
-              background-color 0.3s ease-in-out;
-  background-color: rgb(255, 255, 255);
+  flex-grow: 1;
+  height: auto;
+  transition: height 0.3s ease;
 }
 
 .postCard:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-  background-color: rgba(230, 126, 34, 0.05);
+  background-color: rgba(var(--color-orange-rgb), 0.05);
 }
 
 .postImage {
@@ -30,8 +23,8 @@
 }
 
 .cardBody {
-  padding: 20px;
-  margin-top: 10px;
+  padding: var(--spacing-xl);
+  margin-top: var(--spacing-sm);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -43,33 +36,37 @@
 .postTitle {
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  font-size: 20px;
+  font-size: var(--font-size-xl);
   font-weight: 700;
-  color: rgb(43, 43, 43);
+  color: var(--color-text-primary);
   line-height: 1.2;
   text-align: center;
-  margin-bottom: 12px;
-  overflow: hidden;
+  margin-bottom: var(--spacing-md);
   text-overflow: ellipsis;
-  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-clamp: 3;
 }
 
+
 .postText {
-  font-size: 16px;
-  color: rgb(41, 41, 41);
+  font-size: var(--font-size-md);
+  color: var(--color-text-primary);
   line-height: 1.4;
-  margin-bottom: 12px;
+  margin-bottom: var(--spacing-md);
   text-align: center;
-  overflow: hidden;
   text-overflow: ellipsis;
-  white-space: normal;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  line-clamp: 4;
 }
 
 .signupWarningText {
-  margin-top: 10px;
-  color: rgb(166, 88, 16);
-  font-size: 16px;
-  text-align: center;
+  font-size: var(--font-size-md);
 }
 
 @media (max-width: 768px) {
@@ -79,10 +76,10 @@
   }
 
   .postTitle {
-    font-size: 18px;
+    font-size: var(--font-size-lg);
   }
 
   .postText {
-    font-size: 14px;
+    font-size: var(--font-size-sm);
   }
 }
