@@ -49,7 +49,7 @@ const PostListPage = () => {
     if (activeWarning) {
       const timer = setTimeout(() => {
         setActiveWarning(null);
-      }, 5000);
+      }, 2000);
       return () => clearTimeout(timer);
     }
   }, [activeWarning]);
