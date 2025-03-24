@@ -1,14 +1,10 @@
-.Asset {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  min-height: 8rem;
+.asset {
+  min-height: 130px;
 }
 
-.Image {
+.image {
   max-width: 90%;
   height: auto;
-  border-radius: 12px;
+  border-radius: var(--border-radius-md);
   object-fit: cover;
 }
