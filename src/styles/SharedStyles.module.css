@@ -119,6 +119,11 @@ body {
   transition: background 0.3s ease;
 }
 
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* Page Container */
 .pageContainer {
   padding: var(--spacing-3xl) 0;
@@ -209,6 +214,18 @@ body {
   outline-offset: 2px;
 }
 
+.button:disabled {
+  background-color: rgb(204, 204, 204);
+  color: rgb(102, 102, 102);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.button:disabled:hover {
+  transform: none;
+  opacity: 0.7;
+}
+
 /* Button Variants */
 .button--wide {
   padding: var(--spacing-md) 60px;
@@ -274,18 +291,6 @@ body {
   padding: var(--spacing-xs) var(--spacing-sm);
   font-size: var(--font-size-xs);
   min-width: auto;
-}
-
-.button:disabled {
-  background-color: rgb(204, 204, 204);
-  color: rgb(102, 102, 102);
-  cursor: not-allowed;
-  opacity: 0.7;
-}
-
-.button:disabled:hover {
-  transform: none;
-  opacity: 0.7;
 }
 
 /* Grid Column */
