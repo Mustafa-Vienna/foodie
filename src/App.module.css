@@ -1,37 +1,17 @@
-.App {
-  font-family: "Lora", sans-serif;
-  background-color: rgb(248, 249, 250);
-  min-height: 100vh;
-}
-
-* {
-  box-sizing: border-box;
-}
-
 .Main {
   padding-top: 120px;
 }
 
-/* Reusable container for content sections, aligned with app-wide styling */
+/* Specific styles for the main content wrapper in App */
 .Content {
   max-width: 1000px;
-  margin: 50px auto;
-  background-color: rgb(255, 255, 255);
-  padding: 30px;
-  border-radius: 12px;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-  transition: box-shadow 0.3s ease;
-}
-
-.Content:hover {
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  margin: var(--spacing-3xl) auto;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .Content {
     max-width: 90%;
-    padding: 20px;
-    margin: 30px auto;
+    margin: var(--spacing-2xl) auto;
   }
 }
