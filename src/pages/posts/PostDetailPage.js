@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useParams } from "react-router-dom";
 import { axiosReq } from "../../api/axiosDefault";
 import { Container, Card, Spinner, Alert, Row, Col } from "react-bootstrap";
 import styles from "../../styles/PostDetailPage.module.css";
+import sharedStyles from "../../styles/SharedStyles.module.css";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import PostContent from "./postDetailUtils/PostContent";
 import PostMeta from "./postDetailUtils/PostMeta";
@@ -16,6 +17,7 @@ const PostDetailPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const currentUser = useCurrentUser();
+  const commentsRef = useRef();
 
   useEffect(() => {
     let isMounted = true;
@@ -66,7 +68,7 @@ const PostDetailPage = () => {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <Card className={styles.postCard}>
+        <Card className={`${styles.postCard} ${sharedStyles.baseCard}`}>
           <Card.Img
             variant="top"
             src={post.image}
@@ -93,7 +95,7 @@ const PostDetailPage = () => {
           </Card.Body>
         </Card>
 
-        <PostComments postId={id} currentUser={currentUser} />
+        <PostComments ref={commentsRef} postId={id} currentUser={currentUser} />
       </Col>
 
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
