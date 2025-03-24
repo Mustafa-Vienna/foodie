@@ -3,8 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { Form, Button, Col, Row, Container, Alert } from "react-bootstrap";
 import styles from "../../styles/SignUpForm.module.css";
-import btnStyles from "../../styles/Button.module.css";
-import appStyles from "../../App.module.css";
+import sharedStyles from "../../styles/SharedStyles.module.css";
 import { useSetCurrentUser } from "../../contexts/CurrentUserContext";
 import FormInput from "../auth/FormInput";
 
@@ -87,10 +86,10 @@ const SignInForm = () => {
   };
 
   return (
-    <Row className={styles.Row}>
+    <Row className={sharedStyles.flexCenterFullHeight}>
       <Col className="my-auto py-2 p-md-2" md={6}>
-        <Container className={`${appStyles.Content} p-4`}>
-          <h1 className={styles.Header}>Sign In</h1>
+        <Container className={`${styles.container} ${sharedStyles.contentContainer}`}>
+          <h1 className={styles.header}>Sign In</h1>
 
           <Form onSubmit={handleSubmit}>
             <FormInput
@@ -115,26 +114,26 @@ const SignInForm = () => {
               errors={errors.password}
             />
 
-            <Button className={`${btnStyles.Button} ${btnStyles.Wide} ${btnStyles.Bright}`} type="submit">
+            <Button className={`${sharedStyles.button} ${sharedStyles["button--wide"]} ${sharedStyles["button--bright"]}`} type="submit">
               Sign In
             </Button>
 
             {errors.non_field_errors?.map((message, idx) => (
-              <Alert key={idx} variant="warning" className={`mt-3 ${styles.ErrorMsg}`}>
+              <Alert key={idx} variant="warning" className={`${styles.errorMsg} ${sharedStyles.message} ${sharedStyles["message--warning"]}`}>
                 <i className="fa-solid fa-triangle-exclamation"></i> {message}
               </Alert>
             ))}
           </Form>
         </Container>
 
-        <Container className={`mt-3 ${appStyles.Content}`}>
-          <Link className={styles.Link} to="/signup">
-            Don't have an account? <span>Sign up now!</span>
+        <Container className={`${styles.container} ${sharedStyles.contentContainer} mt-3`}>
+          <Link className={sharedStyles.link} to="/signup">
+            Don't have an account? <span className={styles.linkHighlight}>Sign up now!</span>
           </Link>
         </Container>
       </Col>
 
-      <Col md={6} className={`my-auto d-none d-md-block p-2 ${styles.SignInCol}`}>
+      <Col md={6} className={`my-auto d-none d-md-block p-2 ${styles.signInCol}`}>
       </Col>
     </Row>
   );
