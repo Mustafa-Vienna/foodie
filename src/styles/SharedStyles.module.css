@@ -76,6 +76,13 @@ body {
   justify-content: center;
 }
 
+.flexColumnCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 /* Page Container */
 .pageContainer {
   padding: var(--spacing-3xl) 0;
