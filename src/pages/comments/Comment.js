@@ -16,7 +16,7 @@ const Comment = ({ comment }) => {
           <span>{author}</span>
         </Link>
         <span className={styles.commentDate}>
-          {new Date(created_at).toLocaleString()}
+          {created_at}
         </span>
       </div>
       <div className={styles.commentContent}>{content}</div>
