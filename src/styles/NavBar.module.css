@@ -1,13 +1,12 @@
 .navbarCustom {
   background-color: rgb(77, 77, 77);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  padding: 5px 0;
+  padding: var(--spacing-xs) 0;
 }
 
 .logo {
   width: 100px;
   height: auto;
-  transition: transform 0.3s ease-in-out;
 }
 
 .logo:hover {
@@ -15,40 +14,33 @@
 }
 
 .navBrand {
-  display: flex;
-  align-items: center;
   text-decoration: none;
-  padding: 5px 10px;
+  padding: var(--spacing-xs) var(--spacing-sm);
 }
 
 .navLink {
-  display: flex;
-  align-items: center;
   font-weight: bold;
-  font-size: 1rem;
-  color: rgb(217, 217, 217);
+  font-size: var(--font-size-md);
+  color: var(--color-nav-link);
   text-transform: uppercase;
-  padding: 5px 8px;
-  gap: 3px;
-  transition: color 0.3 ease-in-out;
+  padding: var(--spacing-xs) var(--spacing-sm);
+  gap: var(--spacing-xs);
   text-decoration: none;
 }
 
-.navLink:hover, 
+.navLink:hover,
 .navLink:hover i {
-  color: rgba(75, 75, 219, 0.9);
+  color: var(--color-nav-link-hover);
 }
 
-.Active,
-.Active i {
-  color: rgba(216, 105, 105, 0.9);
-  font-weight: bold;
+.active,
+.active i {
+  color: var(--color-nav-link-active);
 }
 
-i {
-  color: rgb(245, 245, 245);
-  font-size: 1.4rem;
-  padding: 3px;
+.navIcon {
+  color: var(--color-nav-icon);
+  font-size: var(--font-size-lg);
+  padding: var(--spacing-xs);
   vertical-align: middle;
-  transition: color 0.3 ease-in-out;
 }
