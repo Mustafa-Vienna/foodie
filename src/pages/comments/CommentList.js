@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { axiosReq } from "../../api/axiosDefault";
-import { Form, Button, Alert, Spinner } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import styles from "../../styles/CommentList.module.css";
+import CommentForm from "./CommentForm";
+import CommentSection from "./CommentSection";
+import { fetchComments, postComment } from "./CommentUtils";
+import AlertMessage from "../comments/AlertMessage";
 
 const CommentList = ({ postId, currentUser }) => {
   const [commentState, setCommentState] = useState({
@@ -10,19 +10,22 @@ const CommentList = ({ postId, currentUser }) => {
     commentText: "",
     commentError: null,
     commentSuccess: null,
+    page: 1,
+    hasMore: true,
     loadingComments: false,
   });
 
-  const { comments, commentText, commentError, commentSuccess, loadingComments } = commentState;
+  const { comments, commentText, commentError, commentSuccess, page, hasMore, loadingComments } = commentState;
 
   useEffect(() => {
-    const fetchComments = async () => {
+    const loadInitialComments = async () => {
       try {
         setCommentState((prev) => ({ ...prev, loadingComments: true }));
-        const { data } = await axiosReq.get(`/comments/?post=${postId}&page=1`);
+        const data = await fetchComments(postId);
         setCommentState((prev) => ({
           ...prev,
           comments: data.results || [],
+          hasMore: !!data.next,
           loadingComments: false,
         }));
       } catch (err) {
@@ -31,10 +34,9 @@ const CommentList = ({ postId, currentUser }) => {
           commentError: "Failed to load comments.",
           loadingComments: false,
         }));
-        console.error("Error fetching comments:", err);
       }
     };
-    fetchComments();
+    loadInitialComments();
   }, [postId]);
 
   const handleSubmitComment = async (e) => {
@@ -42,7 +44,7 @@ const CommentList = ({ postId, currentUser }) => {
     if (!commentText.trim()) return;
     setCommentState((prev) => ({ ...prev, loadingComments: true }));
     try {
-      const { data } = await axiosReq.post(`/comments/`, { post: postId, content: commentText });
+      const data = await postComment(postId, commentText);
       setCommentState((prev) => ({
         ...prev,
         comments: [data, ...prev.comments],
@@ -58,7 +60,27 @@ const CommentList = ({ postId, currentUser }) => {
         commentSuccess: null,
         loadingComments: false,
       }));
-      console.error("Error posting comment:", err);
+    }
+  };
+
+  const handleLoadMoreComments = async () => {
+    setCommentState((prev) => ({ ...prev, loadingComments: true }));
+    try {
+      const nextPage = page + 1;
+      const data = await fetchComments(postId, nextPage);
+      setCommentState((prev) => ({
+        ...prev,
+        comments: [...prev.comments, ...(data.results || [])],
+        page: nextPage,
+        hasMore: !!data.next,
+        loadingComments: false,
+      }));
+    } catch (err) {
+      setCommentState((prev) => ({
+        ...prev,
+        commentError: "Failed to load more comments.",
+        loadingComments: false,
+      }));
     }
   };
 
@@ -66,59 +88,34 @@ const CommentList = ({ postId, currentUser }) => {
     if (commentSuccess || commentError) {
       const timer = setTimeout(() => {
         setCommentState((prev) => ({ ...prev, commentSuccess: null, commentError: null }));
-      }, 3000);
+      }, 2000);
       return () => clearTimeout(timer);
     }
   }, [commentSuccess, commentError]);
 
+  const setCommentText = (text) => {
+    setCommentState(prev => ({ ...prev, commentText: text }));
+  };
+
   return (
-    <div className={styles.commentsCard}>
-      <h4 className={styles.commentsTitle}>Comments</h4>
-      {commentSuccess && <Alert variant="success">{commentSuccess}</Alert>}
-      {commentError && <Alert variant="danger">{commentError}</Alert>}
-      
-      {currentUser ? (
-        <Form onSubmit={handleSubmitComment} className={styles.commentForm}>
-          <Form.Control
-            as="textarea"
-            rows={3}
-            placeholder="Share your thoughts..."
-            value={commentText}
-            onChange={(e) => setCommentState((prev) => ({ ...prev, commentText: e.target.value }))}
-            className={styles.commentInput}
-            disabled={loadingComments}
-          />
-          <Button
-            variant="primary"
-            type="submit"
-            className={styles.submitCommentBtn}
-            disabled={!commentText.trim() || loadingComments}
-          >
-            {loadingComments ? <Spinner as="span" animation="border" size="sm" /> : "Post Comment"}
-          </Button>
-        </Form>
-      ) : (
-        <p className="text-center mt-3">
-          <Link to="/signin">Log in</Link> to post a comment.
-        </p>
-      )}
-      
-      {loadingComments ? (
-        <div className="text-center mt-3">
-          <Spinner animation="border" size="sm" /> Loading comments...
-        </div>
-      ) : comments.length ? (
-        <>
-          {comments.map((comment) => (
-            <div key={comment.id}>
-              {/* Placeholder for comment display */}
-              <p>{comment.content}</p>
-            </div>
-          ))}
-        </>
-      ) : (
-        <p className="text-center mt-3">No comments yet. Be the first to comment!</p>
-      )}
+    <div className="comments-container">
+      <AlertMessage success={commentSuccess} error={commentError} />
+
+      <CommentForm 
+        commentText={commentText}
+        setCommentText={setCommentText}
+        handleSubmitComment={handleSubmitComment}
+        loadingComments={loadingComments}
+        currentUser={currentUser}
+      />
+
+      <CommentSection
+        comments={comments}
+        loadingComments={loadingComments}
+        hasMore={hasMore}
+        handleLoadMoreComments={handleLoadMoreComments}
+        commentError={commentError}
+      />
     </div>
   );
 };
