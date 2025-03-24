@@ -27,6 +27,10 @@
   --color-highlight: rgb(255, 146, 84);
   --color-warning-bg: rgb(204, 204, 204);
   --color-warning-icon: rgba(244, 244, 11, 0.95);
+  --color-nav-link: rgb(217, 217, 217);
+  --color-nav-link-hover: rgba(75, 75, 219, 0.9);
+  --color-nav-link-active: rgba(216, 105, 105, 0.9);
+  --color-nav-icon: rgb(245, 245, 245);
 
   /* Border Radius */
   --border-radius-sm: 8px;
@@ -83,8 +87,21 @@ body {
   align-items: center;
 }
 
+.flexCenter {
+  display: flex;
+  align-items: center;
+}
+
 .circle {
   border-radius: 50%;
+}
+
+.transformTransition {
+  transition: transform 0.3s ease-in-out;
+}
+
+.colorTransition {
+  transition: color 0.3s ease-in-out;
 }
 
 /* Page Container */
