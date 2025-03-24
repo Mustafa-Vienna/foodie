@@ -3,106 +3,77 @@
   height: 400px;
   max-height: 400px;
   object-fit: cover;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-sm);
   image-rendering: auto;
   display: block;
 }
 
 .postCard {
-  border: none;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-radius: 12px;
-  overflow: hidden;
   max-width: 700px;
   margin: 0 auto;
-  background-color: #fff;
 }
 
 .cardBody {
-  padding: 20px;
-  color: rgb(60, 60, 60);
+  padding: var(--spacing-xl);
+  color: var(--color-label);
 }
 
 .postContent {
-  margin-top: 20px;
+  margin-top: var(--spacing-xl);
   line-height: 1.6;
   white-space: pre-wrap;
   max-height: 500px;
   overflow-y: auto;
-  font-size: 16px;
-  padding: 15px;
-  background-color: rgb(248, 249, 250);
-  border-radius: 8px;
-  border: 1px solid rgb(233, 236, 239);
+  font-size: var(--font-size-md);
+  padding: var(--spacing-lg);
+  background-color: var(--color-background);
+  border-radius: var(--border-radius-sm);
+  border: 1px solid var(--color-border);
 }
 
 .postTitle {
-  font-size: 24px;
+  font-size: var(--font-size-2xl);
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: var(--spacing-sm);
 }
 
 .postSubtitle {
-  font-size: 14px;
-  color: rgb(108, 117, 125);
-  margin-bottom: 15px;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
 
 .postMeta {
-  font-size: 14px;
-  color: rgb(73, 80, 87);
-  margin-top: 10px;
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-top: var(--spacing-sm);
+}
+
+.metaValue {
+  color: var(--color-orange-base);
+  margin-left: var(--spacing-xs);
 }
 
 .postTag {
-  margin-right: 5px;
-  color: rgb(230, 126, 34) !important; /* Add !important to override Link styles */
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.postTag:hover {
-  text-decoration: underline;
-  color: rgb(211, 84, 0) !important; /* Add !important to override Link hover styles */
+  margin-right: var(--spacing-xs);
 }
 
 .loadCommentsBtn {
-  padding: 20px;
+  padding: var(--spacing-xl);
   display: inline-block;
   width: 200px;
 }
 
 .commentsContainer {
-  margin-top: 30px;
-  padding: 15px;
-  background-color: rgb(245, 245, 240);
-  border-radius: 12px;
+  background-color: var(--color-background-alt);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
 .commentsCard {
-  border: none;
-  border-radius: 12px;
-  padding: 15px;
-}
-
-.loadMoreBtn {
-  background-color: transparent;
-  border: 1px solid rgb(230, 126, 34);
-  color: rgb(230, 126, 34);
-  padding: 8px 16px;
-  font-size: 14px;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease-in-out;
-}
-
-.loadMoreBtn:hover {
-  background-color: rgb(230, 126, 34);
-  color: rgb(255, 255, 255);
+  padding: var(--spacing-lg);
 }
 
 @media (max-width: 768px) {
@@ -113,7 +84,7 @@
   }
 
   .postCard {
-    margin: 0 16px;
+    margin: 0 var(--spacing-lg);
     max-width: 100%;
   }
 
@@ -127,6 +98,6 @@
   }
 
   .commentsContainer {
-    margin-top: 20px;
+    margin-top: var(--spacing-xl);
   }
 }
