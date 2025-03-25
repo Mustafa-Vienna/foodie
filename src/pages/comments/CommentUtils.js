@@ -19,3 +19,22 @@ export const postComment = async (postId, content) => {
     throw err;
   }
 };
+
+export const updateComment = async (commentId, content) => {
+  try {
+    const { data } = await axiosReq.put(`/comments/${commentId}/`, { content });
+    return data;
+  } catch (err) {
+    console.error("Error updating comment:", err);
+    throw err;
+  }
+};
+
+export const deleteComment = async (commentId) => {
+  try {
+    await axiosReq.delete(`/comments/${commentId}/`);
+  } catch (err) {
+    console.error("Error deleting comment:", err);
+    throw err;
+  }
+};
