@@ -11,6 +11,7 @@ import PostCreateForm from './pages/posts/PostCreateForm';
 import PostDetailPage from './pages/posts/PostDetailPage';
 import PostListPage from './pages/posts/PostListPage';
 import HomePage from './pages/posts/HomePage';
+import ProfilePage from './pages/profiles/ProfilePage';
 import { CurrentUserProvider } from "./contexts/CurrentUserContext";
 import LikedPage from "./pages/likes/LikedPage";
 
@@ -29,6 +30,7 @@ function App() {
               <Route path="/signin" element={<SignInForm />} />
               <Route path="/posts/create" element={<PostCreateForm />} />
               <Route path="/posts/:id" element={<PostDetailPage />} />
+              <Route path="/profiles/:id" element={<ProfilePage />} />
               <Route path="*" element={<h1>Page not found!</h1>} />
             </Routes>
           </div>
