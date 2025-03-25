@@ -16,6 +16,8 @@ const PostCard = ({
   activeWarning,
   setActiveWarning,
   like_id,
+  onUnlike,
+  inLikedPage = false,
 }) => {
   const currentUser = useCurrentUser();
   const isLoggedIn = !!currentUser;
@@ -34,14 +36,31 @@ const PostCard = ({
     }
   };
 
+  const handleUnlike = async () => {
+    try {
+      setLikesCount(prev => prev - 1);
+      if (onUnlike) {
+        onUnlike(id);
+      }
+    } catch (err) {
+      console.error("Failed to handle unlike:", err);
+      setLikesCount(prev => prev + 1);
+    }
+  };
+
   const introduction = content?.introduction || "";
 
   return (
-    <Card className={`${styles.postCard} ${sharedStyles.baseCard} ${sharedStyles["backgroundTint--orange"]}`}>
+    <Card 
+      className={`
+        ${styles.postCard} 
+        ${sharedStyles.baseCard}
+      `}
+    >
       <Link to={`/posts/${id}`}>
         <Card.Img variant="top" src={image} alt={title} className={styles.postImage} />
       </Link>
-      <Card.Body className={styles.cardBody}>
+      <Card.Body className={sharedStyles.cardBody}>
         <Card.Title className={styles.postTitle}>{title}</Card.Title>
         <Card.Text className={styles.postText}>
           {introduction.substring(0, 100) + (introduction.length > 100 ? "..." : "")}
@@ -54,6 +73,7 @@ const PostCard = ({
                 likesCount={likesCount}
                 setLikesCount={setLikesCount}
                 likeId={like_id}
+                onUnlike={inLikedPage ? handleUnlike : null}
               />
             </div>
           ) : (
