@@ -1,4 +1,4 @@
-export const validatePostData = (postData) => {
+export const validatePostData = (postData, isEditing = false) => {
   const errors = {};
 
   if (!postData.title.trim()) {
@@ -17,7 +17,7 @@ export const validatePostData = (postData) => {
     errors.steps = ['Please add at least one step'];
   }
 
-  if (!postData.image) {
+  if (!isEditing && !postData.image) {
     errors.image = ['Please add an image'];
   }
 
