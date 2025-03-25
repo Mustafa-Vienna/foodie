@@ -2,12 +2,22 @@ import React from "react";
 import { Form, Button, Spinner } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styles from "../../styles/CommentList.module.css";
+import sharedStyles from "../../styles/SharedStyles.module.css";
 
-const CommentForm = ({ commentText, setCommentText, handleSubmitComment, loadingComments, currentUser }) => {
+const CommentForm = ({
+  commentText,
+  setCommentText,
+  handleSubmitComment,
+  loading,
+  currentUser,
+}) => {
   if (!currentUser) {
     return (
-      <p className="text-center mt-3">
-        <Link to="/signin">Log in</Link> to post a comment.
+      <p className={`${sharedStyles["text--muted"]} text-center mt-3`}>
+        <Link to="/signin" className={sharedStyles.link}>
+          Log in
+        </Link>{" "}
+        to post a comment.
       </p>
     );
   }
@@ -22,19 +32,31 @@ const CommentForm = ({ commentText, setCommentText, handleSubmitComment, loading
         placeholder="Share your thoughts..."
         value={commentText}
         onChange={(e) => setCommentText(e.target.value)}
-        className={styles.commentInput}
-        disabled={loadingComments}
+        className={`${styles.commentInput} ${sharedStyles.formInput}`}
+        disabled={loading}
         autoComplete="off"
         required
       />
-      <div className={styles.submitCommentBtnWrapper}>
+      <div className="text-end mt-2">
         <Button
-          variant="primary"
           type="submit"
-          className={styles.submitCommentBtn}
-          disabled={!commentText.trim() || loadingComments}
+          className={`${styles.submitCommentBtn} ${sharedStyles.button} ${sharedStyles["button--orange"]}`}
+          disabled={!commentText.trim() || loading}
         >
-          {loadingComments ? <Spinner as="span" animation="border" size="sm" /> : "Post Comment"}
+          {loading ? (
+            <>
+              <Spinner
+                as="span"
+                animation="border"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+              />
+              <span className="ms-2">Posting...</span>
+            </>
+          ) : (
+            "Post Comment"
+          )}
         </Button>
       </div>
     </Form>
