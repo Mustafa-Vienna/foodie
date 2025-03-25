@@ -1,16 +1,8 @@
 .postCard {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
   max-width: 370px;
   max-height: 500px;
-  flex-grow: 1;
   height: auto;
   transition: height 0.3s ease;
-}
-
-.postCard:hover {
-  background-color: rgba(var(--color-orange-rgb), 0.05);
 }
 
 .postImage {
@@ -20,17 +12,6 @@
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   margin: 0;
-}
-
-.cardBody {
-  padding: var(--spacing-xl);
-  margin-top: var(--spacing-sm);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  text-align: center;
-  flex-grow: 1;
 }
 
 .postTitle {
@@ -49,7 +30,6 @@
   overflow: hidden;
   line-clamp: 3;
 }
-
 
 .postText {
   font-size: var(--font-size-md);
