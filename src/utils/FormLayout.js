@@ -21,10 +21,10 @@ export const FormLayout = ({
   handleRemoveItem,
   setErrors,
   setImagePreview,
+  validationErrors = {},
 }) => {
   return (
     <Row className="gx-5">
-      {/* Left Column: Title, Introduction, Ingredients, Steps, Conclusion */}
       <Col md={6}>
         <Form.Group className={styles.formGroup}>
           <Form.Label className={styles.formLabel}>Title</Form.Label>
@@ -34,7 +34,11 @@ export const FormLayout = ({
             placeholder="Add title"
             value={postData.title}
             onChange={(e) => handleChange(e, setPostData)}
+            isInvalid={!!validationErrors.title}
           />
+          <Form.Control.Feedback type="invalid">
+            {validationErrors.title?.[0]}
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className={styles.formGroup}>
@@ -47,7 +51,11 @@ export const FormLayout = ({
             placeholder="Enter introduction"
             value={postData.content.introduction}
             onChange={(e) => handleChange(e, setPostData)}
+            isInvalid={!!validationErrors.introduction}
           />
+          <Form.Control.Feedback type="invalid">
+            {validationErrors.introduction?.[0]}
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className={styles.formGroup}>
@@ -58,6 +66,7 @@ export const FormLayout = ({
               value={newIngredient}
               placeholder="Add ingredient"
               onChange={(e) => setNewIngredient(e.target.value)}
+              isInvalid={!!validationErrors.ingredients}
             />
             <Button
               className={`${sharedStyles.button} ${sharedStyles["button--bright"]}`}
@@ -79,6 +88,9 @@ export const FormLayout = ({
               </li>
             ))}
           </ul>
+          {validationErrors.ingredients && (
+            <div className="invalid-feedback d-block">{validationErrors.ingredients[0]}</div>
+          )}
         </Form.Group>
 
         <Form.Group className={styles.formGroup}>
@@ -89,6 +101,7 @@ export const FormLayout = ({
               value={newStep}
               placeholder="Add step"
               onChange={(e) => setNewStep(e.target.value)}
+              isInvalid={!!validationErrors.steps}
             />
             <Button
               className={`${sharedStyles.button} ${sharedStyles["button--bright"]}`}
@@ -110,6 +123,9 @@ export const FormLayout = ({
               </li>
             ))}
           </ol>
+          {validationErrors.steps && (
+            <div className="invalid-feedback d-block">{validationErrors.steps[0]}</div>
+          )}
         </Form.Group>
 
         <Form.Group className={styles.formGroup}>
@@ -126,7 +142,6 @@ export const FormLayout = ({
         </Form.Group>
       </Col>
 
-      {/* Right Column: Image, Category, Tags, Image Filter */}
       <Col md={6}>
         <Form.Group className={styles.formGroup}>
           <Form.Label className={styles.formLabel}>
@@ -149,7 +164,11 @@ export const FormLayout = ({
             type="file"
             hidden
             onChange={(e) => handleChangeImage(e, setPostData, setImagePreview, setErrors)}
+            isInvalid={!!validationErrors.image}
           />
+          <Form.Control.Feedback type="invalid">
+            {validationErrors.image?.[0]}
+          </Form.Control.Feedback>
         </Form.Group>
 
         <Form.Group className={styles.formGroup}>
