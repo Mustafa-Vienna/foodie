@@ -48,13 +48,26 @@ export const fetchLikedPosts = async () => {
     const { data: likes } = await axiosReq.get("/likes/");
     if (!likes.results || likes.results.length === 0) return [];
 
-    const uniquePostIds = [...new Set(likes.results.map((like) => like.post))];
+    const uniquePostIds = [];
+    const seenPostIds = new Set();
+
+    likes.results.forEach((like) => {
+      if (!seenPostIds.has(like.post)) {
+        uniquePostIds.push(like.post);
+        seenPostIds.add(like.post);
+      }
+    });
 
     const { data: postsData } = await axiosReq.get("/posts/", {
       params: { id__in: uniquePostIds.join(",") },
     });
 
-    return postsData.results || [];
+    const postsMap = postsData.results.reduce((acc, post) => {
+      acc[post.id] = post;
+      return acc;
+    }, {});
+
+    return uniquePostIds.map(id => postsMap[id]).filter(Boolean);
   } catch (err) {
     console.error("Error fetching liked posts:", err);
     throw err;
