@@ -22,7 +22,7 @@ export const handleRemoveItem = (type, index, setPostData) => {
 };
 
 export const handleUpdate = async (postId, editedPost, setPost, setShowEditModal, setValidationErrors, setError, setIsModifying) => {
-  const errors = validatePostData(editedPost);
+  const errors = validatePostData(editedPost, true);
   if (Object.keys(errors).length) {
     setValidationErrors(errors);
     return;

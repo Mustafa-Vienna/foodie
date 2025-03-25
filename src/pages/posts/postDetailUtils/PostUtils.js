@@ -26,7 +26,7 @@ export const updatePost = async (postId, postData) => {
       formData.append("image", postData.image);
     }
 
-    const { data } = await axiosReq.put(`/posts/${postId}/`, formData);
+    const { data } = await axiosReq.put(`/posts/${postId}/edit/`, formData);
     return data;
   } catch (err) {
     console.error("Error updating post:", err);

@@ -81,7 +81,7 @@ const PostDetailPage = () => {
   }, [id]);
 
   const renderModal = (show, onHide, title, body, footer) => (
-    <Modal show={show} onHide={onHide}>
+    <Modal show={show} onHide={onHide} size="lg" dialogClassName={styles.wideModal}>
       <Modal.Header closeButton>
         <Modal.Title>{title}</Modal.Title>
       </Modal.Header>
