@@ -12,7 +12,7 @@ import PostDetailPage from './pages/posts/PostDetailPage';
 import PostListPage from './pages/posts/PostListPage';
 import HomePage from './pages/posts/HomePage';
 import { CurrentUserProvider } from "./contexts/CurrentUserContext";
-// import LikedPage from "./pages/likes/LikedPage";
+import LikedPage from "./pages/likes/LikedPage";
 
 function App() {
   return (
@@ -24,7 +24,7 @@ function App() {
             <Routes>
               <Route path="/" element={<HomePage />} />
               <Route path="/feed" element={<PostListPage />} />
-              {/* <Route path="/liked" element={<LikedPage />} /> */}
+              <Route path="/liked" element={<LikedPage />} />
               <Route path="/signup" element={<SignUpForm />} />
               <Route path="/signin" element={<SignInForm />} />
               <Route path="/posts/create" element={<PostCreateForm />} />
