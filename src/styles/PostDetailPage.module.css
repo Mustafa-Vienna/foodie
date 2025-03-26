@@ -46,6 +46,18 @@
   letter-spacing: 0.5px;
 }
 
+.authorLink {
+  color: var(--color-orange);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.authorLink:hover {
+  color: var(--color-orange-hover);
+  text-decoration: underline;
+}
+
 .postMeta {
   font-size: var(--font-size-sm);
   color: var(--color-text-muted);
@@ -76,11 +88,6 @@
   padding: var(--spacing-lg);
 }
 
-.wideModal {
-  max-width: 90%;
-  width: 90%;
-}
-
 @media (max-width: 768px) {
   .postImage {
     width: 100%;
@@ -104,10 +111,5 @@
 
   .commentsContainer {
     margin-top: var(--spacing-xl);
-  }
-
-  .wideModal {
-    max-width: 95%;
-    width: 95%;
   }
 }
