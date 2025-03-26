@@ -59,13 +59,27 @@ const NavBar = () => {
                 >
                   <i className={`fa-solid fa-right-from-bracket ${styles.navIcon} ${sharedStyles.colorTransition}`}></i> Sign Out
                 </span>
-                <NavLink
-                  to={`/profiles/${currentUser?.profile_id}`}
-                  className={getNavLinkClass}
-                  onClick={() => setExpanded(false)}
-                >
-                  <Avatar src={currentUser?.profile_image} text="Profile" height={40} />
-                </NavLink>
+                {currentUser?.profile_id ? (
+                  <NavLink
+                    to={`/profiles/${currentUser.profile_id}`}
+                    className={getNavLinkClass}
+                    onClick={() => setExpanded(false)}
+                  >
+                    <Avatar 
+                      src={currentUser.profile_image} 
+                      text="Profile" 
+                      height={50}
+                    />
+                  </NavLink>
+                ) : (
+                  <span className={`${styles.navLink} ${sharedStyles.flexCenter}`}>
+                    <Avatar 
+                      src={currentUser?.profile_image} 
+                      text="Profile" 
+                      height={50}
+                    />
+                  </span>
+                )}
               </>
             ) : (
               <>
