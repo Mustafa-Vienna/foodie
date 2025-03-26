@@ -1,4 +1,19 @@
 .avatar {
   margin: 0 var(--spacing-sm);
   object-fit: cover;
+  transition: transform 0.2s ease;
+}
+
+.avatarContainer {
+  display: inline-flex;
+  align-items: center;
+}
+
+.avatarLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.avatarLink:hover .avatar {
+  transform: scale(1.1);
 }
