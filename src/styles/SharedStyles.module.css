@@ -245,6 +245,35 @@ body {
   cursor: pointer;
 }
 
+.statItem i, 
+.commentLink i {
+  font-size: var(--font-size-lg);
+  border: 1px solid var(--color-orange);
+  border-radius: 50%;
+  padding: var(--spacing-xs);
+  color: var(--color-orange);
+  background-color: var(--color-white);
+  transition: transform 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
+.statItem:hover i, 
+.commentLink:hover i,
+.notLoggedIn:hover i {
+  transform: scale(1.05);
+  color: var(--color-white);
+  background-color: var(--color-orange);
+}
+
+.notLoggedIn i {
+  font-size: var(--font-size-lg);
+  border: 1px solid var(--color-orange);
+  border-radius: 50%;
+  padding: var(--spacing-xs);
+  color: var(--color-orange);
+  background-color: var(--color-white);
+  transition: transform 0.2s ease, color 0.2s ease, background-color 0.2s ease;
+}
+
 .notLoggedIn {
   cursor: pointer;
   display: flex;
