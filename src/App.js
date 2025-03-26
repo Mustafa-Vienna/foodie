@@ -2,6 +2,7 @@ import React from "react";
 import styles from './App.module.css';
 import sharedStyles from './styles/SharedStyles.module.css';
 import NavBar from './components/NavBar';
+import Footer from "./components/Footer";
 import { Container } from 'react-bootstrap';
 import { Routes, Route } from 'react-router-dom';
 import './api/axiosDefault';
@@ -20,21 +21,24 @@ function App() {
     <CurrentUserProvider>
       <div className={sharedStyles.pageContainer}>
         <NavBar />
-        <Container className={styles.Main}>
-          <div className={`${styles.Content} ${sharedStyles.contentContainer}`}>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/feed" element={<PostListPage />} />
-              <Route path="/liked" element={<LikedPage />} />
-              <Route path="/signup" element={<SignUpForm />} />
-              <Route path="/signin" element={<SignInForm />} />
-              <Route path="/posts/create" element={<PostCreateForm />} />
-              <Route path="/posts/:id" element={<PostDetailPage />} />
-              <Route path="/profiles/:id" element={<ProfilePage />} />
-              <Route path="*" element={<h1>Page not found!</h1>} />
-            </Routes>
-          </div>
-        </Container>
+        <main className={sharedStyles.mainContent}>
+          <Container className={styles.Main}>
+            <div className={`${styles.Content} ${sharedStyles.contentContainer}`}>
+              <Routes>
+                <Route path="/" element={<HomePage />} />
+                <Route path="/feed" element={<PostListPage />} />
+                <Route path="/liked" element={<LikedPage />} />
+                <Route path="/signup" element={<SignUpForm />} />
+                <Route path="/signin" element={<SignInForm />} />
+                <Route path="/posts/create" element={<PostCreateForm />} />
+                <Route path="/posts/:id" element={<PostDetailPage />} />
+                <Route path="/profiles/:id" element={<ProfilePage />} />
+                <Route path="*" element={<h1>Page not found!</h1>} />
+              </Routes>
+            </div>
+          </Container>
+        </main>
+        <Footer />
       </div>
     </CurrentUserProvider>
   );

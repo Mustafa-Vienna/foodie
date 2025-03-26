@@ -99,6 +99,8 @@ body {
 .flexCenter {
   display: flex;
   align-items: center;
+  justify-content: center;
+  gap: var(--spacing-sm);
 }
 
 .flexSpaceBetween {
@@ -136,10 +138,17 @@ body {
   cursor: not-allowed;
 }
 
-/* Page Container */
+/* Page Container - Updated for Sticky Footer */
 .pageContainer {
-  padding: var(--spacing-3xl) 0;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
+}
+
+/* Main Content - New Class to Grow and Push Footer Down */
+.mainContent {
+  flex: 1;
+  padding: var(--spacing-3xl) 0;
 }
 
 /* Card Patterns */
@@ -228,7 +237,7 @@ body {
 
 /* Social Stats Component */
 .socialStats {
-  display: flex; /* Updated to fix 'display: center' */
+  display: flex;
   align-items: center;
   justify-content: center;
   gap: var(--spacing-xl);
