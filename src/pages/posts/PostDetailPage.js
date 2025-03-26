@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { Container, Card, Spinner, Alert, Row, Col, Button, Modal } from "react-bootstrap";
 import styles from "../../styles/PostDetailPage.module.css";
 import sharedStyles from "../../styles/SharedStyles.module.css";
@@ -11,7 +11,7 @@ import { handleUpdate, handleDelete } from "../../utils/FormHelper";
 import { FormLayout } from "../../utils/FormLayout";
 import PostContent from "../posts/postDetailUtils/PostContent";
 import PostMeta from "../posts/postDetailUtils/PostMeta";
-import PostSidebar from "../posts/postDetailUtils/PostSidebar";
+// import PostSidebar from "../posts/postDetailUtils/PostSidebar";
 import PostComments from "../posts/postDetailUtils/PostComments";
 
 const PostDetailPage = () => {
@@ -81,7 +81,7 @@ const PostDetailPage = () => {
   }, [id]);
 
   const renderModal = (show, onHide, title, body, footer) => (
-    <Modal show={show} onHide={onHide} size="lg" dialogClassName={styles.wideModal}>
+    <Modal show={show} onHide={onHide}>
       <Modal.Header closeButton>
         <Modal.Title>{title}</Modal.Title>
       </Modal.Header>
@@ -107,7 +107,7 @@ const PostDetailPage = () => {
       handleRemoveItem={require("../../utils/FormHelper").handleRemoveItem}
       setErrors={setValidationErrors}
       setImagePreview={setImagePreview}
-      validationErrors={validationErrors} // Add this to pass validationErrors
+      validationErrors={validationErrors}
     />
   );
 
@@ -216,7 +216,11 @@ const PostDetailPage = () => {
               )}
             </div>
             <Card.Subtitle className={styles.postSubtitle}>
-              By {post.author}
+              {post.profile_id ? (
+                <>By <Link to={`/profiles/${post.profile_id}`} className={styles.authorLink}>{post.author}</Link></>
+              ) : (
+                <>By {post.author}</>
+              )}
             </Card.Subtitle>
 
             {hasStructuredContent ? (
@@ -236,9 +240,9 @@ const PostDetailPage = () => {
         <PostComments ref={commentsRef} postId={id} currentUser={currentUser} />
       </Col>
 
-      <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
+      {/* <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
         <PostSidebar />
-      </Col>
+      </Col> */}
 
       {renderModal(
         showEditModal,
