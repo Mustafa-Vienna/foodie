@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import appStyles from "../../App.module.css";
 import Asset from "../../components/Asset";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
@@ -34,11 +34,15 @@ function LikedPage() {
     <Container className={appStyles.Content}>
       {hasLoaded ? (
         <>
-          <h2 className="text-center mb-4">Posts You've Liked</h2>
+          <h2 className="text-center mb-5">Posts You've Liked</h2>
           {posts.length ? (
-            posts.map((post) => (
-              <PostCard key={post.id} {...post} setPosts={setPosts} />
-            ))
+            <Row>
+              {posts.map((post) => (
+                <Col key={post.id} xs={12} md={6} lg={4} className="mb-5">
+                  <PostCard {...post} setPosts={setPosts} />
+                </Col>
+              ))}
+            </Row>
           ) : (
             <Container className={appStyles.Content}>
               <Asset 
