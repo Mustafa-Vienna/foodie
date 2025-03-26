@@ -1,0 +1,126 @@
+.profileContainer {
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+.profileCard {
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.profileHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.profileImageContainer {
+  margin-right: 30px;
+  position: relative;
+}
+
+.profileImage {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border: 3px solid var(--color-orange);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+}
+
+.profileImage:hover {
+  transform: scale(1.05);
+}
+
+.uploadButton {
+  cursor: pointer;
+  display: inline-block;
+}
+
+.profileInfo {
+  flex: 1;
+}
+
+.profileName {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: var(--color-text-primary);
+}
+
+.profileStats {
+  display: flex;
+  gap: 30px;
+  margin-top: 15px;
+}
+
+.statItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.statCount {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--color-orange);
+}
+
+.statLabel {
+  font-size: 14px;
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.profileBody {
+  padding: 20px 0;
+}
+
+.sectionTitle {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 15px;
+  color: var(--color-text-primary);
+  border-bottom: 2px solid var(--color-orange);
+  padding-bottom: 8px;
+  display: inline-block;
+}
+
+.profileBio {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+  white-space: pre-line;
+}
+
+.profileActions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .profileHeader {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profileImageContainer {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+
+  .profileStats {
+    justify-content: center;
+  }
+
+  .profileActions {
+    justify-content: center;
+  }
+}
