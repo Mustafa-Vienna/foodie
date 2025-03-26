@@ -38,20 +38,20 @@ const PostCard = ({
 
   const handleUnlike = async () => {
     try {
-      setLikesCount(prev => prev - 1);
+      setLikesCount((prev) => prev - 1);
       if (onUnlike) {
         onUnlike(id);
       }
     } catch (err) {
       console.error("Failed to handle unlike:", err);
-      setLikesCount(prev => prev + 1);
+      setLikesCount((prev) => prev + 1);
     }
   };
 
   const introduction = content?.introduction || "";
 
   return (
-    <Card 
+    <Card
       className={`
         ${styles.postCard} 
         ${sharedStyles.baseCard}
@@ -68,31 +68,41 @@ const PostCard = ({
         <div className={sharedStyles.socialStats}>
           {isLoggedIn ? (
             <div className={sharedStyles.statItem}>
-              <LikeButton
-                postId={id}
-                likesCount={likesCount}
-                setLikesCount={setLikesCount}
-                likeId={like_id}
-                onUnlike={inLikedPage ? handleUnlike : null}
-              />
+              <span className={sharedStyles.flexCenter}>
+                <LikeButton
+                  postId={id}
+                  likesCount={likesCount}
+                  setLikesCount={setLikesCount}
+                  likeId={like_id}
+                  onUnlike={inLikedPage ? handleUnlike : null}
+                />
+                <span className={sharedStyles["text--muted"]}></span>
+              </span>
             </div>
           ) : (
             <div className={sharedStyles.statItem}>
               <span
                 onClick={() => handleWarning("like")}
-                className={sharedStyles.notLoggedIn}
+                className={`${sharedStyles.notLoggedIn} ${sharedStyles["colorTransition"]}`}
               >
-                <i className="fa-regular fa-heart"></i> {likesCount}
+                <i className="fa-regular fa-heart"></i>{" "}
+                <span className={sharedStyles["text--muted"]}>
+                  {likesCount}
+                </span>
               </span>
             </div>
           )}
           <div className={sharedStyles.statItem}>
-            <span
+            <button
               onClick={handleCommentClick}
-              className={isLoggedIn ? styles.commentLink : sharedStyles.notLoggedIn}
+              className={`${sharedStyles.commentLink} ${sharedStyles["colorTransition"]}`}
+              style={{ background: "none", border: "none", padding: 0 }}
             >
-              <i className="fa-regular fa-comment"></i> {comments_count}
-            </span>
+              <i className="fa-regular fa-comment"></i>{" "}
+              <span className={sharedStyles["text--muted"]}>
+                {comments_count}
+              </span>
+            </button>
           </div>
         </div>
         {!isLoggedIn && activeWarning?.postId === id && (
