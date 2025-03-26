@@ -3,8 +3,11 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import styles from "../../styles/HomePage.module.css";
 import logo from "../../assets/images/logo.webp";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 const HomePage = () => {
+  const currentUser = useCurrentUser();
+
   return (
     <Container className={styles.container}>
       <Row className="text-center">
@@ -25,9 +28,11 @@ const HomePage = () => {
               <Link to="/feed">
                 <Button variant="primary" className="me-2">Explore Recipes</Button>
               </Link>
-              <Link to="/posts/create">
-                <Button variant="success">Share Your Recipe</Button>
-              </Link>
+              {currentUser && (
+                <Link to="/posts/create">
+                  <Button variant="success">Share Your Recipe</Button>
+                </Link>
+              )}
             </div>
           </div>
         </Col>
