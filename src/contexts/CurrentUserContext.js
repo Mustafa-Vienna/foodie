@@ -35,8 +35,34 @@ export const CurrentUserProvider = ({ children }) => {
 
     try {
       const { data } = await axiosReq.get("/dj-rest-auth/user/");
-      localStorage.setItem("currentUser", JSON.stringify(data));
-      setCurrentUser(data);
+      
+      // Ensure profile_id is a number and properly set
+      if (data && data.profile_id) {
+        // Store data to localStorage
+        localStorage.setItem("currentUser", JSON.stringify(data));
+        setCurrentUser(data);
+      } else {
+        console.warn("No profile_id found in user data");
+        // Try to get profile ID directly if we have a user ID
+        if (data && data.pk) {
+          try {
+            const profileResponse = await axiosReq.get(`/profiles/?author=${data.pk}`);
+            if (profileResponse.data.results && profileResponse.data.results.length > 0) {
+              const profileId = profileResponse.data.results[0].id;
+              data.profile_id = profileId;
+              localStorage.setItem("currentUser", JSON.stringify(data));
+              setCurrentUser(data);
+            }
+          } catch (profileErr) {
+            console.error("Failed to get profile ID:", profileErr);
+            localStorage.setItem("currentUser", JSON.stringify(data));
+            setCurrentUser(data);
+          }
+        } else {
+          localStorage.setItem("currentUser", JSON.stringify(data));
+          setCurrentUser(data);
+        }
+      }
     } catch (err) {
       console.error("Failed to fetch user data:", err);
       setCurrentUser(null);
@@ -45,6 +71,17 @@ export const CurrentUserProvider = ({ children }) => {
 
   useEffect(() => {
     handleMount();
+    
+    // Debug log to check localStorage
+    const userData = localStorage.getItem("currentUser");
+    if (userData) {
+      try {
+        const parsedData = JSON.parse(userData);
+        console.log("Current user data from localStorage:", parsedData);
+      } catch (e) {
+        console.error("Error parsing user data from localStorage:", e);
+      }
+    }
   }, []);
 
   return (
