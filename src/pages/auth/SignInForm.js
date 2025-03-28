@@ -86,7 +86,7 @@ const SignInForm = () => {
   };
 
   return (
-    <Row className={sharedStyles.flexCenterFullHeight}>
+    <Row className={`${sharedStyles.flexCenterFullHeight} gx-5 mb-1`}>
       <Col className="my-auto py-2 p-md-2" md={6}>
         <Container className={`${styles.container} ${sharedStyles.contentContainer}`}>
           <h1 className={styles.header}>Sign In</h1>
@@ -133,8 +133,7 @@ const SignInForm = () => {
         </Container>
       </Col>
 
-      <Col md={6} className={`my-auto d-none d-md-block p-2 ${styles.signInCol}`}>
-      </Col>
+      <Col md={6} className={`my-auto d-none d-md-block p-2 ${styles.signInCol}`} />
     </Row>
   );
 };

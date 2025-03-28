@@ -82,7 +82,7 @@ body {
 
 /* Utility Classes */
 .flexCenterFullHeight {
-  height: 100vh;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -148,7 +148,8 @@ body {
 /* Main Content - New Class to Grow and Push Footer Down */
 .mainContent {
   flex: 1;
-  padding: var(--spacing-3xl) 0;
+  padding: var(--spacing-sm) 0 0;
+  padding-top: var(--spacing-3xl);
 }
 
 /* Card Patterns */
@@ -356,9 +357,9 @@ body {
 
 /* Button Variants */
 .button--wide {
-  padding: var(--spacing-md) 60px;
+  padding: var(--spacing-md) var(--spacing-xl);
   width: 100%;
-  max-width: 300px;
+  max-width: 250px;
 }
 
 .button--bright {

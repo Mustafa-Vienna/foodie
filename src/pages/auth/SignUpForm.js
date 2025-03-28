@@ -78,7 +78,7 @@ const SignUpForm = () => {
   };
 
   return (
-    <Row className={sharedStyles.flexCenterFullHeight}>
+    <Row className={`${sharedStyles.flexCenterFullHeight} gx-5`}>
       <Col className="my-auto py-2 p-md-2" md={6}>
         <Container className={`${styles.container} ${sharedStyles.contentContainer}`}>
           <h1 className={styles.header}>Sign Up</h1>
@@ -147,8 +147,7 @@ const SignUpForm = () => {
         </Container>
       </Col>
 
-      <Col md={6} className={`my-auto d-none d-md-block p-2 ${styles.signUpCol}`}>
-      </Col>
+      <Col md={6} className={`my-auto d-none d-md-block p-2 ${styles.signUpCol}`} />
     </Row>
   );
 };
