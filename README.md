@@ -193,3 +193,56 @@ The color scheme emphasizes clarity and accessibility. Key visual roles such as 
 
 [Go to Contents](#contents)
 
+---
+
+## 🧪 Agile Workflow <a id="agile-workflow"></a>
+
+This project followed an **Agile-inspired** approach using **GitHub Projects** and **Issues** for managing tasks, features, and bugs during the frontend development phase.
+
+### 📋 GitHub Projects <a id="github-projects"></a>
+
+A **Kanban-style board** was used to track progress, with columns structured as:
+
+1. **To Do** – Features and enhancements planned for development  
+2. **In Progress** – Currently active development tasks  
+3. **Done** – Fully implemented, tested, and reviewed items
+
+You can view the project board here:  
+🔗 [GitHub Project Board](https://github.com/users/Mustafa-Vienna/projects/7)
+
+---
+
+### 🐛 GitHub Issues <a id="github-issues"></a>
+
+Each major task or feature was tracked via GitHub Issues, with clear and descriptive titles. Instead of traditional labels like `bug` or `enhancement`, I used the MoSCoW prioritization method to categorize issues as `Must-Have`, `Should-Have`, `Could-Have`, or `Won’t-Have`.
+
+This ensured transparent prioritization and alignment with project goals. All relevant commits were linked directly to these issues, enabling efficient tracking of development progress.
+
+---
+
+### 🔄 MoSCoW Prioritization <a id="moscow-prioritization"></a>
+
+I used the **MoSCoW method** to prioritize features during planning and sprint retrospectives:
+
+- **Must Have**: User authentication, post creation, commenting, profile views  
+- **Should Have**: Liked posts page, reusable components, infinite scroll  
+- **Could Have**: Search bar, dark mode, tag filters  
+- **Won’t Have (for now)**: Messaging, post pinning, advanced notifications
+
+---
+
+### 📝 Note on Agile Planning and User Stories
+
+While this project followed an **Agile-inspired** methodology, the **user stories** and **Kanban board** were formally structured **at the end** of the development cycle.
+
+In the early stages, my focus was fully on backend development. I followed the Code Institute’s Django REST Framework tutorial to build a secure, functional API that could support future frontend integration.
+
+Once the backend was complete and tested, I moved on to developing the frontend. This phase came with its own challenges, especially due to **modern React library dependencies** and **limited source**. I spent significant time troubleshooting breaking changes, adjusting configurations, and ensuring everything worked smoothly with the backend.
+
+As the project deadline approached, I retrospectively wrote detailed **user stories** based on the actual features implemented. I created them directly in GitHub Issues and added them to the Kanban board to reflect real progress.
+
+Due to time constraints, all tickets were created and marked **“Done”** on the same day. This ensured accurate documentation of work while maintaining transparency and alignment with Agile principles — even if applied retrospectively.
+
+This approach allowed me to clearly communicate what was achieved, what’s pending, and how the workflow evolved throughout the project.
+
+[Go to Contents](#contents)
