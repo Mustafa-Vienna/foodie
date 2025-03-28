@@ -1,6 +1,8 @@
 .container {
-  padding: 60px 20px;
-  min-height: 100vh;
+  padding: 10px;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
 }
 
 .heroSection {
@@ -10,10 +12,12 @@
   text-align: center;
   max-width: 95%;
   margin: 0 auto;
+  min-height: 500px;
+  justify-content: center;
 }
 
 .logo {
-  max-width: 220px;
+  max-width: 160px;
   margin-bottom: 25px;
   border-radius: 20px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
@@ -26,7 +30,7 @@
 }
 
 .heroTitle {
-  font-size: 2.8rem;
+  font-size: 30px;
   font-weight: 700;
   color: rgb(38, 38, 38);
   margin-bottom: 25px;
@@ -37,7 +41,7 @@
 }
 
 .heroText {
-  font-size: 1.4rem;
+  font-size: 18px;
   color: rgb(60, 64, 67);
   line-height: 1.6;
   max-width: 95%;
@@ -63,6 +67,9 @@
   display: flex;
   gap: 15px;
   justify-content: center;
+  flex-wrap: wrap;
+  min-height: 65px;
+  align-items: center;
 }
 
 .buttonContainer a {
@@ -98,8 +105,4 @@
     no-repeat center center/cover;
   border-radius: 15px;
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.25);
-  min-height: 350px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }

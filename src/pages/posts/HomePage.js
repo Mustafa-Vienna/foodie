@@ -38,8 +38,7 @@ const HomePage = () => {
         </Col>
 
         {/* Right Side (Background Image) */}
-        <Col md={6} className={`my-auto d-none d-md-block ${styles.HomePageCol}`}>
-        </Col>
+        <Col md={6} className={`my-auto d-none d-md-block ${styles.HomePageCol}`} />
       </Row>
     </Container>
   );
