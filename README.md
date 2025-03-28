@@ -391,3 +391,28 @@ npm start
 
 [Go to Contents](#contents)
 
+---
+
+## 🎨 UX and UI Design <a id="ux-and-ui-design"></a>
+
+The UI is designed to be clean, modern, and fully responsive. Using Bootstrap 5.3.3 and modular CSS (`SharedStyles.module.css`), the layout is intuitive and functional across all devices.
+
+### 🌈 Colour Scheme <a id="colour-scheme"></a>
+
+The application's color palette uses soft, accessible colors that ensure readability and visual comfort. Backgrounds are kept minimal with high contrast text to meet accessibility standards. Accent colors are used for interactive elements like buttons, tags, and links.
+
+Key styling is handled in:
+- `SharedStyles.module.css`: for reusable spacing, colors, and layout properties.
+- Individual `.module.css` files: for component-specific styling.
+
+### ✒️ Typography <a id="typography"></a>
+
+The app uses system fonts for faster loading and consistency across platforms, with font sizes and spacing adjusted for readability. Font sizes adapt to screen width for optimal UX.
+
+- Headings use bold styling for structure.
+- Paragraphs and smaller texts maintain clear spacing.
+- Buttons and UI elements follow consistent typographic rules.
+
+[Go to Contents](#contents)
+
+---
