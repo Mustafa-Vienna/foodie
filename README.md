@@ -1,70 +1,55 @@
-# Getting Started with Create React App
+# 🍽 Foody Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/t/Mustafa-Vienna/foodie)](https://github.com/Mustafa-Vienna/foodie/commits/main)
+[![GitHub last commit](https://img.shields.io/github/last-commit/Mustafa-Vienna/foodie)](https://github.com/Mustafa-Vienna/foodie/commits/main)
+[![GitHub repo size](https://img.shields.io/github/repo-size/Mustafa-Vienna/foodie)](https://github.com/Mustafa-Vienna/foodie)
 
-## Available Scripts
+![Top Languages](https://github-readme-stats.vercel.app/api/top-langs/?username=Mustafa-Vienna&repo=foodie&layout=compact)
 
-In the project directory, you can run:
+---
 
-### `npm start`
+## 📖 Contents <a id="contents"></a>
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+1. [Project Overview](#project-overview)
+2. [Related Projects](#related-projects)
+3. [Project Structure](#project-structure)
+4. [Features](#features)
+   - [Current Features](#current-features)
+   - [Upcoming Features](#upcoming-features)
+5. [UX and UI Design](#ux-and-ui-design)
+   - [Colour Scheme](#colour-scheme)
+   - [Typography](#typography)
+   - [Wireframes](#wireframes)
+6. [Technologies Used](#technologies-used)
+7. [Agile Workflow](#agile-workflow)
+   - [GitHub Projects](#github-projects)
+   - [GitHub Issues](#github-issues)
+   - [MoSCoW Prioritization](#moscow-prioritization)
+8. [Testing](#testing)
+9. [Deployment](#deployment)
+   - [Live Site](#live-site)
+   - [Local Setup](#local-setup)
+10. [Known Issues and Future Enhancements](#known-issues-and-future-enhancements)
+11. [Credits](#credits)
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## 🌟 Project Overview <a id="project-overview"></a>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+**Foody** is a full-featured **React frontend** for a modern recipe-sharing platform. It allows food lovers to explore, publish, and interact with recipes in a clean and social-friendly interface. The frontend consumes a RESTful API built with Django and JWT authentication, enabling full CRUD operations, real-time feedback, and user profile management.
 
-### `npm run build`
+[Go to Contents](#contents)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+---
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 🌐 Related Projects <a id="related-projects"></a>
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 💻 Frontend Application (React)
+- 🔗 GitHub: [Mustafa-Vienna/foodie](https://github.com/Mustafa-Vienna/foodie)
+- 🚀 Live Demo: [https://foodiefront-bacd5250c6d8.herokuapp.com/](https://foodiefront-bacd5250c6d8.herokuapp.com/)
 
-### `npm run eject`
+### 🧠 Backend API (Django REST + JWT)
+- 🔗 GitHub: [Mustafa-Vienna/foodie-back](https://github.com/Mustafa-Vienna/foodie-back)
+- 🚀 Live API: [https://foodieback-0e50528a3736.herokuapp.com/](https://foodieback-0e50528a3736.herokuapp.com/)
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+[Go to Contents](#contents)
