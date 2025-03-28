@@ -1,10 +1,10 @@
 .Main {
-  padding-top: 120px;
+  padding: 25px;
 }
 
 /* Specific styles for the main content wrapper in App */
 .Content {
-  max-width: 1000px;
+  max-width: 1400px;
   margin: var(--spacing-3xl) auto;
 }
 
