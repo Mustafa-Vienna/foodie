@@ -36,9 +36,14 @@
 
 ## 🌟 Project Overview <a id="project-overview"></a>
 
-**Foody** is a full-featured **React frontend** for a modern recipe-sharing platform. It allows food lovers to explore, publish, and interact with recipes in a clean and social-friendly interface. The frontend consumes a RESTful API built with Django and JWT authentication, enabling full CRUD operations, real-time feedback, and user profile management.
+**Foodie** is a full-featured **React frontend** for a modern recipe-sharing platform. It enables food lovers to explore, publish, and engage with recipes through a clean, interactive, and socially driven interface. The frontend communicates with a RESTful API built using Django and secured with JWT authentication, supporting full CRUD operations, user feedback (likes & comments), and personalized user profiles.
+
+The interface is fully responsive and optimized for seamless use across all devices — mobile, tablet, and desktop.
+
+![Responsive Design Screenshot](readme_assets/images/code_validation/readme_main.png)
 
 [Go to Contents](#contents)
+
 
 ---
 
