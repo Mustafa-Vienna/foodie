@@ -71,5 +71,63 @@ Foody offers a dynamic, user-friendly recipe-sharing experience. Users can sign 
 
 ### ✅ Current Features <a id="current-features"></a>
 
+- **User Authentication**  
+  - Sign up, sign in, and sign out functionality using JWT tokens.
+
+- **Post Management**  
+  - Users can create, update, and delete posts.
+  - Posts include images, tags, timestamps, and view counters.
+  - Users can like and unlike posts.
+
+- **Comments Section**  
+  - Logged-in users can add, edit, and delete comments under each post.
+  - Each comment displays the author, timestamp, and is tied to its post.
+
+- **Liked Posts Page**  
+  - Users can view a dedicated page listing all posts they've liked.
+  - Unliking a post removes it from the list dynamically.
+
+- **User Profile Page**  
+  - Each user has a profile page displaying their posts and profile image.
+  - Users can update their profile information and avatar.
+
+- **Infinite Scroll**  
+  - Posts load dynamically as the user scrolls, improving performance and user experience.
+
+- **Responsive Layout**  
+  - Fully responsive design using Bootstrap 5.3.3 and modular CSS for layout and styling.
+
+- **Reusable Components**  
+  - Core components like `NavBar`, `PostCard`, `LikeButton`, `CommentList`, and `LoadMoreButton` are used across multiple pages to maintain consistency.
 
 ---
+
+### 🔮 Upcoming Features <a id="upcoming-features"></a>
+
+Several advanced features are planned for future updates. Many are already supported by the backend and will be integrated into the frontend to enhance interactivity and personalization:
+
+- **Follow System Integration**  
+  Display followed users’ posts in a personalized activity feed to build community interaction.
+
+- **Draft Post Feature**  
+  Allow users to save posts as drafts and publish them later.
+
+- **Tag-Based Filtering**  
+  Implement tag filters such as **Fresh**, **Hot**, and **Featured**, using dynamic backend logic based on post activity.
+
+- **Search Functionality**  
+  Let users search posts by title, tags, or author for easier content discovery.
+
+- **Dark Mode Toggle**  
+  Provide a toggle to switch between light and dark themes.
+
+- **Custom Error Pages**  
+  Add user-friendly 404 and general error pages for improved navigation and experience.
+
+- **Popular Posts Section**  
+  Highlight posts with high engagement (e.g., most likes and comments) in a dedicated section to showcase trending content.
+
+
+[Go to Contents](#contents)
+
+
