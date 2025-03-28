@@ -337,3 +337,57 @@ npm start
 
 
 > ⚠️ **Note**: Make sure your backend has the correct **CORS settings** configured to allow communication with the frontend.
+
+
+## 🔧 Known Issues and Future Enhancements <a id="known-issues-and-future-enhancements"></a>
+
+### 🌱 Future Features
+
+- **Edit/Delete Posts**  
+  Enable users to manage their posts after publishing.
+
+- **Edit/Delete Comments**  
+  Allow users to modify or remove their own comments.
+
+- **Follow/Unfollow Users**  
+  Let users follow others to build a personalized recipe feed.
+
+- **Draft Post Feature**  
+  Allow users to save draft posts for later editing or publishing.
+
+- **Profile Editing**  
+  Users can update their profile image and display name.
+
+- **Tag Filters (e.g., Popular, Fresh)**  
+  Add tag-based filters to help users explore content more easily.
+
+- **Popular Posts**  
+  Introduce a dedicated section or filter to highlight the most liked or engaged posts.
+
+- **Dark Mode Toggle**  
+  Add an option to switch between light and dark themes.
+
+- **Search Functionality**  
+  Let users search for posts using keywords, tags, or authors.
+
+- **Followed Feed View**  
+  Show a feed with posts from followed users only.
+
+---
+
+### ⚠️ Known Issues
+
+- **Manual Tag Assignment**  
+  Tags like *Hot*, *Fresh*, and *Future* are currently assigned manually. A future update will implement automated logic based on views, timestamps, and interactions.
+
+- **Retrospective Agile Planning**  
+  The Agile board and user stories were documented after development due to time constraints. All completed tasks were moved directly to the **Done** column for transparency.
+
+- **Basic 404 Handling (Improved)**  
+  While a simple "Post not found or an error occurred" message is currently shown for invalid post URLs, a fully customized 404 page is still planned as a visual enhancement.
+
+- **Profile Image Refresh Issue**  
+  When a user updates their profile image, the new image does not display immediately. The update only appears after the user logs out and logs back in. Until then, the avatar still shows the old image.
+
+[Go to Contents](#contents)
+
