@@ -251,3 +251,38 @@ Due to time constraints, all tickets were created and marked **“Done”** on t
 This approach allowed me to clearly communicate what was achieved, what’s pending, and how the workflow evolved throughout the project.
 
 [Go to Contents](#contents)
+
+--
+
+## ✅ Testing <a id="testing"></a>
+
+The Foody frontend was manually and visually tested across various browsers, screen sizes, and usage scenarios to ensure consistent performance, functionality, and responsiveness. Each component and user interaction was carefully validated based on user stories and real-world expectations.
+
+### 🔍 Manual Testing
+
+- All pages were manually tested to verify layout, styling, and responsiveness.
+- Buttons, forms, and interactive elements were tested for proper functionality and feedback.
+- Navigation between routes (e.g., Home, Feed, Post Detail, Liked, Profile, Sign In/Up) was confirmed using both the navigation bar and direct links.
+- API interactions (like post creation, liking, commenting) were tested via live backend integration.
+- Responsive behavior was tested on Chrome Developer Tools (mobile, tablet, and desktop breakpoints).
+
+### 🧪 Browser Compatibility
+
+Tested successfully on:
+
+- Chrome (desktop & mobile)
+- Firefox
+- Safari
+- Edge
+
+### 🧑‍💻 Component Testing
+
+Although unit testing libraries were not implemented due to time constraints, each major React component (e.g., `PostCard`, `NavBar`, `PostCreateForm`, `LikeButton`, `CommentList`) was manually tested within the application through interaction, edge cases, and error states (e.g., empty form submissions, no internet connection).
+
+### ⚠️ Known Limitations
+
+- Form validation relies on backend responses and minimal frontend checks.
+
+> Full testing documentation including specific user stories and testing scenarios is available in the [TESTING.md](TESTING.md) file.
+
+[Go to Contents](#contents)
