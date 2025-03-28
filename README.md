@@ -53,3 +53,23 @@
 - 🚀 Live API: [https://foodieback-0e50528a3736.herokuapp.com/](https://foodieback-0e50528a3736.herokuapp.com/)
 
 [Go to Contents](#contents)
+
+
+## 🧱 Project Structure <a id="project-structure"></a>
+
+The frontend of Foody is structured using a component-based architecture in React. Pages, components, styles, and context are modularly separated to ensure scalability, clarity, and maintainability.
+
+More details on individual folders and file roles are outlined below.
+
+[Go to Contents](#contents)
+
+---
+
+## ✨ Features <a id="features"></a>
+
+Foody offers a dynamic, user-friendly recipe-sharing experience. Users can sign up, create posts with images, like others’ posts, and leave comments. The interface is responsive and intuitive, with personalized content for logged-in users.
+
+### ✅ Current Features <a id="current-features"></a>
+
+
+---
