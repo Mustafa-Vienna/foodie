@@ -286,3 +286,54 @@ Although unit testing libraries were not implemented due to time constraints, ea
 > Full testing documentation including specific user stories and testing scenarios is available in the [TESTING.md](TESTING.md) file.
 
 [Go to Contents](#contents)
+
+
+---
+
+## 🚀 Deployment <a id="deployment"></a>
+
+The Foodie frontend is deployed on **Heroku** using a GitHub-connected pipeline for automatic deployment.
+
+### 🌐 Live Site <a id="live-site"></a>
+
+- 🔗 **Frontend**: [https://foodiefront-bacd5250c6d8.herokuapp.com/](https://foodiefront-bacd5250c6d8.herokuapp.com/)
+- 🔗 **Backend**: [https://foodieback-0e50528a3736.herokuapp.com/](https://foodieback-0e50528a3736.herokuapp.com/)
+
+### 🛠 Local Setup <a id="local-setup"></a>
+
+To run the project locally:
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/Mustafa-Vienna/foodie.git
+cd foodie
+```
+
+2. **Install dependencies**
+
+```bash
+npm install
+```
+
+3. **Start the development server**
+
+```bash
+npm start
+```
+
+- *The app should now be running at:*
+`http://localhost:3000/`
+
+---
+
+### ⚙️ Environment Setup <a id="environment-setup"></a>
+
+- Ensure the **backend (Django API)** is running locally or already deployed.
+
+- If you're using a local backend, update the API base URL in the axios config file:
+
+  `src/api/axiosDefault.js`
+
+
+> ⚠️ **Note**: Make sure your backend has the correct **CORS settings** configured to allow communication with the frontend.
