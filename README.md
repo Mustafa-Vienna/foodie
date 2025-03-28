@@ -140,29 +140,32 @@ Several advanced features are planned for future updates. Many are already suppo
 
 ## 🎨 UX and UI Design <a id="ux-and-ui-design"></a>
 
-Foody's UI is designed to be modern, clean, and responsive across all screen sizes. Styling is managed using a combination of **Bootstrap 5.3.3** and **modular CSS**, with shared styles applied via `SharedStyles.module.css` to ensure design consistency and maintainability.
+Foody's UI is designed to be clean, modern, and fully responsive across all devices. The interface prioritizes usability, accessibility, and consistency across pages using Bootstrap 5.3.3 and modular CSS.
+
+Styling is managed through:
+- `SharedStyles.module.css` – shared spacing, layout, and color variables.
+- Individual `.module.css` files – scoped styles for specific components.
 
 ### 🎨 Colour Scheme <a id="colour-scheme"></a>
 
-The color scheme emphasizes clarity and accessibility. Key visual roles such as background, primary text, and call-to-action buttons are styled using shared CSS variables and modular class utilities.
+The color palette uses soft, accessible tones to create a welcoming environment. High-contrast text ensures readability, while accent colors highlight interactive elements like buttons, links, and icons.
 
-| Color Role       | Applied via CSS Module / Utility |
-|------------------|----------------------------------|
-| Background       | `sharedStyles.pageContainer`     |
-| Accent Elements  | `--accent-color` (custom variable) |
-| Text Color       | `--text-primary` (custom variable) |
-| Links/Buttons    | Bootstrap utility + shared class |
+| Element           | Styling Source                  |
+|-------------------|---------------------------------|
+| Background        | `sharedStyles.pageContainer`    |
+| Accent Elements   | `--accent-color` (custom var)   |
+| Primary Text      | `--text-primary` (custom var)   |
+| Buttons & Links   | Bootstrap + CSS module classes  |
 
-> Centralized color values are defined in `SharedStyles.module.css` to ensure consistency across pages and components.
+> Color variables are defined and reused via `SharedStyles.module.css` to ensure visual consistency.
 
 ### 🔠 Typography <a id="typography"></a>
 
-- **Primary Font**: `Roboto` for modern readability.
-- **Secondary Font**: `Open Sans` for labels, hints, and smaller text.
-- Font sizing and line height are adjusted using Bootstrap typography utilities and custom classes inside `SharedStyles.module.css`.
+- **Primary Font**: `Roboto` – clean and readable for body content.
+- **Secondary Font**: `Open Sans` – used for small labels, hints, and light UI elements.
+- Fonts are imported globally in `index.css` and used with Bootstrap utilities and module-specific classes.
 
-> Fonts are imported in the global `index.css` and applied selectively through reusable CSS modules for consistency and responsiveness.
-
+Font sizes, spacing, and hierarchy are optimized for readability across all screen sizes.
 
 [Go to Contents](#contents)
 
@@ -393,26 +396,56 @@ npm start
 
 ---
 
-## 🎨 UX and UI Design <a id="ux-and-ui-design"></a>
+## 🧠 Credits <a id="credits"></a>
 
-The UI is designed to be clean, modern, and fully responsive. Using Bootstrap 5.3.3 and modular CSS (`SharedStyles.module.css`), the layout is intuitive and functional across all devices.
+### 📚 Resources Used
 
-### 🌈 Colour Scheme <a id="colour-scheme"></a>
+- **[Code Institute LMS](https://codeinstitute.net/)**  
+  For providing the foundational full-stack course and structured roadmap for this final milestone project.
 
-The application's color palette uses soft, accessible colors that ensure readability and visual comfort. Backgrounds are kept minimal with high contrast text to meet accessibility standards. Accent colors are used for interactive elements like buttons, tags, and links.
+- **Udemy Course by Maximilian Schwarzmüller**  
+  _React - The Complete Guide (incl Hooks, React Router, Redux)_  
+  Helped deepen my understanding of modern React (18+), component architecture, and state management.
 
-Key styling is handled in:
-- `SharedStyles.module.css`: for reusable spacing, colors, and layout properties.
-- Individual `.module.css` files: for component-specific styling.
+- **YouTube - JavaScript Mastery**  
+  Their modern React tutorials helped me stay current with new patterns (e.g., modular CSS, React Router DOM v6+).
 
-### ✒️ Typography <a id="typography"></a>
+- **Stack Overflow**  
+  Used frequently for debugging React-specific issues, authentication logic, image refreshing, and Axios error handling.
 
-The app uses system fonts for faster loading and consistency across platforms, with font sizes and spacing adjusted for readability. Font sizes adapt to screen width for optimal UX.
-
-- Headings use bold styling for structure.
-- Paragraphs and smaller texts maintain clear spacing.
-- Buttons and UI elements follow consistent typographic rules.
-
-[Go to Contents](#contents)
+- **React Docs + Bootstrap Docs**  
+  The official documentation helped clarify usage differences, especially when combining `react-bootstrap` with native Bootstrap 5.3.3 classes.
 
 ---
+
+### 💡 Code Used
+
+- **GitHub Inspiration**  
+  Elements of this README's structure were inspired by my previous project (Pet Adoption) and Ibrahim’s project (_BSC Hastedt Football Camp_), particularly the clean breakdown of technologies and the use of shields/badges for visual clarity.
+
+- **Stack Overflow Snippet**  
+  The refresh issue related to updated profile images was addressed by referencing several Stack Overflow threads regarding React state/cache refresh after PUT requests.
+
+- **404 Page Handling Logic**  
+  Basic error message handling for the Post Detail page was inspired by common patterns in React router error fallback design.
+
+---
+
+### 🙌 Acknowledgements
+
+- **Ioan** – Classmate  
+  A huge thank you to Ioan for his consistent support and programming insights throughout the project. He helped me modularize components, reason through edge cases, and improve the overall maintainability of the frontend logic.
+
+- **Dejan** – Senior Frontend Developer (Colleague)  
+  Dejan’s frontend expertise was invaluable. He reviewed complex UI interactions, suggested improvements to the responsive design, and helped me optimize my use of CSS modules and shared styles.
+
+- **Mihai** – Senior Backend Engineer (Colleague)  
+  Mihai provided technical guidance on backend integration and helped debug JWT-related issues and API response handling. His feedback improved both error handling and performance.
+
+- **Mentor Luke** – Code Institute  
+  Many thanks to Luke for his mentorship throughout the project. His feedback helped sharpen my deployment strategy, GitHub usage, and general project structure. His guidance ensured the final result was polished and complete.
+
+- **ChatGPT**  
+  My virtual sidekick throughout this journey. Helped me understand tough errors and refine documentation — especially this README file.
+
+[Go to Contents](#contents)
