@@ -1,3 +1,4 @@
+// PostDetailPage.js
 import React, { useState, useEffect, useRef } from "react";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import { Container, Card, Spinner, Alert, Row, Col, Button, Modal } from "react-bootstrap";
@@ -11,7 +12,6 @@ import { handleUpdate, handleDelete } from "../../utils/FormHelper";
 import { FormLayout } from "../../utils/FormLayout";
 import PostContent from "../posts/postDetailUtils/PostContent";
 import PostMeta from "../posts/postDetailUtils/PostMeta";
-// import PostSidebar from "../posts/postDetailUtils/PostSidebar";
 import PostComments from "../posts/postDetailUtils/PostComments";
 
 const PostDetailPage = () => {
@@ -61,7 +61,7 @@ const PostDetailPage = () => {
             category: data.category || "",
             tags: data.tags?.map((tag) => tag.id.toString()) || [],
             image_filter: data.image_filter || "",
-            image: null,
+            image: data.image || null,
           });
           setImagePreview(data.image);
           await fetchTags(setAvailableTags);
@@ -81,43 +81,61 @@ const PostDetailPage = () => {
   }, [id]);
 
   const renderModal = (show, onHide, title, body, footer) => (
-    <Modal show={show} onHide={onHide}>
-      <Modal.Header closeButton>
-        <Modal.Title>{title}</Modal.Title>
+    <Modal 
+      show={show} 
+      onHide={onHide}
+      dialogClassName={styles.customModal}
+      centered
+      scrollable
+      size="xl"
+    >
+      <Modal.Header closeButton className="sticky-top bg-white">
+        <Modal.Title className="h4">{title}</Modal.Title>
       </Modal.Header>
-      <Modal.Body>{body}</Modal.Body>
-      <Modal.Footer>{footer}</Modal.Footer>
+      <Modal.Body className="p-4">
+        <div className="container-fluid">
+          {body}
+        </div>
+      </Modal.Body>
+      <Modal.Footer className="sticky-bottom bg-white">
+        {footer}
+      </Modal.Footer>
     </Modal>
   );
 
   const editModalBody = (
-    <FormLayout
-      postData={editedPost}
-      setPostData={setEditedPost}
-      newIngredient={newIngredient}
-      setNewIngredient={setNewIngredient}
-      newStep={newStep}
-      setNewStep={setNewStep}
-      imagePreview={imagePreview}
-      availableTags={availableTags}
-      handleChange={handleChange}
-      handleChangeImage={handleChangeImage}
-      handleTagChange={handleTagChange}
-      handleAddItem={require("../../utils/FormHelper").handleAddItem}
-      handleRemoveItem={require("../../utils/FormHelper").handleRemoveItem}
-      setErrors={setValidationErrors}
-      setImagePreview={setImagePreview}
-      validationErrors={validationErrors}
-    />
+    <div className="edit-form-container">
+      <div className="mb-4">
+        <h5 className="mb-3">Basic Information</h5>
+        <FormLayout
+          postData={editedPost}
+          setPostData={setEditedPost}
+          newIngredient={newIngredient}
+          setNewIngredient={setNewIngredient}
+          newStep={newStep}
+          setNewStep={setNewStep}
+          imagePreview={imagePreview}
+          availableTags={availableTags}
+          handleChange={handleChange}
+          handleChangeImage={handleChangeImage}
+          handleTagChange={handleTagChange}
+          handleAddItem={require("../../utils/FormHelper").handleAddItem}
+          handleRemoveItem={require("../../utils/FormHelper").handleRemoveItem}
+          setErrors={setValidationErrors}
+          setImagePreview={setImagePreview}
+          validationErrors={validationErrors}
+        />
+      </div>
+    </div>
   );
 
   const editModalFooter = (
-    <>
+    <div className="w-100 d-flex justify-content-between">
       <Button
-        variant="secondary"
+        variant="outline-secondary"
         onClick={() => setShowEditModal(false)}
         disabled={isModifying}
-        className={sharedStyles["button--gray"]}
+        className={`${sharedStyles["button--gray"]} px-4`}
       >
         Cancel
       </Button>
@@ -125,11 +143,18 @@ const PostDetailPage = () => {
         variant="primary"
         onClick={() => handleUpdate(id, editedPost, setPost, setShowEditModal, setValidationErrors, setError, setIsModifying)}
         disabled={isModifying}
-        className={sharedStyles["button--orange"]}
+        className={`${sharedStyles["button--orange"]} px-4`}
       >
-        {isModifying ? "Saving..." : "Save Changes"}
+        {isModifying ? (
+          <>
+            <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" />
+            <span className="ms-2">Saving...</span>
+          </>
+        ) : (
+          "Save Changes"
+        )}
       </Button>
-    </>
+    </div>
   );
 
   const deleteModalBody = (
@@ -141,10 +166,10 @@ const PostDetailPage = () => {
   const deleteModalFooter = (
     <>
       <Button
-        variant="secondary"
+        variant="outline-secondary"
         onClick={() => setShowDeleteModal(false)}
         disabled={isModifying}
-        className={sharedStyles["button--gray"]}
+        className={`${sharedStyles["button--gray"]} px-3`}
       >
         Cancel
       </Button>
@@ -152,9 +177,16 @@ const PostDetailPage = () => {
         variant="danger"
         onClick={() => handleDelete(id, navigate, setError, setIsModifying)}
         disabled={isModifying}
-        className={sharedStyles["button--red"]}
+        className={`${sharedStyles["button--red"]} px-3`}
       >
-        {isModifying ? "Deleting..." : "Delete"}
+        {isModifying ? (
+          <>
+            <Spinner as="span" animation="border" size="sm" role="status" aria-hidden="true" />
+            <span className="ms-2">Deleting...</span>
+          </>
+        ) : (
+          "Delete"
+        )}
       </Button>
     </>
   );
@@ -201,7 +233,7 @@ const PostDetailPage = () => {
                     disabled={isModifying}
                     className={sharedStyles["text--muted"]}
                   >
-                    Edit
+                    <i className="fas fa-edit me-1"></i> Edit
                   </Button>
                   <Button
                     variant="link"
@@ -210,7 +242,7 @@ const PostDetailPage = () => {
                     disabled={isModifying}
                     className={sharedStyles["message--warning"]}
                   >
-                    Delete
+                    <i className="fas fa-trash-alt me-1"></i> Delete
                   </Button>
                 </div>
               )}
@@ -239,10 +271,6 @@ const PostDetailPage = () => {
 
         <PostComments ref={commentsRef} postId={id} currentUser={currentUser} />
       </Col>
-
-      {/* <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        <PostSidebar />
-      </Col> */}
 
       {renderModal(
         showEditModal,
