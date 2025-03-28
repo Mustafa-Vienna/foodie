@@ -88,6 +88,11 @@
   padding: var(--spacing-lg);
 }
 
+.customModal {
+  max-width: 1000px;
+  width: 80%;
+}
+
 @media (max-width: 768px) {
   .postImage {
     width: 100%;
