@@ -3,16 +3,16 @@
 }
 
 .formLabel {
-  font-weight: bold;
-  color: var(--color-label);
-  margin-bottom: var(--spacing-sm);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-md);
   font-size: var(--font-size-lg);
 }
 
 .formControl {
   padding: var(--spacing-sm) var(--spacing-md);
-  border-radius: 6px;
-  border: 1px solid rgb(204, 204, 204);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-border);
 }
 
 .formControl::placeholder {
@@ -20,11 +20,18 @@
   font-style: italic;
 }
 
-.uploadedImage {
-  max-width: 90%;
-  max-height: 300px;
-  margin: var(--spacing-lg) auto;
-  display: block;
+.listContainer {
+  max-height: 250px;
+  overflow-y: auto;
+  background-color: var(--color-background-light);
+}
+
+.listItem {
+  transition: background-color var(--transition-duration) var(--transition-timing);
+}
+
+.listItem:hover {
+  background-color: var(--color-background-hover);
 }
 
 .listItemContent {
@@ -32,24 +39,30 @@
   padding-right: var(--spacing-md);
 }
 
-.listItem:hover {
-  background: var(--color-background-hover);
+.uploadedImage {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-md);
+  margin: var(--spacing-lg) auto;
+  display: block;
 }
 
 .previewCardTitle {
   font-size: var(--font-size-2xl);
-  font-weight: bold;
+  font-weight: var(--font-weight-bold);
   margin-bottom: var(--spacing-lg);
 }
 
 .previewCardBody {
   font-size: var(--font-size-md);
-  line-height: 1.6;
-  color: var(--color-label);
+  line-height: var(--line-height-normal);
+  color: var(--color-text-secondary);
 }
 
 .previewCardBody strong {
-  font-weight: bold;
+  font-weight: var(--font-weight-bold);
 }
 
 .previewCardBody ul,
@@ -65,7 +78,7 @@
 @media (max-width: 768px) {
   .formRow {
     flex-direction: column;
-    gap: 22px;
+    gap: var(--spacing-lg);
   }
 
   .formCol {
