@@ -131,3 +131,34 @@ Several advanced features are planned for future updates. Many are already suppo
 [Go to Contents](#contents)
 
 
+---
+
+## 🎨 UX and UI Design <a id="ux-and-ui-design"></a>
+
+Foody's UI is designed to be modern, clean, and responsive across all screen sizes. Styling is managed using a combination of **Bootstrap 5.3.3** and **modular CSS**, with shared styles applied via `SharedStyles.module.css` to ensure design consistency and maintainability.
+
+### 🎨 Colour Scheme <a id="colour-scheme"></a>
+
+The color scheme emphasizes clarity and accessibility. Key visual roles such as background, primary text, and call-to-action buttons are styled using shared CSS variables and modular class utilities.
+
+| Color Role       | Applied via CSS Module / Utility |
+|------------------|----------------------------------|
+| Background       | `sharedStyles.pageContainer`     |
+| Accent Elements  | `--accent-color` (custom variable) |
+| Text Color       | `--text-primary` (custom variable) |
+| Links/Buttons    | Bootstrap utility + shared class |
+
+> Centralized color values are defined in `SharedStyles.module.css` to ensure consistency across pages and components.
+
+### 🔠 Typography <a id="typography"></a>
+
+- **Primary Font**: `Roboto` for modern readability.
+- **Secondary Font**: `Open Sans` for labels, hints, and smaller text.
+- Font sizing and line height are adjusted using Bootstrap typography utilities and custom classes inside `SharedStyles.module.css`.
+
+> Fonts are imported in the global `index.css` and applied selectively through reusable CSS modules for consistency and responsiveness.
+
+
+[Go to Contents](#contents)
+
+
