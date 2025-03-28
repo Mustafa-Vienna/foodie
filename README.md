@@ -161,4 +161,35 @@ The color scheme emphasizes clarity and accessibility. Key visual roles such as 
 
 [Go to Contents](#contents)
 
+---
+
+## 🛠 Technologies Used <a id="technologies-used"></a>
+
+### 📦 Languages & Frameworks
+
+- [![React](https://img.shields.io/badge/React-18.3.1-grey?logo=react&logoColor=61DAFB)](https://reactjs.org/) used as the main JavaScript library for building the UI.
+- [![React Router](https://img.shields.io/badge/React_Router_DOM-7.1.5-grey?logo=reactrouter&logoColor=CA4245)](https://reactrouter.com/) used for client-side routing.
+- [![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3.3-grey?logo=bootstrap&logoColor=7952B3)](https://getbootstrap.com/) used for responsive layouts and utility classes.
+- [![React Bootstrap](https://img.shields.io/badge/React_Bootstrap-2.10.9-grey?logo=bootstrap&logoColor=7952B3)](https://react-bootstrap.github.io/) used for Bootstrap components as React elements.
+- [![CSS Modules](https://img.shields.io/badge/CSS_Modules-grey?logo=css3&logoColor=1572B6)](https://github.com/css-modules/css-modules) used for writing modular and scoped CSS styles.
+- [![Styled Components](https://img.shields.io/badge/Styled_Components-6.1.14-grey?logo=styled-components&logoColor=DB7093)](https://styled-components.com/) used for component-level dynamic styling using JavaScript.
+
+### 🔗 API & Data Handling
+
+- [![Axios](https://img.shields.io/badge/Axios-1.7.9-grey?logo=axios&logoColor=5A29E4)](https://axios-http.com/) used to send asynchronous requests to the backend API.
+- [![Django REST Framework](https://img.shields.io/badge/DRF_Backend-grey?logo=django&logoColor=092E20)](https://www.django-rest-framework.org/) used to serve the API (backend repo linked in Related Projects).
+
+### ⚙️ Utilities & Interactions
+
+- [![React Infinite Scroll](https://img.shields.io/badge/Infinite_Scroll-6.1.0-grey?logo=react&logoColor=61DAFB)](https://www.npmjs.com/package/react-infinite-scroll-component) used for loading more content as the user scrolls.
+- [![Date-fns](https://img.shields.io/badge/Date--Fns-4.1.0-grey?logo=javascript&logoColor=F7DF1E)](https://date-fns.org/) used to format and handle timestamps.
+
+### 🧰 Development Tools
+
+- [![ESLint](https://img.shields.io/badge/ESLint-8.57.1-grey?logo=eslint&logoColor=4B32C3)](https://eslint.org/) used to maintain code quality.
+- [![Prettier](https://img.shields.io/badge/Prettier-grey?logo=prettier&logoColor=F7BA3E)](https://prettier.io/) used to format code consistently.
+- [![Web Vitals](https://img.shields.io/badge/Web_Vitals-grey?logo=webvitals&logoColor=4285F4)](https://web.dev/vitals/) used to measure performance and UX.
+- [![Create React App](https://img.shields.io/badge/CRA-Scripts-grey?logo=react&logoColor=61DAFB)](https://create-react-app.dev/docs/getting-started/) used as the base setup for bootstrapping the project.
+
+[Go to Contents](#contents)
 
