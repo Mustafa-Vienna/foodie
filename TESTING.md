@@ -99,7 +99,6 @@
 
 
 
-
 ---
 
 ### Like & Comment
@@ -112,14 +111,18 @@
 | US07-TS02   | Unlike a liked post          | Log in → Like a post → Click heart again                             | Heart icon turns grey, like count decreases                     | ✅ Pass  | ![US07-TS02](readme_assets/manual_tests/US07-TS02.png) |
 | US07-TS03   | View updated like message    | Like a post → Observe like message under the post                    | Message shows "You and X other(s) like this post"               | ✅ Pass  | ![US07-TS03](readme_assets/manual_tests/US07-TS03.png) |
 
-
-
+---
 
 
 #### US08: As a user, I can comment on posts.
 
-| Test ID | Test Scenario | Steps | Expected Result | Status |
-|--------|----------------|-------|------------------|--------|
+| Test ID     | Test Scenario                            | Steps                                                                 | Expected Result                                                                                     | Status   | Image |
+|-------------|-------------------------------------------|-----------------------------------------------------------------------|------------------------------------------------------------------------------------------------------|----------|--------|
+| US08-TS01   | Update a comment                          | Click the edit icon on an existing comment, change text, and save    | Comment text is updated, and the latest version appears without page reload                         | ✅ Pass  | ![US08-TS01](readme_assets/manual_tests/US08-TS01.png) |
+| US08-TS02   | Delete a comment                          | Click the delete icon and confirm deletion                           | Comment is removed from the comment list without needing to refresh                                 | ✅ Pass  | ![US08-TS02](readme_assets/manual_tests/US08-TS02.png) |
+| US08-TS03   | Existing comments with avatars & metadata | View any existing comments under a post                              | Comments display with author avatar, username, timestamp, and message                               | ✅ Pass  | ![US08-TS03](readme_assets/manual_tests/US08-TS03.png) |
+| US08-TS04   | Navigate to author profile via comment    | Click the avatar or username of a comment author                     | User is redirected to the author’s profile page                                                     | ✅ Pass  | ![US08-TS04](readme_assets/manual_tests/US08-TS04.png) |
+
 
 
 
