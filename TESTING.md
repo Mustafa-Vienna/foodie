@@ -74,16 +74,21 @@
 | US04-TS01   | Navbar is visible on all pages   | Navigate across pages like Home, Feed, Post, etc.               | Navbar remains visible with all expected links/icons          | ✅ Pass | ![US04-TS01](readme_assets/manual_tests/US04-TS01.png) |
 | US04-TS02   | Footer is visible on all pages   | Scroll to bottom on each page (Home, Feed, Sign In, etc.)       | Footer is consistently displayed across all pages             | ✅ Pass | ![US04-TS02](readme_assets/manual_tests/US04-TS02.png) |
 
-
-
 ---
+
 
 ### Create / Edit Post
 
-#### US05: As a logged-in user, I can create a new post.
+#### US05: As a logged-in user, I can create and edit a post.
 
-| Test ID | Test Scenario | Steps | Expected Result | Status |
-|--------|----------------|-------|------------------|--------|
+| Test ID     | Test Scenario                      | Steps                                                               | Expected Result                                                   | Status   | Image |
+|-------------|------------------------------------|---------------------------------------------------------------------|-------------------------------------------------------------------|----------|--------|
+| US05-TS01   | Access post creation form          | Log in → Click "Create" button from navbar                          | Post creation form is displayed                                  | ✅ Pass  | ![US05-TS01](readme_assets/manual_tests/US05-TS01.png) |
+| US05-TS02   | Submit post with valid input       | Fill title + content + image + tags → Submit                        | Post is successfully created and redirected to detail page       | ✅ Pass  | ![US05-TS02](readme_assets/manual_tests/US05-TS02.png) |
+| US05-TS03   | Validation for missing fields      | Submit without entering required fields                             | Error messages are shown for required fields                     | ✅ Pass  | ![US05-TS03](readme_assets/manual_tests/US05-TS03.png) |
+| US05-TS04   | Edit an existing post              | Click "Edit" on post detail page → Change content → Save            | Post is updated and new content is visible on the detail page    | ✅ Pass  | ![US05-TS04](readme_assets/manual_tests/US05-TS04.png) |
+| US05-TS05   | Edit validation check              | Remove required fields and try to save                              | Validation errors are displayed, preventing empty update         | ✅ Pass  | ![US05-TS05](readme_assets/manual_tests/US05-TS05.png) |
+
 
 
 
