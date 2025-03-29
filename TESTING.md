@@ -106,8 +106,12 @@
 
 #### US07: As a user, I can like and unlike posts.
 
-| Test ID | Test Scenario | Steps | Expected Result | Status |
-|--------|----------------|-------|------------------|--------|
+| Test ID     | Test Scenario                | Steps                                                                 | Expected Result                                                  | Status   | Image |
+|-------------|------------------------------|-----------------------------------------------------------------------|------------------------------------------------------------------|----------|--------|
+| US07-TS01   | Like a post                  | Log in → Go to a post → Click the heart icon                         | Heart icon turns red, like count increases                      | ✅ Pass  | ![US07-TS01](readme_assets/manual_tests/US07-TS01.png) |
+| US07-TS02   | Unlike a liked post          | Log in → Like a post → Click heart again                             | Heart icon turns grey, like count decreases                     | ✅ Pass  | ![US07-TS02](readme_assets/manual_tests/US07-TS02.png) |
+| US07-TS03   | View updated like message    | Like a post → Observe like message under the post                    | Message shows "You and X other(s) like this post"               | ✅ Pass  | ![US07-TS03](readme_assets/manual_tests/US07-TS03.png) |
+
 
 
 
