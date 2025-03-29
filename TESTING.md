@@ -21,7 +21,6 @@
 4. [Device Testing](#device-testing)
 5. [Lighthouse Testing](#lighthouse-testing)
 6. [Known Bugs](#known-bugs)
-7. [Unfixed Bugs](#unfixed-bugs)
 
 ---
 
@@ -132,46 +131,15 @@
 
 #### US09: As a user, I can view and edit my profile.
 
-| Test ID | Test Scenario | Steps | Expected Result | Status |
-|--------|----------------|-------|------------------|--------|
-
-
-
-
----
-
-### Liked Page
-
-#### US10: As a user, I can view all liked posts.
-
-| Test ID | Test Scenario | Steps | Expected Result | Status |
-|--------|----------------|-------|------------------|--------|
-
+| Test ID     | Test Scenario               | Steps                                              | Expected Result                                                              | Status  | Image |
+|-------------|-----------------------------|----------------------------------------------------|------------------------------------------------------------------------------|---------|--------|
+| US09-TS01   | View user profile           | Click on the avatar in the navbar → Redirects to profile page | Profile page shows avatar, username, bio, and joined date         | ✅ Pass | ![US09-TS01](readme_assets/manual_tests/US09-TS01.png) |
+| US09-TS02   | Edit bio successfully       | Click "Edit" → Update bio → Submit                 | Updated bio is saved and displayed                                           | ✅ Pass | ![US09-TS02](readme_assets/manual_tests/US09-TS02.png) |
 
 
 
 ---
 
-### Preview Page
-
-#### US11: As a user, I can preview before submitting.
-
-| Test ID | Test Scenario | Steps | Expected Result | Status |
-|--------|----------------|-------|------------------|--------|
-
-
-
----
-
-### Navigation Tests
-
-| Page | Links Tested | Result |
-|------|--------------|--------|
-
-
-
-
----
 
 ## 🌐 Browser Compatibility
 
@@ -208,16 +176,10 @@ Tested via Chrome DevTools and real devices.
 
 | ID | Bug Description | Status | Screenshot |
 |----|------------------|--------|------------|
-| BUG01 | Profile edit does not save avatar instantly | ❌ Open | _To be added_ |
+| BUG01 | Profile edit does not save avatar instantly | ❌ Open | ![BUG01](readme_assets/manual_tests/BUG01.png)|
 
 
 ---
 
-## 🚫 Unfixed Bugs
-
-
-
-
----
 
 [Go to Top](#top)
