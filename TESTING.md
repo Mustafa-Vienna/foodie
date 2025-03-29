@@ -40,6 +40,8 @@
 | US01-TS06   | Form interaction hover feedback  | Hover over fields and the Sign Up button                           | Input and button highlight feedback on hover is visible      | ✅ Pass  | ![US01-TS06](readme_assets/manual_tests/US01-TS06.png) |
 
 ---
+[Go to Top](#top)
+
 
 #### US02: As a user, I can log in to use the app.
 
@@ -52,6 +54,7 @@
 | US02-TS05   | Invalid username                 | Enter a non-existent username and valid password → Submit            | Error: "Invalid credentials" message is shown             | ❌ Fail | ![US02-TS05](readme_assets/manual_tests/US02-TS05.png) | No visual error message — needs frontend update to catch this scenario |
 
 ---
+[Go to Top](#top)
 
 
 #### US03: As a logged-in user, I can log out.
@@ -63,6 +66,8 @@
 
 
 ---
+[Go to Top](#top)
+
 
 ### Navbar / Footer
 
@@ -74,6 +79,7 @@
 | US04-TS02   | Footer is visible on all pages   | Scroll to bottom on each page (Home, Feed, Sign In, etc.)       | Footer is consistently displayed across all pages             | ✅ Pass | ![US04-TS02](readme_assets/manual_tests/US04-TS02.png) |
 
 ---
+[Go to Top](#top)
 
 
 ### Create / Edit Post
@@ -88,17 +94,22 @@
 | US05-TS04   | Edit an existing post              | Click "Edit" on post detail page → Change content → Save            | Post is updated and new content is visible on the detail page    | ✅ Pass  | ![US05-TS04](readme_assets/manual_tests/US05-TS04.png) |
 | US05-TS05   | Edit validation check              | Remove required fields and try to save                              | Validation errors are displayed, preventing empty update         | ✅ Pass  | ![US05-TS05](readme_assets/manual_tests/US05-TS05.png) |
 
+---
+
+[Go to Top](#top)
 
 
+#### US06: As a user, I can preview before posting.
 
 | Test ID     | Test Scenario             | Steps                                                                 | Expected Result                                                        | Status   | Image |
 |-------------|---------------------------|-----------------------------------------------------------------------|------------------------------------------------------------------------|----------|--------|
 | US06-TS01   | Preview page is accessible | Fill out post form and click “Preview”                                | Preview page displays post title, image, content before final publish | ✅ Pass  | ![US06-TS01](readme_assets/manual_tests/US06-TS01.png) |
 | US06-TS02   | Cancel and go back         | Click “Back” from preview page                                        | User is redirected to edit form to make changes                       | ✅ Pass  | ![US06-TS02](readme_assets/manual_tests/US06-TS02.png) |
 
-
-
 ---
+
+[Go to Top](#top)
+
 
 ### Like & Comment
 
@@ -112,6 +123,8 @@
 
 ---
 
+[Go to Top](#top)
+
 
 #### US08: As a user, I can comment on posts.
 
@@ -122,10 +135,10 @@
 | US08-TS03   | Existing comments with avatars & metadata | View any existing comments under a post                              | Comments display with author avatar, username, timestamp, and message                               | ✅ Pass  | ![US08-TS03](readme_assets/manual_tests/US08-TS03.png) |
 | US08-TS04   | Navigate to author profile via comment    | Click the avatar or username of a comment author                     | User is redirected to the author’s profile page                                                     | ✅ Pass  | ![US08-TS04](readme_assets/manual_tests/US08-TS04.png) |
 
-
-
-
 ---
+
+[Go to Top](#top)
+
 
 ### User Profile
 
@@ -136,9 +149,9 @@
 | US09-TS01   | View user profile           | Click on the avatar in the navbar → Redirects to profile page | Profile page shows avatar, username, bio, and joined date         | ✅ Pass | ![US09-TS01](readme_assets/manual_tests/US09-TS01.png) |
 | US09-TS02   | Edit bio successfully       | Click "Edit" → Update bio → Submit                 | Updated bio is saved and displayed                                           | ✅ Pass | ![US09-TS02](readme_assets/manual_tests/US09-TS02.png) |
 
-
-
 ---
+
+[Go to Top](#top)
 
 
 ## 🌐 Browser Compatibility
@@ -174,9 +187,6 @@ Tested via Chrome DevTools and real devices.
 | **Post Detail** (`/posts/:id`) | ![PostDetail](readme_assets/light_house/PostDetail_lighthouse.png) | Low performance caused by layout shifts and non-optimized images. |
 | **Profile** (`/profiles/:id`) | ![Profile](readme_assets/light_house/Profiles_Lighthouse.png) | Mostly fine, minor performance dip from image loading delay. |
 | **Feed** (`/feed`) | ![Feed](readme_assets/light_house/Feed_lighthouse.png) | Performance and best practices affected by mixed content and unused JS/CSS. |
-
-
-
 
 ---
 
