@@ -165,8 +165,16 @@ Tested via Chrome DevTools and real devices.
 
 ## 💡 Lighthouse Testing
 
-| Page | Mobile | Desktop | Notes |
-|------|--------|---------|-------|
+| Page | Screenshot | Note |
+|------|------------|------|
+| **Home Page** (`/`) | ![HomePage](readme_assets/light_house/HomePage_lighthouse.png) | Accessibility slightly below 90 due to missing alt text or form labeling. |
+| **Sign In** (`/signin`) | ![SignIn](readme_assets/light_house/SignIn_lighthouse.png) | Great performance. All metrics are above 90. |
+| **Sign Up** (`/signup`) | ![SignUp](readme_assets/light_house/SignUp_lighthouse.png) | Excellent scores across all categories. |
+| **Liked Page** (`/liked`) | ![Liked](readme_assets/light_house/Liked_lighthouse.png) | Slightly lower performance due to large image and render-blocking assets. |
+| **Post Detail** (`/posts/:id`) | ![PostDetail](readme_assets/light_house/PostDetail_lighthouse.png) | Low performance caused by layout shifts and non-optimized images. |
+| **Profile** (`/profiles/:id`) | ![Profile](readme_assets/light_house/Profiles_Lighthouse.png) | Mostly fine, minor performance dip from image loading delay. |
+| **Feed** (`/feed`) | ![Feed](readme_assets/light_house/Feed_lighthouse.png) | Performance and best practices affected by mixed content and unused JS/CSS. |
+
 
 
 
