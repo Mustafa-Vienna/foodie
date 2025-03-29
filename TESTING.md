@@ -92,10 +92,11 @@
 
 
 
-#### US06: As a user, I can preview before posting.
+| Test ID     | Test Scenario             | Steps                                                                 | Expected Result                                                        | Status   | Image |
+|-------------|---------------------------|-----------------------------------------------------------------------|------------------------------------------------------------------------|----------|--------|
+| US06-TS01   | Preview page is accessible | Fill out post form and click “Preview”                                | Preview page displays post title, image, content before final publish | ✅ Pass  | ![US06-TS01](readme_assets/manual_tests/US06-TS01.png) |
+| US06-TS02   | Cancel and go back         | Click “Back” from preview page                                        | User is redirected to edit form to make changes                       | ✅ Pass  | ![US06-TS02](readme_assets/manual_tests/US06-TS02.png) |
 
-| Test ID | Test Scenario | Steps | Expected Result | Status |
-|--------|----------------|-------|------------------|--------|
 
 
 
