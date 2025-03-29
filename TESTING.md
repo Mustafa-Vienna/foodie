@@ -31,8 +31,15 @@
 
 #### US01: As a new user, I can register to access the platform.
 
-| Test ID | Test Scenario | Steps | Expected Result | Status |
-|--------|----------------|-------|------------------|--------|
+| Test ID     | Test Scenario                   | Steps                                                              | Expected Result                                              | Status   | Image |
+|-------------|----------------------------------|--------------------------------------------------------------------|--------------------------------------------------------------|----------|--------|
+| US01-TS01   | Registration form is accessible  | Navigate to the `/signup` page                                     | Form with username, email, and password fields is displayed  | ✅ Pass  | ![US01-TS01](readme_assets/manual_tests/US01-TS01.png) |
+| US01-TS02   | Register with valid input        | Fill in valid username, email, password, confirm password → Submit | User is registered, redirected to homepage, auto-logged in   | ✅ Pass | ![US01-TS01](readme_assets/manual_tests/US01-TS02.png) |
+| US01-TS03   | Password mismatch validation     | Enter mismatching passwords and click "Sign Up"                    | Error: "Passwords do not match!" shown below the fields      | ✅ Pass  | ![US01-TS03](readme_assets/manual_tests/US01-TS03.png) |
+| US01-TS04   | Empty fields validation          | Leave all required fields empty and submit                         | Error messages displayed for each missing field              | ✅ Pass  | ![US01-TS04](readme_assets/manual_tests/US01-TS04.png) |
+| US01-TS05   | Password strength check          | Enter a password with less than 6 characters (e.g., `12345`)       | Error: "Password must be at least 6 characters long!"        | ✅ Pass  | ![US01-TS05](readme_assets/manual_tests/US01-TS05.png) |
+| US01-TS06   | Form interaction hover feedback  | Hover over fields and the Sign Up button                           | Input and button highlight feedback on hover is visible      | ✅ Pass  | ![US01-TS06](readme_assets/manual_tests/US01-TS06.png) |
+
 
 
 
