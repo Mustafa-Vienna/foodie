@@ -57,9 +57,10 @@
 
 #### US03: As a logged-in user, I can log out.
 
-| Test ID | Test Scenario | Steps | Expected Result | Status |
-|--------|----------------|-------|------------------|--------|
-
+| Test ID     | Test Scenario              | Steps                                              | Expected Result                                 | Status  | Image |
+|-------------|----------------------------|----------------------------------------------------|-------------------------------------------------|---------|--------|
+| US03-TS01   | Logout button is visible    | Log in → Check top-right menu                     | Logout button (or "Sign Out") is visible        | ✅ Pass | ![US03-TS01](readme_assets/manual_tests/US03-TS01.png) |
+| US03-TS02   | Successful logout           | Click the logout button                            | User is logged out and redirected to sign-in    | ✅ Pass | ![US03-TS02](readme_assets/manual_tests/US03-TS02.png) |
 
 
 ---
@@ -68,8 +69,11 @@
 
 #### US04: As any user, I can see a consistent navbar and footer.
 
-| Test ID | Test Scenario | Steps | Expected Result | Status |
-|--------|----------------|-------|------------------|--------|
+| Test ID     | Test Scenario                    | Steps                                                            | Expected Result                                               | Status  | Image |
+|-------------|----------------------------------|------------------------------------------------------------------|---------------------------------------------------------------|---------|--------|
+| US04-TS01   | Navbar is visible on all pages   | Navigate across pages like Home, Feed, Post, etc.               | Navbar remains visible with all expected links/icons          | ✅ Pass | ![US04-TS01](readme_assets/manual_tests/US04-TS01.png) |
+| US04-TS02   | Footer is visible on all pages   | Scroll to bottom on each page (Home, Feed, Sign In, etc.)       | Footer is consistently displayed across all pages             | ✅ Pass | ![US04-TS02](readme_assets/manual_tests/US04-TS02.png) |
+
 
 
 ---
