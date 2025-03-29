@@ -40,13 +40,19 @@
 | US01-TS05   | Password strength check          | Enter a password with less than 6 characters (e.g., `12345`)       | Error: "Password must be at least 6 characters long!"        | ✅ Pass  | ![US01-TS05](readme_assets/manual_tests/US01-TS05.png) |
 | US01-TS06   | Form interaction hover feedback  | Hover over fields and the Sign Up button                           | Input and button highlight feedback on hover is visible      | ✅ Pass  | ![US01-TS06](readme_assets/manual_tests/US01-TS06.png) |
 
-
-
+---
 
 #### US02: As a user, I can log in to use the app.
 
-| Test ID | Test Scenario | Steps | Expected Result | Status |
+| Test ID     | Test Scenario                   | Steps                                                                 | Expected Result                                           | Status  | Image | Comment |
+|-------------|----------------------------------|-----------------------------------------------------------------------|-----------------------------------------------------------|---------|--------|---------|
+| US02-TS01   | Login form is accessible         | Navigate to the Sign In page                                          | Form with username and password fields is displayed       | ✅ Pass | ![US02-TS01](readme_assets/manual_tests/US02-TS01.png) | - |
+| US02-TS02   | Log in with valid credentials    | Enter correct username and password → Submit                         | User is logged in and redirected to homepage              | ✅ Pass | ![US02-TS02](readme_assets/manual_tests/US02-TS02.png) | - |
+| US02-TS03   | Login with wrong password        | Enter existing username with wrong password → Submit                 | Error: "Invalid credentials" message is shown             | ❌ Fail | ![US02-TS03](readme_assets/manual_tests/US02-TS03.png) | Error message not displayed — missing frontend handler in `SignInForm.js` |
+| US02-TS04   | Empty fields validation          | Submit form without entering any data                                | Error messages shown for empty username and password      | ✅ Pass | ![US02-TS04](readme_assets/manual_tests/US02-TS04.png) | - |
+| US02-TS05   | Invalid username                 | Enter a non-existent username and valid password → Submit            | Error: "Invalid credentials" message is shown             | ❌ Fail | ![US02-TS05](readme_assets/manual_tests/US02-TS05.png) | No visual error message — needs frontend update to catch this scenario |
 
+---
 
 
 #### US03: As a logged-in user, I can log out.
